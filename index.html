@@ -1,1618 +1,2874 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>مملكة الأميرة نيلسي 👑</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+
 
 <style>
 
+/* =========================================
+   ROOT
+========================================= */
+
 :root{
+
     --bg:#fff7fb;
+
     --card:#ffffff;
+
     --text:#4a2635;
+
     --primary:#a72d5c;
+
     --secondary:#d96b91;
+
     --gold:#c9a227;
+
     --soft:#ffe5ef;
+
     --border:#f3c7d7;
-    --shadow:0 12px 35px rgba(130,30,75,.12);
+
+    --shadow:
+        0 12px 35px rgba(130,30,75,.12);
+
 }
 
+
+/* =========================================
+   DARK MODE
+========================================= */
+
 body.dark{
+
     --bg:#21141b;
+
     --card:#2d1b24;
+
     --text:#fff0f5;
+
     --primary:#ff76a8;
+
     --secondary:#ff9ac0;
+
     --gold:#e6c65a;
+
     --soft:#422433;
+
     --border:#63364a;
-    --shadow:0 12px 35px rgba(0,0,0,.35);
+
+    --shadow:
+        0 12px 35px rgba(0,0,0,.35);
+
 }
+
+
+/* =========================================
+   GENERAL
+========================================= */
 
 *{
+
     box-sizing:border-box;
+
     margin:0;
+
     padding:0;
+
 }
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
+
 
 body{
+
     font-family:"Cairo",sans-serif;
+
     background:
-        radial-gradient(circle at top,#fff0f6 0,#fff7fb 35%,var(--bg) 100%);
+        radial-gradient(
+            circle at top,
+            #fff0f6 0,
+            #fff7fb 35%,
+            var(--bg) 100%
+        );
+
     color:var(--text);
+
     min-height:100vh;
+
     overflow-x:hidden;
+
     transition:.4s;
+
 }
 
+
 body.dark{
+
     background:
-        radial-gradient(circle at top,#3b202c 0,var(--bg) 50%);
+        radial-gradient(
+            circle at top,
+            #3b202c 0,
+            var(--bg) 50%
+        );
+
 }
+
 
 button,
 a{
+
     font-family:inherit;
+
 }
+
 
 button{
+
     cursor:pointer;
+
 }
 
-/* =========================
-   Floating Hearts
-========================= */
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
 
 .floating-heart{
+
     position:fixed;
+
     bottom:-40px;
+
     font-size:22px;
+
     pointer-events:none;
+
     animation:floatHeart linear forwards;
+
     z-index:999;
+
     opacity:.8;
+
 }
+
 
 @keyframes floatHeart{
+
     0%{
-        transform:translateY(0) scale(.8) rotate(0);
+
+        transform:
+            translateY(0)
+            scale(.8)
+            rotate(0);
+
         opacity:0;
+
     }
+
 
     10%{
+
         opacity:1;
+
     }
+
 
     100%{
-        transform:translateY(-110vh) scale(1.5) rotate(360deg);
+
+        transform:
+            translateY(-110vh)
+            scale(1.5)
+            rotate(360deg);
+
         opacity:0;
+
     }
+
 }
 
-/* =========================
-   Theme Button
-========================= */
+
+/* =========================================
+   THEME BUTTON
+========================================= */
 
 .theme-btn{
+
     position:fixed;
+
     top:18px;
+
     left:18px;
+
     width:48px;
+
     height:48px;
+
     border-radius:50%;
+
     border:1px solid var(--border);
+
     background:var(--card);
+
     color:var(--text);
+
     box-shadow:var(--shadow);
+
     z-index:1000;
+
     font-size:21px;
+
 }
 
-/* =========================
-   Start Screen
-========================= */
+
+/* =========================================
+   START SCREEN
+========================================= */
 
 #startScreen{
+
     position:fixed;
+
     inset:0;
+
     z-index:2000;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
+
     padding:25px;
 
     background:
-        radial-gradient(circle at center,#fff0f6 0,#fbe0eb 45%,#e8b7ca 100%);
+        radial-gradient(
+            circle at center,
+            #fff0f6 0,
+            #fbe0eb 45%,
+            #e8b7ca 100%
+        );
+
 }
+
 
 body.dark #startScreen{
+
     background:
-        radial-gradient(circle at center,#492633 0,#291820 55%,#170e13 100%);
+        radial-gradient(
+            circle at center,
+            #492633 0,
+            #291820 55%,
+            #170e13 100%
+        );
+
 }
+
 
 .start-box{
+
     width:min(600px,100%);
+
     padding:35px 25px;
+
 }
+
 
 .crown{
+
     font-size:75px;
+
     animation:crownFloat 2s ease-in-out infinite;
+
     margin-bottom:15px;
+
 }
+
 
 @keyframes crownFloat{
+
     0%,100%{
-        transform:translateY(0) rotate(-3deg);
+
+        transform:
+            translateY(0)
+            rotate(-3deg);
+
     }
 
+
     50%{
-        transform:translateY(-12px) rotate(3deg);
+
+        transform:
+            translateY(-12px)
+            rotate(3deg);
+
     }
+
 }
+
 
 .start-box h1{
+
     font-family:"Amiri",serif;
-    font-size:clamp(38px,8vw,65px);
+
+    font-size:
+        clamp(38px,8vw,65px);
+
     color:var(--primary);
+
     margin-bottom:10px;
+
 }
+
 
 .start-date{
+
     color:var(--gold);
+
     font-weight:800;
+
     letter-spacing:2px;
+
     margin-bottom:25px;
+
 }
+
 
 .typewriter{
+
     min-height:65px;
+
     line-height:2;
+
     font-size:17px;
+
     margin-bottom:30px;
+
 }
+
 
 .enter-btn{
+
     border:0;
-    background:linear-gradient(135deg,var(--primary),#7d1741);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #7d1741
+        );
+
     color:#fff;
+
     padding:15px 30px;
+
     border-radius:999px;
+
     font-size:17px;
+
     font-weight:800;
-    box-shadow:0 12px 30px rgba(167,45,92,.3);
+
+    box-shadow:
+        0 12px 30px
+        rgba(167,45,92,.3);
+
     transition:.3s;
+
 }
+
 
 .enter-btn:hover{
-    transform:translateY(-4px) scale(1.03);
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
 }
 
-/* =========================
-   Main
-========================= */
+
+/* =========================================
+   MAIN
+========================================= */
 
 #mainContent{
+
     display:none;
+
 }
+
 
 .container{
+
     width:min(1000px,92%);
+
     margin:auto;
+
 }
+
+
+/* =========================================
+   HERO
+========================================= */
 
 .hero{
+
     text-align:center;
+
     padding:90px 10px 40px;
+
 }
+
 
 .hero-crown{
+
     font-size:55px;
+
     animation:crownFloat 2.5s infinite;
+
 }
+
 
 .hero h1{
+
     font-family:"Amiri",serif;
-    font-size:clamp(45px,10vw,85px);
+
+    font-size:
+        clamp(45px,10vw,85px);
+
     color:var(--primary);
+
     line-height:1.2;
+
     margin-top:8px;
+
 }
+
 
 .hero .subtitle{
+
     color:var(--gold);
+
     font-weight:800;
+
     font-size:20px;
+
 }
+
 
 .hero-text{
+
     max-width:700px;
+
     margin:18px auto 0;
+
     line-height:2;
+
     min-height:70px;
+
 }
 
-/* =========================
-   Cards
-========================= */
+
+/* =========================================
+   SECTION
+========================================= */
 
 .section{
+
     margin:25px 0;
+
 }
+
 
 .card{
+
     background:var(--card);
+
     border:1px solid var(--border);
+
     border-radius:28px;
+
     padding:28px;
+
     box-shadow:var(--shadow);
+
     transition:.35s;
+
 }
+
 
 .card:hover{
+
     transform:translateY(-3px);
+
 }
+
 
 .section-title{
+
     text-align:center;
+
     color:var(--primary);
+
     font-size:27px;
+
     margin-bottom:22px;
+
     font-weight:900;
+
 }
+
 
 .section-title span{
+
     color:var(--gold);
+
 }
 
-/* =========================
-   Age Counter
-========================= */
+
+/* =========================================
+   AGE
+========================================= */
 
 .age-grid{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:12px;
+
 }
+
 
 .age-box{
+
     background:var(--soft);
+
     border:1px solid var(--border);
+
     border-radius:20px;
+
     padding:20px 10px;
+
     text-align:center;
+
 }
+
 
 .age-box strong{
+
     display:block;
+
     color:var(--primary);
+
     font-size:30px;
+
     font-weight:900;
+
 }
+
 
 .age-box span{
+
     font-size:13px;
+
     opacity:.75;
+
 }
 
-/* =========================
-   Heartbeat
-========================= */
+
+/* =========================================
+   HEARTBEAT
+========================================= */
 
 .heartbeat-card{
+
     text-align:center;
+
     overflow:hidden;
+
     position:relative;
+
 }
+
 
 .heartbeat-title{
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     gap:12px;
+
 }
+
 
 .heartbeat-title h2{
+
     color:var(--primary);
+
     font-size:27px;
+
 }
+
 
 .heart-pulse{
+
     font-size:28px;
+
     animation:heartBeat 1s infinite;
+
 }
+
 
 .heartbeat-text{
+
     margin-top:10px;
+
     line-height:1.9;
+
     opacity:.8;
+
 }
+
 
 .big-heart{
+
     font-size:78px;
+
     margin:20px auto 5px;
+
     animation:heartBeat .85s infinite;
-    filter:drop-shadow(0 8px 18px rgba(180,20,80,.25));
+
+    filter:
+        drop-shadow(
+            0 8px 18px
+            rgba(180,20,80,.25)
+        );
+
 }
+
 
 .pulse-counter span{
+
     display:block;
+
     font-size:42px;
+
     color:var(--primary);
+
     font-weight:900;
+
 }
+
 
 .pulse-counter small{
+
     opacity:.75;
+
 }
+
 
 .pulse-line{
+
     height:50px;
+
     margin:18px auto;
+
     max-width:330px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     gap:5px;
+
 }
+
 
 .pulse-line span{
+
     width:5px;
+
     height:15px;
+
     border-radius:10px;
+
     background:var(--primary);
-    animation:pulseWave .8s infinite ease-in-out;
+
+    animation:
+        pulseWave .8s infinite
+        ease-in-out;
+
 }
+
 
 .pulse-line span:nth-child(2){
+
     height:30px;
+
     animation-delay:.1s;
+
 }
+
 
 .pulse-line span:nth-child(3){
+
     height:45px;
+
     animation-delay:.2s;
+
 }
+
 
 .pulse-line span:nth-child(4){
+
     height:25px;
+
     animation-delay:.3s;
+
 }
+
 
 .pulse-line span:nth-child(5){
+
     animation-delay:.4s;
+
 }
+
 
 .heartbeat-note{
+
     line-height:2;
+
     opacity:.85;
+
 }
+
 
 @keyframes heartBeat{
+
     0%,100%{
+
         transform:scale(1);
+
     }
+
 
     15%{
+
         transform:scale(1.18);
+
     }
+
 
     30%{
+
         transform:scale(1);
+
     }
+
 
     45%{
+
         transform:scale(1.12);
+
     }
+
 
     60%{
+
         transform:scale(1);
+
     }
+
 }
+
 
 @keyframes pulseWave{
+
     0%,100%{
+
         transform:scaleY(.5);
+
     }
+
 
     50%{
+
         transform:scaleY(1);
+
     }
+
 }
 
-/* =========================
-   Meaning
-========================= */
+
+/* =========================================
+   MEANING
+========================================= */
 
 .meaning{
+
     text-align:center;
+
     line-height:2.1;
+
     font-size:16px;
+
 }
+
 
 .meaning .big-word{
+
     color:var(--primary);
+
     font-family:"Amiri",serif;
+
     font-size:48px;
+
     font-weight:700;
+
 }
 
-/* =========================
-   Timeline
-========================= */
+
+/* =========================================
+   TIMELINE
+========================================= */
 
 .timeline{
+
     position:relative;
+
     padding-right:25px;
+
 }
+
 
 .timeline:before{
+
     content:"";
+
     position:absolute;
+
     right:8px;
+
     top:0;
+
     bottom:0;
+
     width:3px;
-    background:linear-gradient(var(--primary),var(--gold));
+
+    background:
+        linear-gradient(
+            var(--primary),
+            var(--gold)
+        );
+
     border-radius:20px;
+
 }
+
 
 .timeline-item{
+
     position:relative;
-    padding:0 25px 25px 0;
+
+    padding:
+        0 25px 25px 0;
+
 }
+
 
 .timeline-item:before{
+
     content:"";
+
     position:absolute;
+
     right:0;
+
     top:5px;
+
     width:18px;
+
     height:18px;
+
     border-radius:50%;
+
     background:var(--gold);
+
     border:4px solid var(--card);
-    box-shadow:0 0 0 2px var(--gold);
+
+    box-shadow:
+        0 0 0 2px var(--gold);
+
 }
+
 
 .timeline-item h3{
+
     color:var(--primary);
+
     margin-bottom:5px;
+
 }
 
-/* =========================
-   Nicknames
-========================= */
+
+/* =========================================
+   NICKNAMES
+========================================= */
 
 .nicknames{
+
     display:flex;
+
     flex-wrap:wrap;
+
     justify-content:center;
+
     gap:10px;
+
 }
+
 
 .nickname{
+
     padding:10px 17px;
+
     border-radius:999px;
+
     background:var(--soft);
+
     border:1px solid var(--border);
+
     color:var(--primary);
+
     font-weight:800;
+
 }
 
-/* =========================
-   Bottle Game
-========================= */
+
+/* =========================================
+   BOTTLE
+========================================= */
 
 .bottle-wrap{
+
     text-align:center;
+
 }
+
 
 .bottle-area{
+
     height:260px;
+
     position:relative;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     margin:10px 0;
+
 }
+
 
 .bottle{
+
     position:relative;
+
     width:115px;
+
     height:185px;
-    background:linear-gradient(90deg,#f8b6cd,#fff,#f39cba);
+
+    background:
+        linear-gradient(
+            90deg,
+            #f8b6cd,
+            #fff,
+            #f39cba
+        );
+
     border:4px solid #d96b91;
-    border-radius:35px 35px 28px 28px;
-    box-shadow:0 15px 35px rgba(167,45,92,.2);
+
+    border-radius:
+        35px 35px 28px 28px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(167,45,92,.2);
+
     cursor:pointer;
+
     transition:.25s;
+
 }
+
 
 .bottle:hover{
-    transform:rotate(-5deg) scale(1.04);
+
+    transform:
+        rotate(-5deg)
+        scale(1.04);
+
 }
+
 
 .bottle:before{
+
     content:"";
+
     position:absolute;
+
     top:-48px;
+
     left:33px;
+
     width:45px;
+
     height:50px;
+
     background:#f6b5cb;
+
     border:4px solid #d96b91;
+
     border-bottom:0;
-    border-radius:12px 12px 0 0;
+
+    border-radius:
+        12px 12px 0 0;
+
 }
+
 
 .bottle:after{
+
     content:"👑";
+
     position:absolute;
+
     top:65px;
+
     left:25px;
+
     font-size:55px;
+
 }
+
 
 .bottle-text{
+
     margin-top:10px;
+
     font-weight:800;
+
     color:var(--primary);
+
 }
 
-/* =========================
-   Love Button
-========================= */
+
+/* =========================================
+   LOVE
+========================================= */
 
 .love-area{
+
     text-align:center;
+
 }
+
 
 .love-btn{
+
     border:0;
-    background:linear-gradient(135deg,#e94d82,#a72d5c);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e94d82,
+            #a72d5c
+        );
+
     color:#fff;
+
     padding:15px 30px;
+
     border-radius:999px;
+
     font-size:18px;
+
     font-weight:900;
-    box-shadow:0 12px 25px rgba(167,45,92,.25);
+
+    box-shadow:
+        0 12px 25px
+        rgba(167,45,92,.25);
+
     transition:.25s;
+
 }
+
 
 .love-btn:active{
+
     transform:scale(.94);
+
 }
+
 
 .love-count{
+
     margin-top:15px;
+
     font-weight:900;
+
     color:var(--primary);
+
     font-size:19px;
+
 }
 
-/* =========================
-   Family Messages
-========================= */
+
+/* =========================================
+   FAMILY
+========================================= */
 
 .family-grid{
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+        repeat(2,1fr);
+
     gap:15px;
+
 }
+
 
 .message-card{
-    background:linear-gradient(135deg,var(--soft),var(--card));
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--soft),
+            var(--card)
+        );
+
     border:1px solid var(--border);
+
     border-radius:22px;
+
     padding:22px;
+
 }
+
 
 .message-card .person{
+
     color:var(--primary);
+
     font-size:20px;
+
     font-weight:900;
+
     margin-bottom:10px;
+
 }
+
 
 .message-card p{
+
     line-height:2;
+
 }
 
-/* =========================
-   Dua
-========================= */
+
+/* =========================================
+   DUA
+========================================= */
 
 .dua{
+
     text-align:center;
+
     font-family:"Amiri",serif;
+
     font-size:22px;
+
     line-height:2.2;
+
 }
+
 
 .amin{
+
     color:var(--gold);
+
     font-family:"Cairo",sans-serif;
+
     font-weight:900;
+
     margin-top:15px;
+
 }
 
-/* =========================
-   Surprise
-========================= */
+
+/* =========================================
+   SURPRISE
+========================================= */
 
 .surprise-area{
+
     text-align:center;
+
 }
+
 
 .surprise-btn{
+
     border:1px solid var(--gold);
+
     background:transparent;
+
     color:var(--gold);
+
     padding:13px 25px;
+
     border-radius:999px;
+
     font-weight:900;
+
     transition:.3s;
+
 }
+
 
 .surprise-btn:hover{
+
     background:var(--gold);
+
     color:#fff;
+
 }
+
 
 .secret{
+
     max-height:0;
+
     overflow:hidden;
+
     transition:.7s ease;
+
 }
+
 
 .secret.show{
+
     max-height:500px;
+
     margin-top:20px;
+
 }
+
 
 .secret-box{
+
     padding:20px;
+
     border-radius:20px;
+
     background:var(--soft);
+
     color:var(--primary);
+
     line-height:2.1;
+
     font-weight:700;
+
 }
 
-/* =========================
-   WhatsApp
-========================= */
+
+/* =========================================
+   WHATSAPP
+========================================= */
 
 .whatsapp-area{
+
     text-align:center;
+
 }
+
 
 .whatsapp-btn{
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
+
     gap:8px;
+
     text-decoration:none;
+
     background:#25D366;
+
     color:#fff;
+
     padding:15px 25px;
+
     border-radius:999px;
+
     font-weight:900;
-    box-shadow:0 12px 25px rgba(37,211,102,.25);
+
+    box-shadow:
+        0 12px 25px
+        rgba(37,211,102,.25);
+
     transition:.3s;
+
 }
+
 
 .whatsapp-btn:hover{
-    transform:translateY(-3px) scale(1.02);
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
 }
 
-/* =========================
-   Footer
-========================= */
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer{
+
     text-align:center;
-    padding:35px 15px 50px;
+
+    padding:
+        35px 15px 50px;
+
     opacity:.75;
+
     line-height:2;
+
 }
+
 
 .footer-name{
+
     color:var(--primary);
+
     font-weight:900;
+
 }
 
-/* =========================
-   Confetti
-========================= */
+
+/* =========================================
+   CONFETTI
+========================================= */
 
 .confetti{
+
     position:fixed;
+
     width:8px;
+
     height:14px;
+
     top:-20px;
+
     z-index:3000;
+
     pointer-events:none;
-    animation:confettiFall linear forwards;
+
+    animation:
+        confettiFall
+        linear
+        forwards;
+
 }
+
 
 @keyframes confettiFall{
+
     to{
-        transform:translateY(110vh) rotate(720deg);
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
         opacity:0;
+
     }
+
 }
 
-/* =========================
-   Responsive
-========================= */
+
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media(max-width:700px){
 
     .age-grid{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
+
 
     .family-grid{
+
         grid-template-columns:1fr;
+
     }
+
 
     .card{
+
         padding:21px;
+
         border-radius:23px;
+
     }
+
 
     .hero{
+
         padding-top:75px;
+
     }
+
 
     .heartbeat-title h2{
+
         font-size:22px;
+
     }
 
+
     .big-heart{
+
         font-size:65px;
+
     }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================
-     Music
-========================= -->
 
-<audio id="bg-music" loop preload="auto" autoplay playsinline>
-    <source src="05.Elsobooa.mp3" type="audio/mpeg">
+<!-- =========================================
+     AUDIO
+========================================= -->
+
+<audio
+    id="bg-music"
+    loop
+    preload="auto"
+    autoplay
+    playsinline>
+
+    <source
+        src="05.Elsobooa.mp3"
+        type="audio/mpeg">
+
 </audio>
 
-<!-- Theme -->
-<button class="theme-btn" id="themeBtn" aria-label="تغيير المظهر">🌙</button>
 
-<!-- =========================
-     Start Screen
-========================= -->
+<!-- =========================================
+     THEME
+========================================= -->
+
+<button
+    class="theme-btn"
+    id="themeBtn"
+    aria-label="تغيير المظهر">
+
+    🌙
+
+</button>
+
+
+<!-- =========================================
+     START SCREEN
+========================================= -->
 
 <div id="startScreen">
 
     <div class="start-box">
 
-        <div class="crown">👑</div>
+        <div class="crown">
+            👑
+        </div>
 
-        <h1>مملكة الأميرة نيلسي</h1>
+        <h1>
+            مملكة الأميرة نيلسي
+        </h1>
 
         <div class="start-date">
             03 • 09 • 2026
         </div>
 
-        <div class="typewriter" id="startTypewriter"></div>
+        <div
+            class="typewriter"
+            id="startTypewriter">
+        </div>
 
-        <button class="enter-btn" id="enterBtn">
+        <button
+            class="enter-btn"
+            id="enterBtn">
+
             ادخل المملكة 👑✨
+
         </button>
 
     </div>
 
 </div>
 
-<!-- =========================
-     Main Content
-========================= -->
+
+<!-- =========================================
+     MAIN
+========================================= -->
 
 <main id="mainContent">
 
+
 <div class="container">
 
-    <!-- Hero -->
 
-    <section class="hero">
+<!-- =========================================
+     HERO
+========================================= -->
 
-        <div class="hero-crown">👑</div>
+<section class="hero">
 
-        <h1>نيلسي 🌸</h1>
+    <div class="hero-crown">
+        👑
+    </div>
 
-        <div class="subtitle">
-            الأميرة الصغيرة 💕
-        </div>
+    <h1>
+        نيلسي 🌸
+    </h1>
 
-        <p class="hero-text" id="heroTypewriter"></p>
+    <div class="subtitle">
+        الأميرة الصغيرة 💕
+    </div>
 
-    </section>
+    <p
+        class="hero-text"
+        id="heroTypewriter">
+    </p>
+
+</section>
 
 
-    <!-- Age -->
+<!-- =========================================
+     AGE
+========================================= -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="card">
+    <div class="card">
 
-            <h2 class="section-title">
-                عمر الأميرة نيلسي <span>⏳💕</span>
-            </h2>
+        <h2 class="section-title">
+            عمر الأميرة نيلسي
+            <span>⏳💕</span>
+        </h2>
 
-            <div class="age-grid">
+        <div class="age-grid">
 
-                <div class="age-box">
-                    <strong id="days">0</strong>
-                    <span>يوم</span>
-                </div>
+            <div class="age-box">
 
-                <div class="age-box">
-                    <strong id="hours">0</strong>
-                    <span>ساعة</span>
-                </div>
+                <strong id="days">
+                    0
+                </strong>
 
-                <div class="age-box">
-                    <strong id="minutes">0</strong>
-                    <span>دقيقة</span>
-                </div>
+                <span>
+                    يوم
+                </span>
 
-                <div class="age-box">
-                    <strong id="seconds">0</strong>
-                    <span>ثانية</span>
-                </div>
+            </div>
+
+
+            <div class="age-box">
+
+                <strong id="hours">
+                    0
+                </strong>
+
+                <span>
+                    ساعة
+                </span>
+
+            </div>
+
+
+            <div class="age-box">
+
+                <strong id="minutes">
+                    0
+                </strong>
+
+                <span>
+                    دقيقة
+                </span>
+
+            </div>
+
+
+            <div class="age-box">
+
+                <strong id="seconds">
+                    0
+                </strong>
+
+                <span>
+                    ثانية
+                </span>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- Heartbeat -->
+<!-- =========================================
+     HEARTBEAT
+========================================= -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="card heartbeat-card">
+    <div class="card heartbeat-card">
 
-            <div class="heartbeat-title">
+        <div class="heartbeat-title">
 
-                <span class="heart-pulse">❤️</span>
-
-                <h2>نبض مملكة نيلسي</h2>
-
-                <span class="heart-pulse">❤️</span>
-
-            </div>
-
-            <p class="heartbeat-text">
-                كل نبضة هنا بتحكي قد إيه نيلسي بقت جزء من قلوبنا 💕
-            </p>
-
-            <div class="big-heart">
+            <span class="heart-pulse">
                 ❤️
-            </div>
+            </span>
 
-            <div class="pulse-counter">
+            <h2>
+                نبضات قلب نيلسي
+            </h2>
 
-                <span id="heartbeatCount">0</span>
-
-                <small>
-                    نبضة حب ❤️
-                </small>
-
-            </div>
-
-            <div class="pulse-line">
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-            <p class="heartbeat-note">
-                ومن يوم <strong>03 • 09 • 2026</strong>
-                <br>
-                وقلبنا بقى له أميرة اسمها
-                <strong>نيلسي 👑</strong>
-            </p>
+            <span class="heart-pulse">
+                ❤️
+            </span>
 
         </div>
 
-    </section>
+
+        <p class="heartbeat-text">
+
+            من أول لحظة نيلسي نورت فيها الدنيا...
+            وقلبها بيحكي أجمل حكاية ❤️
+
+        </p>
 
 
-    <!-- Meaning -->
+        <div class="big-heart">
+            ❤️
+        </div>
 
-    <section class="section">
 
-        <div class="card">
+        <div class="pulse-counter">
 
-            <h2 class="section-title">
-                حكاية اسم نيلسي 🌸
-            </h2>
+            <span id="realHeartbeatCount">
+                0
+            </span>
 
-            <div class="meaning">
-
-                <div class="big-word">
-                    نيلسي
-                </div>
-
-                <p>
-                    اسم رقيق ومميز، يليق بأميرة صغيرة دخلت الدنيا
-                    ومعاها فرحة كبيرة ملهاش وصف. 👑
-                </p>
-
-                <p>
-                    نيلسي مش مجرد اسم...
-                    دي حكاية فرحة، وضحكة، وحب كبير بدأ من أول لحظة. 💕
-                </p>
-
-            </div>
+            <small>
+                نبضة تقريبًا منذ ولادتها ❤️
+            </small>
 
         </div>
 
-    </section>
 
+        <div class="pulse-line">
 
-    <!-- Timeline -->
+            <span></span>
 
-    <section class="section">
+            <span></span>
 
-        <div class="card">
+            <span></span>
 
-            <h2 class="section-title">
-                حكاية نيلسي في المملكة 👑
-            </h2>
+            <span></span>
 
-            <div class="timeline">
-
-                <div class="timeline-item">
-
-                    <h3>03 سبتمبر 2026 🌸</h3>
-
-                    <p>
-                        اليوم اللي نورت فيه نيلسي الدنيا
-                        وبدأت أجمل حكاية.
-                    </p>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <h3>أول ضحكة 😍</h3>
-
-                    <p>
-                        ضحكة صغيرة منها قادرة تغير يوم كامل.
-                    </p>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <h3>أول سنة 👶</h3>
-
-                    <p>
-                        أول سنة مليانة اكتشافات وضحك وذكريات.
-                    </p>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <h3>أول خطوة 👣</h3>
-
-                    <p>
-                        أول خطوة لنيلسي...
-                        وأول خطوة في طريق أحلام كبيرة.
-                    </p>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <h3>المستقبل ✨</h3>
-
-                    <p>
-                        ولسه أجمل الحكايات جاية...
-                        لأن الأميرة لسه في أول المملكة.
-                    </p>
-
-                </div>
-
-            </div>
+            <span></span>
 
         </div>
 
-    </section>
+
+        <p class="heartbeat-note">
+
+            من يوم
+            <strong>
+                03 • 09 • 2026
+            </strong>
+
+            <br>
+
+            وقلب الأميرة نيلسي
+            بيكمل أجمل حكاية 👑💕
+
+            <br><br>
+
+            <strong>
+                130 نبضة تقريبًا في الدقيقة
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
 
 
-    <!-- Nicknames -->
+<!-- =========================================
+     NAME MEANING
+========================================= -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="card">
+    <div class="card">
 
-            <h2 class="section-title">
-                أسماء الدلع 💕
-            </h2>
+        <h2 class="section-title">
+            حكاية اسم نيلسي 🌸
+        </h2>
 
-            <div class="nicknames">
+        <div class="meaning">
 
-                <div class="nickname">نونو 🎀</div>
-                <div class="nickname">نيلوسة 🌸</div>
-                <div class="nickname">نيلسيتي 👑</div>
-                <div class="nickname">لولو 💕</div>
-                <div class="nickname">الأميرة 👸</div>
-                <div class="nickname">قلب بابا ❤️</div>
-                <div class="nickname">روح ماما 🥹</div>
-                <div class="nickname">حبيبة جدو 👴</div>
-                <div class="nickname">روح تيتة 👵</div>
-
+            <div class="big-word">
+                نيلسي
             </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Bottle -->
-
-    <section class="section">
-
-        <div class="card bottle-wrap">
-
-            <h2 class="section-title">
-                لعبة الأميرة 🍼
-            </h2>
 
             <p>
-                دوس على الببرونة وشوف السحر ✨
+
+                اسم رقيق ومميز،
+                يليق بأميرة صغيرة دخلت الدنيا
+                ومعاها فرحة كبيرة ملهاش وصف. 👑
+
             </p>
 
-            <div class="bottle-area">
+            <br>
 
-                <div class="bottle" id="bottle"></div>
+            <p>
 
-            </div>
+                نيلسي مش مجرد اسم...
+                دي حكاية فرحة،
+                وضحكة،
+                وحب كبير بدأ من أول لحظة. 💕
 
-            <div class="bottle-text" id="bottleText">
-                نيلسي محتاجة حضن ❤️
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Love -->
-
-    <section class="section">
-
-        <div class="card love-area">
-
-            <h2 class="section-title">
-                دوس لقلب نيلسي ❤️
-            </h2>
-
-            <button class="love-btn" id="loveBtn">
-                ❤️ بحبك يا نيلسي
-            </button>
-
-            <div class="love-count">
-                عدد القلوب:
-                <span id="loveCount">0</span>
-                ❤️
-            </div>
+            </p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- Family -->
+<!-- =========================================
+     TIMELINE
+========================================= -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="card">
+    <div class="card">
 
-            <h2 class="section-title">
-                رسائل من العيلة 💌
-            </h2>
+        <h2 class="section-title">
+            حكاية نيلسي في المملكة 👑
+        </h2>
 
-            <div class="family-grid">
-
-                <div class="message-card">
-
-                    <div class="person">
-                        💗 ماما
-                    </div>
-
-                    <p>
-                        يا نيلسي يا حتة من قلبي،
-                        من أول ما شوفتك وأنا عرفت إن ربنا رزقني
-                        بأجمل نعمة في الدنيا.
-                        ربنا يحفظك ليا وأفضل أشوف ضحكتك
-                        وأنتِ بتكبري قدامي يوم بعد يوم.
-                        بحبك أكتر من أي كلام ممكن يوصفه. ❤️
-                    </p>
-
-                </div>
+        <div class="timeline">
 
 
-                <div class="message-card">
+            <div class="timeline-item">
 
-                    <div class="person">
-                        💙 بابا
-                    </div>
-
-                    <p>
-                        يا نيلسي يا أول فرحة كبيرة دخلت قلبي بالشكل ده،
-                        أوعدك إني هفضل سندك وأمانك،
-                        وهعمل كل اللي أقدر عليه عشان أشوفك
-                        أسعد وأقوى بنت في الدنيا.
-                        ربنا يحفظك ويبارك في عمرك يا أميرتي. 👑❤️
-                    </p>
-
-                </div>
-
-
-                <div class="message-card">
-
-                    <div class="person">
-                        👴 جدو
-                    </div>
-
-                    <p>
-                        يا نيلسي يا حبيبة جدو،
-                        إنتِ من يوم ما جيتي والدنيا بقت أحلى.
-                        ربنا يحميكي ويكبرك على خير،
-                        وأفضل أشوفك قدامي وأفرح بيكي
-                        كل يوم أكتر من اليوم اللي قبله. ❤️
-                    </p>
-
-                </div>
-
-
-                <div class="message-card">
-
-                    <div class="person">
-                        👵 تيتة
-                    </div>
-
-                    <p>
-                        يا نيلسي يا روح تيتة،
-                        ربنا يخليكي ويحفظك من كل شر،
-                        وتفضلي دايمًا منورة بيتنا بضحكتك.
-                        إنتِ فرحة دخلت القلب من غير استئذان
-                        وهتفضلي حبيبتي الصغيرة على طول. 💕
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Dua -->
-
-    <section class="section">
-
-        <div class="card">
-
-            <h2 class="section-title">
-                دعوة للأميرة 🤲🏻
-            </h2>
-
-            <div class="dua">
+                <h3>
+                    03 سبتمبر 2026 🌸
+                </h3>
 
                 <p>
-                    اللهم إنا استودعناك نيلسي،
-                    فاحفظها بعينك التي لا تنام،
-                    وبارك في عمرها وصحتها،
-                    وأنبتها نباتًا حسنًا،
-                    واجعلها من الصالحات،
-                    واملأ حياتها سعادة ورضا وطمأنينة،
-                    واحفظها من كل شر وسوء،
-                    واجعلها قرة عين لأهلها.
+                    اليوم اللي نورت فيه نيلسي الدنيا
+                    وبدأت أجمل حكاية.
                 </p>
 
-                <div class="amin">
-                    آمين يا رب العالمين 🤲🏻❤️
-                </div>
+            </div>
 
+
+            <div class="timeline-item">
+
+                <h3>
+                    أول ضحكة 😍
+                </h3>
+
+                <p>
+                    ضحكة صغيرة منها
+                    قادرة تغير يوم كامل.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>
+                    أول سنة 👶
+                </h3>
+
+                <p>
+                    أول سنة مليانة اكتشافات
+                    وضحك وذكريات.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>
+                    أول خطوة 👣
+                </h3>
+
+                <p>
+                    أول خطوة لنيلسي...
+                    وأول خطوة في طريق أحلام كبيرة.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>
+                    المستقبل ✨
+                </h3>
+
+                <p>
+                    ولسه أجمل الحكايات جاية...
+                    لأن الأميرة لسه في أول المملكة.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     NICKNAMES
+========================================= -->
+
+<section class="section">
+
+    <div class="card">
+
+        <h2 class="section-title">
+            أسماء الدلع 💕
+        </h2>
+
+
+        <div class="nicknames">
+
+            <div class="nickname">
+                نونو 🎀
+            </div>
+
+            <div class="nickname">
+                نيلوسة 🌸
+            </div>
+
+            <div class="nickname">
+                نيلسيتي 👑
+            </div>
+
+            <div class="nickname">
+                لولو 💕
+            </div>
+
+            <div class="nickname">
+                الأميرة 👸
+            </div>
+
+            <div class="nickname">
+                قلب بابا ❤️
+            </div>
+
+            <div class="nickname">
+                روح ماما 🥹
+            </div>
+
+            <div class="nickname">
+                حبيبة جدو 👴
+            </div>
+
+            <div class="nickname">
+                روح تيتة 👵
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- Surprise -->
+<!-- =========================================
+     BOTTLE
+========================================= -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="card surprise-area">
+    <div class="card bottle-wrap">
 
-            <h2 class="section-title">
-                عندنا مفاجأة للأميرة 🎁
-            </h2>
+        <h2 class="section-title">
+            لعبة الأميرة 🍼
+        </h2>
 
-            <button class="surprise-btn" id="surpriseBtn">
-                افتح المفاجأة ✨
-            </button>
+        <p>
+            دوس على الببرونة وشوف السحر ✨
+        </p>
 
-            <div class="secret" id="secret">
 
-                <div class="secret-box">
+        <div class="bottle-area">
 
-                    نيلسي... ❤️
-
-                    <br><br>
-
-                    مهما كبرتِ، هتفضلي البنت الصغيرة
-                    اللي دخلت قلوبنا مرة واحدة
-                    ومقدرتش تخرج منها أبدًا.
-
-                    <br><br>
-
-                    المملكة دي كلها معمولة عشانك 👑🌸
-
-                    <br><br>
-
-                    <strong>
-                        إحنا بنحبك يا نيلسي ❤️
-                    </strong>
-
-                </div>
-
+            <div
+                class="bottle"
+                id="bottle">
             </div>
 
         </div>
 
-    </section>
+
+        <div
+            class="bottle-text"
+            id="bottleText">
+
+            نيلسي محتاجة حضن ❤️
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- WhatsApp -->
+<!-- =========================================
+     LOVE
+========================================= -->
 
-    <section class="section">
+<section class="section">
 
-        <div class="card whatsapp-area">
+    <div class="card love-area">
 
-            <h2 class="section-title">
-                رسالة لبابا نيلسي 💚
-            </h2>
+        <h2 class="section-title">
+            دوس لقلب نيلسي ❤️
+        </h2>
 
-            <p style="margin-bottom:18px;line-height:2;">
-                دوس على الزرار وهتدخل على واتساب مباشرة
-                والرسالة هتكون جاهزة ❤️
+
+        <button
+            class="love-btn"
+            id="loveBtn">
+
+            ❤️ بحبك يا نيلسي
+
+        </button>
+
+
+        <div class="love-count">
+
+            عدد القلوب:
+
+            <span id="loveCount">
+                0
+            </span>
+
+            ❤️
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FAMILY MESSAGES
+========================================= -->
+
+<section class="section">
+
+    <div class="card">
+
+        <h2 class="section-title">
+            رسائل من العيلة 💌
+        </h2>
+
+
+        <div class="family-grid">
+
+
+            <!-- MOTHER -->
+
+            <div class="message-card">
+
+                <div class="person">
+                    💗 ماما
+                </div>
+
+                <p>
+
+                    يا نيلسي يا حتة من قلبي،
+                    من أول ما شوفتك وأنا عرفت
+                    إن ربنا رزقني بأجمل نعمة
+                    في الدنيا.
+
+                    ربنا يحفظك ليا
+                    وأفضل أشوف ضحكتك
+                    وأنتِ بتكبري قدامي
+                    يوم بعد يوم.
+
+                    بحبك أكتر من أي كلام
+                    ممكن يوصفه. ❤️
+
+                </p>
+
+            </div>
+
+
+            <!-- FATHER -->
+
+            <div class="message-card">
+
+                <div class="person">
+                    💙 بابا
+                </div>
+
+                <p>
+
+                    يا نيلسي يا أول فرحة كبيرة
+                    دخلت قلبي بالشكل ده،
+
+                    أوعدك إني هفضل سندك وأمانك،
+                    وهعمل كل اللي أقدر عليه
+                    عشان أشوفك أسعد وأقوى بنت
+                    في الدنيا.
+
+                    ربنا يحفظك ويبارك في عمرك
+                    يا أميرتي. 👑❤️
+
+                </p>
+
+            </div>
+
+
+            <!-- GRANDFATHER -->
+
+            <div class="message-card">
+
+                <div class="person">
+                    👴 جدو
+                </div>
+
+                <p>
+
+                    يا نيلسي يا حبيبة جدو،
+                    إنتِ من يوم ما جيتي
+                    والدنيا بقت أحلى.
+
+                    ربنا يحميكي ويكبرك على خير،
+                    وأفضل أشوفك قدامي
+                    وأفرح بيكي كل يوم
+                    أكتر من اليوم اللي قبله. ❤️
+
+                </p>
+
+            </div>
+
+
+            <!-- GRANDMOTHER -->
+
+            <div class="message-card">
+
+                <div class="person">
+                    👵 تيتة
+                </div>
+
+                <p>
+
+                    يا نيلسي يا روح تيتة،
+                    ربنا يخليكي ويحفظك من كل شر،
+                    وتفضلي دايمًا منورة بيتنا بضحكتك.
+
+                    إنتِ فرحة دخلت القلب
+                    من غير استئذان،
+                    وهتفضلي حبيبتي الصغيرة
+                    على طول. 💕
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     DUA
+========================================= -->
+
+<section class="section">
+
+    <div class="card">
+
+        <h2 class="section-title">
+            دعوة للأميرة 🤲🏻
+        </h2>
+
+
+        <div class="dua">
+
+            <p>
+
+                اللهم إنا استودعناك نيلسي،
+                فاحفظها بعينك التي لا تنام،
+                وبارك في عمرها وصحتها،
+                وأنبتها نباتًا حسنًا،
+                واجعلها من الصالحات،
+                واملأ حياتها سعادة
+                ورضا وطمأنينة،
+                واحفظها من كل شر وسوء،
+                واجعلها قرة عين لأهلها.
+
             </p>
 
-            <a
-                class="whatsapp-btn"
-                href="https://wa.me/201145640722?text=%D9%8A%D8%A7%20%D8%A8%D8%A7%D8%A8%D8%A7%20%D9%86%D9%8A%D9%84%D8%B3%D9%8A%20%F0%9F%91%91%E2%9D%A4%EF%B8%8F%0A%0A%D8%AF%D9%8A%20%D9%85%D9%85%D9%84%D9%83%D8%A9%20%D8%A7%D9%84%D8%A3%D9%85%D9%8A%D8%B1%D8%A9%20%D9%86%D9%8A%D9%84%D8%B3%D9%8A%20%F0%9F%8C%B8%0A%0A%D8%B1%D8%A8%D9%86%D8%A7%20%D9%8A%D8%AD%D9%81%D8%B8%D9%87%D8%A7%20%D9%88%D9%8A%D8%AC%D8%B9%D9%84%D9%87%D8%A7%20%D9%82%D8%B1%D8%A9%20%D8%B9%D9%8A%D9%86%20%D9%84%D9%8A%D9%86%D8%A7%20%D9%83%D9%84%D9%86%D8%A7%20%F0%9F%91%B6%F0%9F%92%95"
-                target="_blank"
-                rel="noopener"
-            >
-                💚 افتح واتساب وابعت لبابا
-            </a>
+
+            <div class="amin">
+
+                آمين يا رب العالمين 🤲🏻❤️
+
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SURPRISE
+========================================= -->
+
+<section class="section">
+
+    <div class="card surprise-area">
+
+        <h2 class="section-title">
+            عندنا مفاجأة للأميرة 🎁
+        </h2>
+
+
+        <button
+            class="surprise-btn"
+            id="surpriseBtn">
+
+            افتح المفاجأة ✨
+
+        </button>
+
+
+        <div
+            class="secret"
+            id="secret">
+
+
+            <div class="secret-box">
+
+                نيلسي... ❤️
+
+                <br><br>
+
+                مهما كبرتِ،
+                هتفضلي البنت الصغيرة
+                اللي دخلت قلوبنا مرة واحدة
+                ومقدرتش تخرج منها أبدًا.
+
+                <br><br>
+
+                المملكة دي كلها
+                معمولة عشانك 👑🌸
+
+                <br><br>
+
+                <strong>
+                    إحنا بنحبك يا نيلسي ❤️
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     WHATSAPP
+========================================= -->
+
+<section class="section">
+
+    <div class="card whatsapp-area">
+
+        <h2 class="section-title">
+            رسالة لبابا نيلسي 💚
+        </h2>
+
+
+        <p
+            style="
+                margin-bottom:18px;
+                line-height:2;
+            ">
+
+            دوس على الزرار
+            وهتفتح محادثة بابا
+            على واتساب مباشرة
+            والرسالة هتكون جاهزة ❤️
+
+        </p>
+
+
+        <a
+            class="whatsapp-btn"
+            id="whatsappBtn"
+            href="#">
+
+            💚 افتح واتساب مباشرة
+
+        </a>
+
+    </div>
+
+</section>
 
 
 </div>
 
 
-<!-- Footer -->
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
     <div class="footer-name">
+
         👑 مملكة الأميرة نيلسي 👑
+
     </div>
 
+
     <div>
+
         صُنعت بكل الحب ❤️
+
     </div>
 
+
     <div>
+
         03 • 09 • 2026 🌸
+
     </div>
 
 </footer>
+
 
 </main>
 
 
 <script>
 
-/* =========================
-   Music
-========================= */
 
-const music = document.getElementById("bg-music");
+/* =========================================
+   MUSIC
+========================================= */
+
+const music =
+    document.getElementById("bg-music");
+
 
 function startMusic(){
 
-    if(!music) return;
+    if(!music){
+
+        return;
+
+    }
+
 
     music.volume = 0.75;
 
-    const playPromise = music.play();
+
+    const playPromise =
+        music.play();
+
 
     if(playPromise !== undefined){
 
-        playPromise.catch(() => {
-            // بعض المتصفحات تمنع التشغيل التلقائي
-            // وسيبدأ عند أول تفاعل مع الصفحة
+        playPromise.catch(function(){
+
+            /*
+                بعض المتصفحات تمنع
+                تشغيل الصوت تلقائيًا.
+                سيتم تشغيله عند أول تفاعل.
+            */
+
         });
 
     }
+
 }
 
-window.addEventListener("load",startMusic);
 
-document.addEventListener("click",startMusic,{once:true});
+window.addEventListener(
+    "load",
+    startMusic
+);
 
-document.addEventListener("touchstart",startMusic,{once:true});
+
+document.addEventListener(
+    "click",
+    startMusic,
+    {once:true}
+);
 
 
-/* =========================
-   Typewriter
-========================= */
+document.addEventListener(
+    "touchstart",
+    startMusic,
+    {once:true}
+);
 
-function typeWriter(element,text,speed=45){
 
-    if(!element) return;
+/* =========================================
+   TYPEWRITER
+========================================= */
 
-    element.textContent="";
+function typeWriter(
+    element,
+    text,
+    speed=45
+){
 
-    let i=0;
+    if(!element){
+
+        return;
+
+    }
+
+
+    element.textContent = "";
+
+
+    let i = 0;
+
 
     function write(){
 
         if(i < text.length){
 
-            element.textContent += text.charAt(i);
+            element.textContent +=
+                text.charAt(i);
 
             i++;
 
-            setTimeout(write,speed);
+            setTimeout(
+                write,
+                speed
+            );
 
         }
 
     }
 
+
     write();
+
 }
 
 
+/* =========================================
+   START TEXT
+========================================= */
+
 typeWriter(
-    document.getElementById("startTypewriter"),
+
+    document.getElementById(
+        "startTypewriter"
+    ),
+
     "في يوم 03 سبتمبر 2026 بدأت أجمل حكاية... ووصلت أميرة صغيرة غيرت شكل الدنيا كلها ❤️",
+
     40
+
 );
 
 
-/* =========================
-   Enter Kingdom
-========================= */
+/* =========================================
+   ENTER KINGDOM
+========================================= */
 
-const enterBtn = document.getElementById("enterBtn");
-
-enterBtn.addEventListener("click",function(){
-
-    startMusic();
-
-    document.getElementById("startScreen").style.display="none";
-
-    document.getElementById("mainContent").style.display="block";
-
-    typeWriter(
-        document.getElementById("heroTypewriter"),
-        "من يوم ما جيتي الدنيا وإنتِ مش مجرد طفلة... إنتِ فرحة كبيرة سكنت قلوبنا وأصبحتِ أميرة المملكة كلها 👑💕",
-        35
+const enterBtn =
+    document.getElementById(
+        "enterBtn"
     );
 
-    createConfetti(90);
 
-    setTimeout(createHearts,300);
+enterBtn.addEventListener(
+    "click",
+    function(){
 
-});
+        startMusic();
 
 
-/* =========================
-   Age Counter
-========================= */
+        document.getElementById(
+            "startScreen"
+        ).style.display = "none";
 
-const birthDate = new Date("2026-09-03T00:00:00");
+
+        document.getElementById(
+            "mainContent"
+        ).style.display = "block";
+
+
+        typeWriter(
+
+            document.getElementById(
+                "heroTypewriter"
+            ),
+
+            "من يوم ما جيتي الدنيا وإنتِ مش مجرد طفلة... إنتِ فرحة كبيرة سكنت قلوبنا وأصبحتِ أميرة المملكة كلها 👑💕",
+
+            35
+
+        );
+
+
+        createConfetti(90);
+
+
+        setTimeout(
+            function(){
+
+                createHearts(8);
+
+            },
+            300
+        );
+
+    }
+);
+
+
+/* =========================================
+   AGE COUNTER
+========================================= */
+
+const birthDate =
+    new Date(
+        "2026-09-03T00:00:00"
+    );
+
 
 function updateAge(){
 
-    const now = new Date();
+    const now =
+        new Date();
 
-    let diff = now - birthDate;
+
+    let diff =
+        now - birthDate;
+
 
     if(diff < 0){
+
         diff = 0;
+
     }
 
-    const totalSeconds = Math.floor(diff/1000);
 
-    const days = Math.floor(totalSeconds / 86400);
+    const totalSeconds =
+        Math.floor(
+            diff / 1000
+        );
 
-    const hours = Math.floor((totalSeconds % 86400)/3600);
 
-    const minutes = Math.floor((totalSeconds % 3600)/60);
+    const days =
+        Math.floor(
+            totalSeconds / 86400
+        );
 
-    const seconds = totalSeconds % 60;
 
-    document.getElementById("days").textContent =
-        days.toLocaleString("ar-EG");
+    const hours =
+        Math.floor(
+            (totalSeconds % 86400)
+            / 3600
+        );
 
-    document.getElementById("hours").textContent =
-        hours.toLocaleString("ar-EG");
 
-    document.getElementById("minutes").textContent =
-        minutes.toLocaleString("ar-EG");
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600)
+            / 60
+        );
 
-    document.getElementById("seconds").textContent =
-        seconds.toLocaleString("ar-EG");
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById(
+        "days"
+    ).textContent =
+        days.toLocaleString(
+            "ar-EG"
+        );
+
+
+    document.getElementById(
+        "hours"
+    ).textContent =
+        hours.toLocaleString(
+            "ar-EG"
+        );
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        minutes.toLocaleString(
+            "ar-EG"
+        );
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        seconds.toLocaleString(
+            "ar-EG"
+        );
+
 }
+
 
 updateAge();
 
-setInterval(updateAge,1000);
+
+setInterval(
+    updateAge,
+    1000
+);
 
 
-/* =========================
-   Heartbeat Counter
-========================= */
+/* =========================================
+   ❤️ HEARTBEAT COUNTER
+========================================= */
 
 /*
-   عداد نبضات حب رمزي:
-   نبضة واحدة كل ثانية
+    معدل نبض رمزي ثابت للعرض:
+    130 نبضة في الدقيقة.
+
+    الحساب يبدأ من تاريخ ميلاد نيلسي
+    ولا يبدأ من جديد عند فتح الصفحة.
 */
 
-let heartbeatCount = 0;
+const nelsyBirthDate =
+    new Date(
+        "2026-09-03T00:00:00"
+    );
 
-function heartbeat(){
 
-    heartbeatCount++;
+const heartbeatPerMinute = 130;
 
-    const counter = document.getElementById("heartbeatCount");
+
+function updateRealHeartbeat(){
+
+    const now =
+        new Date();
+
+
+    let elapsedMilliseconds =
+        now - nelsyBirthDate;
+
+
+    if(
+        elapsedMilliseconds < 0
+    ){
+
+        elapsedMilliseconds = 0;
+
+    }
+
+
+    const elapsedMinutes =
+        elapsedMilliseconds / 60000;
+
+
+    const totalHeartbeats =
+        Math.floor(
+            elapsedMinutes *
+            heartbeatPerMinute
+        );
+
+
+    const counter =
+        document.getElementById(
+            "realHeartbeatCount"
+        );
+
 
     if(counter){
 
         counter.textContent =
-            heartbeatCount.toLocaleString("ar-EG");
+            totalHeartbeats.toLocaleString(
+                "ar-EG"
+            );
 
     }
 
 }
 
-setInterval(heartbeat,1000);
+
+updateRealHeartbeat();
 
 
-/* =========================
-   Love Counter
-========================= */
+setInterval(
+    updateRealHeartbeat,
+    1000
+);
+
+
+/* =========================================
+   LOVE COUNTER
+========================================= */
 
 let loveCount = 0;
 
-const loveBtn = document.getElementById("loveBtn");
 
-loveBtn.addEventListener("click",function(){
-
-    loveCount++;
-
-    document.getElementById("loveCount").textContent =
-        loveCount.toLocaleString("ar-EG");
-
-    createHearts(5);
-
-});
+const loveBtn =
+    document.getElementById(
+        "loveBtn"
+    );
 
 
-/* =========================
-   Hearts
-========================= */
+loveBtn.addEventListener(
+    "click",
+    function(){
+
+        loveCount++;
+
+
+        document.getElementById(
+            "loveCount"
+        ).textContent =
+            loveCount.toLocaleString(
+                "ar-EG"
+            );
+
+
+        createHearts(5);
+
+    }
+);
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
 
 function createHeart(){
 
-    const heart = document.createElement("div");
+    const heart =
+        document.createElement(
+            "div"
+        );
 
-    heart.className="floating-heart";
 
-    const hearts=[
+    heart.className =
+        "floating-heart";
+
+
+    const hearts = [
+
         "❤️",
+
         "💕",
+
         "💗",
+
         "💖",
+
         "💓",
+
         "🌸",
+
         "✨"
+
     ];
 
+
     heart.textContent =
-        hearts[Math.floor(Math.random()*hearts.length)];
+        hearts[
+            Math.floor(
+                Math.random() *
+                hearts.length
+            )
+        ];
+
 
     heart.style.left =
-        Math.random()*100+"vw";
+        Math.random() *
+        100 +
+        "vw";
+
 
     heart.style.fontSize =
-        (16+Math.random()*22)+"px";
+        (
+            16 +
+            Math.random() *
+            22
+        ) +
+        "px";
+
 
     heart.style.animationDuration =
-        (5+Math.random()*5)+"s";
+        (
+            5 +
+            Math.random() *
+            5
+        ) +
+        "s";
 
-    document.body.appendChild(heart);
 
-    setTimeout(()=>{
-        heart.remove();
-    },10000);
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        function(){
+
+            heart.remove();
+
+        },
+        10000
+    );
+
 }
 
 
-function createHearts(count=1){
+function createHearts(
+    count=1
+){
 
-    for(let i=0;i<count;i++){
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
 
         setTimeout(
             createHeart,
-            i*180
+            i * 180
         );
 
     }
 
 }
 
-setInterval(()=>{
-    createHearts(1);
-},2500);
+
+setInterval(
+    function(){
+
+        createHearts(1);
+
+    },
+    2500
+);
 
 
-/* =========================
-   Bottle
-========================= */
+/* =========================================
+   BOTTLE GAME
+========================================= */
 
-const bottle = document.getElementById("bottle");
+const bottle =
+    document.getElementById(
+        "bottle"
+    );
+
 
 const bottleText =
-    document.getElementById("bottleText");
+    document.getElementById(
+        "bottleText"
+    );
+
 
 const bottleMessages = [
 
@@ -1630,160 +2886,361 @@ const bottleMessages = [
 
 ];
 
-let bottleIndex=0;
 
-bottle.addEventListener("click",function(){
+let bottleIndex = 0;
 
-    bottleIndex++;
 
-    if(bottleIndex >= bottleMessages.length){
-        bottleIndex=0;
-    }
+bottle.addEventListener(
+    "click",
+    function(){
 
-    bottleText.textContent =
-        bottleMessages[bottleIndex];
+        bottleIndex++;
 
-    bottle.animate(
-        [
-            {transform:"rotate(0deg)"},
-            {transform:"rotate(-12deg)"},
-            {transform:"rotate(12deg)"},
-            {transform:"rotate(-8deg)"},
-            {transform:"rotate(0deg)"}
-        ],
-        {
-            duration:500
+
+        if(
+            bottleIndex >=
+            bottleMessages.length
+        ){
+
+            bottleIndex = 0;
+
         }
-    );
-
-    createHearts(4);
-
-});
 
 
-/* =========================
-   Surprise
-========================= */
+        bottleText.textContent =
+            bottleMessages[
+                bottleIndex
+            ];
+
+
+        bottle.animate(
+
+            [
+
+                {
+                    transform:
+                        "rotate(0deg)"
+                },
+
+                {
+                    transform:
+                        "rotate(-12deg)"
+                },
+
+                {
+                    transform:
+                        "rotate(12deg)"
+                },
+
+                {
+                    transform:
+                        "rotate(-8deg)"
+                },
+
+                {
+                    transform:
+                        "rotate(0deg)"
+                }
+
+            ],
+
+            {
+
+                duration:500
+
+            }
+
+        );
+
+
+        createHearts(4);
+
+    }
+);
+
+
+/* =========================================
+   SURPRISE
+========================================= */
 
 const surpriseBtn =
-    document.getElementById("surpriseBtn");
+    document.getElementById(
+        "surpriseBtn"
+    );
+
 
 const secret =
-    document.getElementById("secret");
+    document.getElementById(
+        "secret"
+    );
 
-surpriseBtn.addEventListener("click",function(){
 
-    secret.classList.toggle("show");
+surpriseBtn.addEventListener(
+    "click",
+    function(){
 
-    if(secret.classList.contains("show")){
+        secret.classList.toggle(
+            "show"
+        );
 
-        surpriseBtn.textContent =
-            "المفاجأة ظهرت ❤️";
 
-        createConfetti(70);
+        if(
+            secret.classList.contains(
+                "show"
+            )
+        ){
 
-    }else{
+            surpriseBtn.textContent =
+                "المفاجأة ظهرت ❤️";
 
-        surpriseBtn.textContent =
-            "افتح المفاجأة ✨";
+
+            createConfetti(70);
+
+        }
+        else{
+
+            surpriseBtn.textContent =
+                "افتح المفاجأة ✨";
+
+        }
 
     }
+);
 
-});
 
-
-/* =========================
-   Dark Mode
-========================= */
+/* =========================================
+   DARK MODE
+========================================= */
 
 const themeBtn =
-    document.getElementById("themeBtn");
+    document.getElementById(
+        "themeBtn"
+    );
 
-themeBtn.addEventListener("click",function(){
 
-    document.body.classList.toggle("dark");
+themeBtn.addEventListener(
+    "click",
+    function(){
 
-    if(document.body.classList.contains("dark")){
+        document.body.classList.toggle(
+            "dark"
+        );
 
-        themeBtn.textContent="☀️";
 
-    }else{
+        if(
+            document.body.classList.contains(
+                "dark"
+            )
+        ){
 
-        themeBtn.textContent="🌙";
+            themeBtn.textContent =
+                "☀️";
+
+        }
+        else{
+
+            themeBtn.textContent =
+                "🌙";
+
+        }
 
     }
+);
 
-});
 
+/* =========================================
+   CONFETTI
+========================================= */
 
-/* =========================
-   Confetti
-========================= */
+function createConfetti(
+    count=50
+){
 
-function createConfetti(count=50){
-
-    for(let i=0;i<count;i++){
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
 
         const confetti =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        confetti.className="confetti";
+
+        confetti.className =
+            "confetti";
+
 
         confetti.style.left =
-            Math.random()*100+"vw";
+            Math.random() *
+            100 +
+            "vw";
+
 
         confetti.style.animationDuration =
-            (2+Math.random()*3)+"s";
+            (
+                2 +
+                Math.random() * 3
+            ) +
+            "s";
+
 
         confetti.style.animationDelay =
-            Math.random()*1.5+"s";
+            Math.random() *
+            1.5 +
+            "s";
 
-        const symbols=[
+
+        const symbols = [
+
             "✨",
+
             "💕",
+
             "🌸",
+
             "💖",
+
             "👑",
+
             "⭐"
+
         ];
+
 
         confetti.textContent =
             symbols[
-                Math.floor(Math.random()*symbols.length)
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
             ];
 
+
         confetti.style.fontSize =
-            (10+Math.random()*15)+"px";
+            (
+                10 +
+                Math.random() * 15
+            ) +
+            "px";
 
-        document.body.appendChild(confetti);
 
-        setTimeout(()=>{
-            confetti.remove();
-        },6000);
+        document.body.appendChild(
+            confetti
+        );
+
+
+        setTimeout(
+            function(){
+
+                confetti.remove();
+
+            },
+            6000
+        );
 
     }
 
 }
 
 
-/* =========================
-   Extra Interaction
-========================= */
+/* =========================================
+   WHATSAPP DIRECT APP
+========================================= */
 
-document.addEventListener("click",function(e){
+const whatsappBtn =
+    document.getElementById(
+        "whatsappBtn"
+    );
 
-    if(
-        e.target.tagName === "BUTTON" ||
-        e.target.closest("button")
-    ){
 
-        createHearts(2);
+whatsappBtn.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+
+        const phone =
+            "201145640722";
+
+
+        const message =
+            "يا بابا نيلسي 👑❤️\n\n" +
+            "دي مملكة الأميرة نيلسي 🌸\n\n" +
+            "ربنا يحفظها ويجعلها قرة عين لينا كلنا 👶💕";
+
+
+        const encodedMessage =
+            encodeURIComponent(
+                message
+            );
+
+
+        /*
+            المحاولة الأولى:
+            فتح تطبيق WhatsApp مباشرة
+        */
+
+        window.location.href =
+            "whatsapp://send?phone=" +
+            phone +
+            "&text=" +
+            encodedMessage;
+
+
+        /*
+            احتياطي:
+            لو الجهاز أو المتصفح
+            منع whatsapp://
+        */
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    "https://wa.me/" +
+                    phone +
+                    "?text=" +
+                    encodedMessage;
+
+            },
+            1200
+        );
 
     }
+);
 
-});
+
+/* =========================================
+   EXTRA HEARTS
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target.tagName ===
+            "BUTTON" ||
+
+            event.target.closest(
+                "button"
+            )
+        ){
+
+            createHearts(2);
+
+        }
+
+    }
+);
+
 
 </script>
 
+
 </body>
+
 </html>
