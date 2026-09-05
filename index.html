@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>مملكة الأميرة نيلسي 👑</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
     --bg:#fdf2f4;
     --card:rgba(255,255,255,.88);
@@ -38,10 +40,6 @@ body{
     transition:.5s;
 }
 
-/* =========================
-   الوضع الليلي
-========================= */
-
 body.dark{
     --bg:#170f18;
     --card:rgba(39,25,38,.92);
@@ -55,23 +53,25 @@ body.dark{
         radial-gradient(circle at 50% 0%,#3a2033 0%,#170f18 70%);
 }
 
-/* النجوم */
 body.dark::before{
     content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
+
     background-image:
         radial-gradient(#fff 1px,transparent 1px),
         radial-gradient(#fff 1px,transparent 1px);
+
     background-size:70px 70px,110px 110px;
     background-position:10px 20px,40px 60px;
+
     opacity:.35;
     z-index:0;
 }
 
 /* =========================
-   عناصر الخلفية
+   الخلفية
 ========================= */
 
 #floating-container{
@@ -90,556 +90,20 @@ body.dark::before{
 }
 
 @keyframes floatUp{
+
     from{
         transform:translateY(0) rotate(0deg);
         opacity:0;
     }
+
     15%{
         opacity:.7;
     }
+
     to{
         transform:translateY(-120vh) rotate(360deg);
         opacity:0;
     }
-}
-
-/* =========================
-   الحاويات
-========================= */
-
-.container{
-    position:relative;
-    z-index:5;
-    width:92%;
-    max-width:620px;
-    margin:35px auto;
-    padding:35px 20px;
-    text-align:center;
-    background:var(--card);
-    border:2px dashed var(--pink);
-    border-radius:38px;
-    box-shadow:0 20px 50px var(--shadow);
-    backdrop-filter:blur(12px);
-}
-
-#main-content{
-    display:none;
-}
-
-/* =========================
-   شاشة البداية
-========================= */
-
-.start-crown{
-    font-size:75px;
-    display:inline-block;
-    animation:crownFloat 2.5s ease-in-out infinite;
-}
-
-@keyframes crownFloat{
-    0%,100%{transform:translateY(0) rotate(-3deg)}
-    50%{transform:translateY(-15px) rotate(3deg)}
-}
-
-.kingdom-title{
-    font-family:'Amiri',serif;
-    color:var(--dark-pink);
-    font-size:clamp(2.3rem,9vw,4rem);
-    margin:10px 0;
-    text-shadow:0 5px 20px var(--shadow);
-}
-
-.kingdom-date{
-    color:var(--maroon);
-    font-size:1.2rem;
-    font-weight:bold;
-}
-
-.start-typewriter{
-    min-height:150px;
-    font-size:1.35rem;
-    line-height:2.2;
-    font-weight:bold;
-    color:var(--dark-pink);
-}
-
-.start-typewriter::after{
-    content:"|";
-    animation:blink .7s infinite;
-}
-
-.start-typewriter.done::after{
-    display:none;
-}
-
-@keyframes blink{
-    50%{opacity:0}
-}
-
-/* =========================
-   الأزرار
-========================= */
-
-.play-btn{
-    border:0;
-    color:white;
-    background:linear-gradient(45deg,var(--pink),var(--dark-pink));
-    padding:16px 40px;
-    border-radius:50px;
-    font-family:'Cairo';
-    font-size:1.3rem;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 10px 30px var(--shadow);
-    animation:bounceBtn 2s infinite;
-}
-
-.play-btn:hover{
-    transform:scale(1.06);
-    animation:none;
-}
-
-@keyframes bounceBtn{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-8px)}
-}
-
-/* =========================
-   العنوان
-========================= */
-
-.crown-icon{
-    font-size:65px;
-    animation:crownFloat 3s infinite;
-    display:inline-block;
-}
-
-.main-title{
-    font-family:'Amiri',serif;
-    color:var(--dark-pink);
-    font-size:3.4rem;
-    margin:5px 0 15px;
-}
-
-/* =========================
-   النص الرئيسي
-========================= */
-
-.typewriter-text{
-    font-size:1.15rem;
-    line-height:2.1;
-    font-weight:bold;
-    padding:20px;
-    border-right:5px solid var(--pink);
-    border-radius:18px;
-    background:rgba(255,255,255,.4);
-    min-height:150px;
-    text-align:right;
-}
-
-/* =========================
-   الصناديق
-========================= */
-
-.info-box{
-    margin-top:25px;
-    padding:22px;
-    border-radius:27px;
-    background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(253,242,244,.9));
-    border-bottom:4px solid var(--pink);
-    box-shadow:0 10px 25px var(--shadow);
-    text-align:right;
-    opacity:0;
-}
-
-body.dark .info-box{
-    background:linear-gradient(135deg,#342231,#241723);
-}
-
-.info-box h3{
-    color:var(--dark-pink);
-    margin:0 0 15px;
-    padding-bottom:8px;
-    border-bottom:2px dashed var(--pink);
-    display:inline-block;
-}
-
-.info-box p{
-    line-height:2;
-    margin:0;
-}
-
-/* =========================
-   ظهور العناصر
-========================= */
-
-.animate-1{
-    animation:slideUp .8s forwards .3s;
-}
-
-.animate-2{
-    animation:slideUp .8s forwards .6s;
-}
-
-.animate-3{
-    animation:slideUp .8s forwards .9s;
-}
-
-.animate-4{
-    animation:slideUp .8s forwards 1.2s;
-}
-
-.animate-5{
-    animation:slideUp .8s forwards 1.5s;
-}
-
-.animate-6{
-    animation:slideUp .8s forwards 1.8s;
-}
-
-.animate-7{
-    animation:slideUp .8s forwards 2.1s;
-}
-
-@keyframes slideUp{
-    from{
-        opacity:0;
-        transform:translateY(35px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* =========================
-   العدادات
-========================= */
-
-.counters-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.counter-card{
-    background:rgba(255,255,255,.55);
-    padding:15px 5px;
-    border-radius:20px;
-}
-
-body.dark .counter-card{
-    background:rgba(255,255,255,.05);
-}
-
-.counter-title{
-    color:var(--dark-pink);
-    font-weight:bold;
-    font-size:.9rem;
-}
-
-.counter-value{
-    color:var(--pink);
-    font-size:1.3rem;
-    font-weight:900;
-    margin-top:8px;
-}
-
-/* =========================
-   الخط الزمني
-========================= */
-
-.timeline{
-    position:relative;
-    padding-right:20px;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    right:8px;
-    top:0;
-    bottom:0;
-    width:3px;
-    background:var(--pink);
-}
-
-.timeline-item{
-    position:relative;
-    margin-bottom:20px;
-    padding:15px 20px;
-    background:rgba(255,255,255,.65);
-    border-radius:18px;
-    margin-right:15px;
-}
-
-body.dark .timeline-item{
-    background:rgba(255,255,255,.05);
-}
-
-.timeline-item::before{
-    content:"";
-    position:absolute;
-    right:-26px;
-    top:20px;
-    width:13px;
-    height:13px;
-    border-radius:50%;
-    background:var(--pink);
-    border:3px solid var(--bg);
-}
-
-.timeline-icon{
-    font-size:1.6rem;
-}
-
-/* =========================
-   الألقاب
-========================= */
-
-.nickname{
-    color:var(--dark-pink);
-    font-size:1.7rem;
-    font-weight:900;
-    min-height:55px;
-    animation:nameChange .8s;
-}
-
-@keyframes nameChange{
-    from{opacity:0;transform:scale(.8)}
-    to{opacity:1;transform:scale(1)}
-}
-
-/* =========================
-   الببرونة
-========================= */
-
-.interactive-toy{
-    text-align:center;
-}
-
-.bottle-btn{
-    background:none;
-    border:0;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.bottle-btn:hover{
-    transform:scale(1.1);
-}
-
-.bottle-btn svg{
-    filter:drop-shadow(0 10px 7px rgba(0,0,0,.2));
-}
-
-.shake-animation{
-    animation:shake .5s;
-}
-
-@keyframes shake{
-    20%{transform:rotate(-10deg)}
-    40%{transform:rotate(10deg)}
-    60%{transform:rotate(-8deg)}
-    80%{transform:rotate(8deg)}
-}
-
-/* =========================
-   زر الحب
-========================= */
-
-.love-section{
-    text-align:center;
-}
-
-.love-button{
-    border:0;
-    background:linear-gradient(45deg,#ff6f91,#c2185b);
-    color:white;
-    border-radius:50px;
-    padding:15px 30px;
-    font-family:'Cairo';
-    font-weight:bold;
-    font-size:1.2rem;
-    cursor:pointer;
-    box-shadow:0 8px 25px rgba(194,24,91,.3);
-}
-
-.love-count{
-    color:var(--dark-pink);
-    font-size:2rem;
-    font-weight:900;
-    margin-top:10px;
-}
-
-/* =========================
-   الدعاء
-========================= */
-
-.dua{
-    text-align:center!important;
-}
-
-.dua-text{
-    font-family:'Amiri',serif;
-    font-size:1.45rem;
-    line-height:2.2;
-    color:var(--maroon);
-}
-
-/* =========================
-   المفاجأة
-========================= */
-
-.surprise-btn{
-    width:100%;
-    padding:16px;
-    border:0;
-    border-radius:20px;
-    background:linear-gradient(45deg,#800020,#b94d70);
-    color:white;
-    font-family:'Cairo';
-    font-size:1.15rem;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.surprise-message{
-    display:none;
-    margin-top:20px;
-    padding:20px;
-    border-radius:20px;
-    background:rgba(230,138,155,.12);
-    color:var(--dark-pink);
-    font-weight:bold;
-    line-height:2;
-    animation:pop .6s;
-}
-
-@keyframes pop{
-    from{transform:scale(.5);opacity:0}
-    to{transform:scale(1);opacity:1}
-}
-
-/* =========================
-   الرسالة السرية
-========================= */
-
-.secret-box{
-    text-align:center;
-}
-
-.secret-input{
-    width:100%;
-    padding:14px;
-    border:2px solid var(--pink);
-    border-radius:15px;
-    outline:none;
-    font-family:'Cairo';
-    text-align:center;
-    margin:10px 0;
-}
-
-.secret-btn{
-    border:0;
-    padding:12px 25px;
-    border-radius:30px;
-    background:var(--pink);
-    color:white;
-    font-family:'Cairo';
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.secret-result{
-    display:none;
-    margin-top:15px;
-    line-height:2;
-    color:var(--dark-pink);
-    font-weight:bold;
-}
-
-/* =========================
-   الموسيقى
-========================= */
-
-.music-control{
-    position:fixed;
-    left:15px;
-    top:15px;
-    z-index:1000;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    border:2px solid var(--pink);
-    background:var(--card);
-    cursor:pointer;
-    font-size:22px;
-    box-shadow:0 5px 15px var(--shadow);
-}
-
-.music-visualizer{
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    gap:5px;
-    height:30px;
-    margin-top:15px;
-}
-
-.bar{
-    width:6px;
-    height:10px;
-    background:var(--pink);
-    border-radius:5px;
-    animation:bounceBar .5s infinite alternate;
-}
-
-.bar:nth-child(2){animation-delay:.1s}
-.bar:nth-child(3){animation-delay:.2s}
-.bar:nth-child(4){animation-delay:.3s}
-.bar:nth-child(5){animation-delay:.4s}
-
-@keyframes bounceBar{
-    to{height:30px}
-}
-
-/* =========================
-   واتساب
-========================= */
-
-.whatsapp-btn{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    width:90%;
-    margin:25px auto 0;
-    padding:15px;
-    border-radius:50px;
-    background:linear-gradient(45deg,#25D366,#1da851);
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    box-shadow:0 8px 25px rgba(37,211,102,.3);
-}
-
-/* =========================
-   الوضع الليلي
-========================= */
-
-.theme-btn{
-    position:fixed;
-    right:15px;
-    top:15px;
-    z-index:1000;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    border:2px solid var(--pink);
-    background:var(--card);
-    cursor:pointer;
-    font-size:22px;
 }
 
 /* =========================
@@ -662,8 +126,12 @@ body.dark .timeline-item{
 }
 
 @keyframes fall{
+
     to{
-        transform:translateY(110vh) rotate(720deg);
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
         opacity:0;
     }
 }
@@ -677,18 +145,1203 @@ body.dark .timeline-item{
     pointer-events:none;
     z-index:9998;
     font-size:25px;
-    animation:heartFly 1.5s ease-out forwards;
+
+    animation:
+    heartFly 1.5s ease-out forwards;
 }
 
 @keyframes heartFly{
+
     from{
-        transform:translateY(0) scale(.5);
+        transform:
+        translateY(0)
+        scale(.5);
+
         opacity:1;
     }
+
     to{
-        transform:translateY(-180px) translateX(var(--x)) scale(1.5);
+        transform:
+        translateY(-180px)
+        translateX(var(--x))
+        scale(1.5);
+
         opacity:0;
     }
+}
+
+/* =========================
+   الحاوية
+========================= */
+
+.container{
+    position:relative;
+    z-index:5;
+
+    width:92%;
+    max-width:620px;
+
+    margin:35px auto;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    background:var(--card);
+
+    border:2px dashed var(--pink);
+
+    border-radius:38px;
+
+    box-shadow:
+    0 20px 50px var(--shadow);
+
+    backdrop-filter:blur(12px);
+}
+
+#main-content{
+    display:none;
+}
+
+/* =========================
+   شاشة البداية
+========================= */
+
+.start-crown{
+    font-size:75px;
+    display:inline-block;
+
+    animation:
+    crownFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes crownFloat{
+
+    0%,100%{
+        transform:
+        translateY(0)
+        rotate(-3deg);
+    }
+
+    50%{
+        transform:
+        translateY(-15px)
+        rotate(3deg);
+    }
+}
+
+.kingdom-title{
+    font-family:'Amiri',serif;
+
+    color:var(--dark-pink);
+
+    font-size:
+    clamp(2.3rem,9vw,4rem);
+
+    margin:10px 0;
+
+    text-shadow:
+    0 5px 20px var(--shadow);
+}
+
+.kingdom-date{
+    color:var(--maroon);
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+}
+
+.start-typewriter{
+    min-height:150px;
+
+    font-size:1.35rem;
+
+    line-height:2.2;
+
+    font-weight:bold;
+
+    color:var(--dark-pink);
+
+    padding:10px;
+}
+
+.start-typewriter::after{
+    content:"|";
+    animation:blink .7s infinite;
+}
+
+.start-typewriter.done::after{
+    display:none;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* =========================
+   الأزرار
+========================= */
+
+.play-btn{
+    border:0;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        45deg,
+        var(--pink),
+        var(--dark-pink)
+    );
+
+    padding:16px 40px;
+
+    border-radius:50px;
+
+    font-family:'Cairo';
+
+    font-size:1.3rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 30px var(--shadow);
+
+    animation:
+    bounceBtn 2s infinite;
+}
+
+.play-btn:hover{
+    transform:scale(1.06);
+    animation:none;
+}
+
+@keyframes bounceBtn{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* =========================
+   العنوان
+========================= */
+
+.crown-icon{
+    font-size:65px;
+
+    animation:
+    crownFloat 3s infinite;
+
+    display:inline-block;
+}
+
+.main-title{
+    font-family:'Amiri',serif;
+
+    color:var(--dark-pink);
+
+    font-size:3.4rem;
+
+    margin:5px 0 15px;
+}
+
+.typewriter-text{
+    font-size:1.15rem;
+
+    line-height:2.1;
+
+    font-weight:bold;
+
+    padding:20px;
+
+    border-right:
+    5px solid var(--pink);
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,.4);
+
+    min-height:150px;
+
+    text-align:right;
+}
+
+/* =========================
+   الصناديق
+========================= */
+
+.info-box{
+    margin-top:25px;
+
+    padding:22px;
+
+    border-radius:27px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.95),
+        rgba(253,242,244,.9)
+    );
+
+    border-bottom:
+    4px solid var(--pink);
+
+    box-shadow:
+    0 10px 25px var(--shadow);
+
+    text-align:right;
+
+    opacity:0;
+}
+
+body.dark .info-box{
+    background:
+    linear-gradient(
+        135deg,
+        #342231,
+        #241723
+    );
+}
+
+.info-box h3{
+    color:var(--dark-pink);
+
+    margin:
+    0 0 15px;
+
+    padding-bottom:8px;
+
+    border-bottom:
+    2px dashed var(--pink);
+
+    display:inline-block;
+}
+
+.info-box p{
+    line-height:2;
+    margin:0;
+}
+
+/* =========================
+   ظهور العناصر
+========================= */
+
+.animate-1{
+    animation:
+    slideUp .8s forwards .3s;
+}
+
+.animate-2{
+    animation:
+    slideUp .8s forwards .6s;
+}
+
+.animate-3{
+    animation:
+    slideUp .8s forwards .9s;
+}
+
+.animate-4{
+    animation:
+    slideUp .8s forwards 1.2s;
+}
+
+.animate-5{
+    animation:
+    slideUp .8s forwards 1.5s;
+}
+
+.animate-6{
+    animation:
+    slideUp .8s forwards 1.8s;
+}
+
+.animate-7{
+    animation:
+    slideUp .8s forwards 2.1s;
+}
+
+.animate-8{
+    animation:
+    slideUp .8s forwards 2.4s;
+}
+
+.animate-9{
+    animation:
+    slideUp .8s forwards 2.7s;
+}
+
+.animate-10{
+    animation:
+    slideUp .8s forwards 3s;
+}
+
+@keyframes slideUp{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   العدادات
+========================= */
+
+.counters-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:12px;
+}
+
+.counter-card{
+    background:
+    rgba(255,255,255,.55);
+
+    padding:15px 5px;
+
+    border-radius:20px;
+}
+
+body.dark .counter-card{
+    background:
+    rgba(255,255,255,.05);
+}
+
+.counter-title{
+    color:var(--dark-pink);
+
+    font-weight:bold;
+
+    font-size:.9rem;
+}
+
+.counter-value{
+    color:var(--pink);
+
+    font-size:1.3rem;
+
+    font-weight:900;
+
+    margin-top:8px;
+}
+
+/* =========================
+   عداد العمر الجديد
+========================= */
+
+.age-live{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:7px;
+
+    margin-top:15px;
+}
+
+.age-unit{
+    background:
+    rgba(230,138,155,.12);
+
+    padding:10px 3px;
+
+    border-radius:15px;
+}
+
+.age-number{
+    color:var(--dark-pink);
+
+    font-size:1.35rem;
+
+    font-weight:900;
+}
+
+.age-label{
+    font-size:.7rem;
+    opacity:.8;
+}
+
+/* =========================
+   الخط الزمني
+========================= */
+
+.timeline{
+    position:relative;
+    padding-right:20px;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    right:8px;
+
+    top:0;
+    bottom:0;
+
+    width:3px;
+
+    background:var(--pink);
+}
+
+.timeline-item{
+    position:relative;
+
+    margin-bottom:20px;
+
+    padding:15px 20px;
+
+    background:
+    rgba(255,255,255,.65);
+
+    border-radius:18px;
+
+    margin-right:15px;
+
+    transition:.3s;
+}
+
+.timeline-item:hover{
+    transform:translateX(-5px);
+
+    box-shadow:
+    0 8px 20px var(--shadow);
+}
+
+body.dark .timeline-item{
+    background:
+    rgba(255,255,255,.05);
+}
+
+.timeline-item::before{
+    content:"";
+
+    position:absolute;
+
+    right:-26px;
+
+    top:20px;
+
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:var(--pink);
+
+    border:
+    3px solid var(--bg);
+}
+
+.timeline-icon{
+    font-size:1.6rem;
+}
+
+/* =========================
+   الألقاب
+========================= */
+
+.nickname{
+    color:var(--dark-pink);
+
+    font-size:1.7rem;
+
+    font-weight:900;
+
+    min-height:55px;
+
+    animation:
+    nameChange .8s;
+}
+
+@keyframes nameChange{
+
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   الببرونة
+========================= */
+
+.interactive-toy{
+    text-align:center;
+}
+
+.bottle-btn{
+    background:none;
+
+    border:0;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.bottle-btn:hover{
+    transform:scale(1.1);
+}
+
+.bottle-btn svg{
+    filter:
+    drop-shadow(
+        0 10px 7px rgba(0,0,0,.2)
+    );
+}
+
+.shake-animation{
+    animation:
+    shake .5s;
+}
+
+@keyframes shake{
+
+    20%{
+        transform:rotate(-10deg);
+    }
+
+    40%{
+        transform:rotate(10deg);
+    }
+
+    60%{
+        transform:rotate(-8deg);
+    }
+
+    80%{
+        transform:rotate(8deg);
+    }
+}
+
+/* =========================
+   زر الحب
+========================= */
+
+.love-section{
+    text-align:center;
+}
+
+.love-button{
+    border:0;
+
+    background:
+    linear-gradient(
+        45deg,
+        #ff6f91,
+        #c2185b
+    );
+
+    color:white;
+
+    border-radius:50px;
+
+    padding:15px 30px;
+
+    font-family:'Cairo';
+
+    font-weight:bold;
+
+    font-size:1.2rem;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 8px 25px
+    rgba(194,24,91,.3);
+
+    transition:.15s;
+}
+
+.love-button:active{
+    transform:scale(.92);
+}
+
+.love-count{
+    color:var(--dark-pink);
+
+    font-size:2rem;
+
+    font-weight:900;
+
+    margin-top:10px;
+}
+
+/* =========================
+   الدعاء
+========================= */
+
+.dua{
+    text-align:center!important;
+}
+
+.dua-text{
+    font-family:'Amiri',serif;
+
+    font-size:1.45rem;
+
+    line-height:2.2;
+
+    color:var(--maroon);
+}
+
+/* =========================
+   المفاجأة
+========================= */
+
+.surprise-btn{
+    width:100%;
+
+    padding:16px;
+
+    border:0;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        45deg,
+        #800020,
+        #b94d70
+    );
+
+    color:white;
+
+    font-family:'Cairo';
+
+    font-size:1.15rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.surprise-message{
+    display:none;
+
+    margin-top:20px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:
+    rgba(230,138,155,.12);
+
+    color:var(--dark-pink);
+
+    font-weight:bold;
+
+    line-height:2;
+
+    animation:
+    pop .6s;
+}
+
+@keyframes pop{
+
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* =========================
+   المفاجآت المتعددة
+========================= */
+
+.gift-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:10px;
+}
+
+.gift-card{
+    border:0;
+
+    padding:18px 5px;
+
+    border-radius:20px;
+
+    background:
+    rgba(230,138,155,.12);
+
+    color:var(--dark-pink);
+
+    font-family:'Cairo';
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.gift-card:hover{
+    transform:
+    translateY(-6px)
+    scale(1.03);
+
+    box-shadow:
+    0 10px 25px var(--shadow);
+}
+
+.gift-icon{
+    display:block;
+
+    font-size:2.2rem;
+
+    margin-bottom:5px;
+}
+
+/* =========================
+   الرسالة السرية
+========================= */
+
+.secret-box{
+    text-align:center;
+}
+
+.secret-input{
+    width:100%;
+
+    padding:14px;
+
+    border:
+    2px solid var(--pink);
+
+    border-radius:15px;
+
+    outline:none;
+
+    font-family:'Cairo';
+
+    text-align:center;
+
+    margin:10px 0;
+
+    background:
+    rgba(255,255,255,.7);
+}
+
+body.dark .secret-input{
+    background:
+    rgba(255,255,255,.06);
+
+    color:white;
+}
+
+.secret-btn{
+    border:0;
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    background:var(--pink);
+
+    color:white;
+
+    font-family:'Cairo';
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.secret-result{
+    display:none;
+
+    margin-top:15px;
+
+    line-height:2;
+
+    color:var(--dark-pink);
+
+    font-weight:bold;
+}
+
+/* =========================
+   رسائل العيلة
+========================= */
+
+.family-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:12px;
+}
+
+.family-card{
+    padding:18px 10px;
+
+    border-radius:22px;
+
+    background:
+    rgba(230,138,155,.10);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    text-align:center;
+}
+
+.family-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 10px 25px var(--shadow);
+}
+
+.family-card .family-icon{
+    font-size:2rem;
+}
+
+.family-card strong{
+    display:block;
+
+    color:var(--dark-pink);
+
+    margin-top:5px;
+}
+
+.family-message{
+    display:none;
+
+    margin-top:10px;
+
+    line-height:1.9;
+
+    font-size:.9rem;
+}
+
+/* =========================
+   إلى نيلسي عندما تكبر
+========================= */
+
+.future-letter{
+    font-family:'Amiri',serif;
+
+    font-size:1.35rem;
+
+    line-height:2.4;
+
+    color:var(--maroon);
+
+    text-align:center;
+
+    padding:10px;
+}
+
+/* =========================
+   الإنجازات
+========================= */
+
+.achievements{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+}
+
+.achievement{
+    padding:16px 8px;
+
+    border-radius:20px;
+
+    background:
+    rgba(230,138,155,.10);
+
+    text-align:center;
+
+    transition:.4s;
+}
+
+.achievement-icon{
+    font-size:2rem;
+}
+
+.achievement-title{
+    color:var(--dark-pink);
+
+    font-weight:bold;
+
+    margin-top:5px;
+}
+
+.achievement.locked{
+    opacity:.55;
+}
+
+.achievement:hover{
+    transform:
+    scale(1.03)
+    rotate(-1deg);
+}
+
+/* =========================
+   Visualizer
+========================= */
+
+.music-visualizer{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:5px;
+
+    height:30px;
+
+    margin-top:15px;
+}
+
+.bar{
+    width:6px;
+
+    height:10px;
+
+    background:var(--pink);
+
+    border-radius:5px;
+
+    animation:
+    bounceBar .5s infinite alternate;
+}
+
+.bar:nth-child(2){
+    animation-delay:.1s;
+}
+
+.bar:nth-child(3){
+    animation-delay:.2s;
+}
+
+.bar:nth-child(4){
+    animation-delay:.3s;
+}
+
+.bar:nth-child(5){
+    animation-delay:.4s;
+}
+
+@keyframes bounceBar{
+
+    to{
+        height:30px;
+    }
+}
+
+/* =========================
+   زر الوضع الليلي
+========================= */
+
+.theme-btn{
+    position:fixed;
+
+    right:15px;
+    top:15px;
+
+    z-index:1000;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    border:
+    2px solid var(--pink);
+
+    background:var(--card);
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    box-shadow:
+    0 5px 15px var(--shadow);
+}
+
+/* =========================
+   تاج متوهج
+========================= */
+
+.glowing-crown{
+    display:inline-block;
+
+    font-size:45px;
+
+    filter:
+    drop-shadow(
+        0 0 15px
+        rgba(255,190,200,.9)
+    );
+
+    animation:
+    glowCrown 1.5s infinite alternate;
+}
+
+@keyframes glowCrown{
+
+    from{
+        transform:
+        scale(1);
+    }
+
+    to{
+        transform:
+        scale(1.12);
+    }
+}
+
+/* =========================
+   بطاقة الميلاد
+========================= */
+
+.birth-card{
+    text-align:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.95),
+        rgba(255,225,232,.8)
+    )!important;
+}
+
+body.dark .birth-card{
+    background:
+    linear-gradient(
+        135deg,
+        #3c2638,
+        #241723
+    )!important;
+}
+
+.birth-name{
+    font-family:'Amiri',serif;
+
+    color:var(--dark-pink);
+
+    font-size:2.3rem;
+
+    margin:5px 0;
+}
+
+.birth-details{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.birth-detail{
+    padding:12px;
+
+    border-radius:15px;
+
+    background:
+    rgba(230,138,155,.10);
+}
+
+.birth-detail span{
+    display:block;
+
+    font-size:.8rem;
+}
+
+.birth-detail strong{
+    display:block;
+
+    color:var(--dark-pink);
+
+    margin-top:4px;
+}
+
+/* =========================
+   رسالة النجاح
+========================= */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    transform:
+    translateX(-50%)
+    translateY(100px);
+
+    background:
+    rgba(128,0,32,.95);
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    z-index:10000;
+
+    font-weight:bold;
+
+    transition:.4s;
+
+    white-space:nowrap;
+}
+
+.toast.show{
+    transform:
+    translateX(-50%)
+    translateY(0);
 }
 
 /* =========================
@@ -699,8 +1352,11 @@ body.dark .timeline-item{
 
     .container{
         width:94%;
+
         padding:28px 15px;
+
         margin:25px auto;
+
         border-radius:30px;
     }
 
@@ -723,21 +1379,53 @@ body.dark .timeline-item{
     .dua-text{
         font-size:1.25rem;
     }
+
+    .age-live{
+        gap:5px;
+    }
+
+    .age-number{
+        font-size:1.05rem;
+    }
+
+    .age-label{
+        font-size:.6rem;
+    }
+
+    .gift-grid{
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+    .family-grid{
+        grid-template-columns:
+        1fr 1fr;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- الخلفية -->
+<!-- =========================
+     الخلفية
+========================= -->
+
 <div id="floating-container"></div>
 
-<!-- الكونفيتي -->
 <div id="confetti-wrapper"></div>
 
-<!-- أزرار ثابتة -->
-<button class="theme-btn" onclick="toggleTheme()" id="theme-btn">🌙</button>
-<button class="music-control" onclick="toggleMusic()" id="music-btn">🔇</button>
+<div class="toast" id="toast"></div>
+
+<!-- الوضع الليلي فقط -->
+<button
+    class="theme-btn"
+    onclick="toggleTheme()"
+    id="theme-btn"
+>
+    🌙
+</button>
 
 <!-- =========================
      شاشة البداية
@@ -745,7 +1433,9 @@ body.dark .timeline-item{
 
 <div class="container" id="start-screen">
 
-    <div class="start-crown">👑</div>
+    <div class="start-crown">
+        👑
+    </div>
 
     <h1 class="kingdom-title">
         مملكة الأميرة نيلسي
@@ -755,7 +1445,10 @@ body.dark .timeline-item{
         🌸 03 • 09 • 2026 🌸
     </div>
 
-    <div id="start-text" class="start-typewriter"></div>
+    <div
+        id="start-text"
+        class="start-typewriter"
+    ></div>
 
     <button
         id="enter-btn"
@@ -772,122 +1465,324 @@ body.dark .timeline-item{
      المحتوى الرئيسي
 ========================= -->
 
-<div class="container" id="main-content">
+<div
+    class="container"
+    id="main-content"
+>
 
-    <div class="crown-icon">👑</div>
+    <div class="glowing-crown">
+        👑
+    </div>
 
     <h1 class="main-title">
         نيلسي 🌸
     </h1>
 
-    <div class="nickname" id="nickname">
+    <div
+        class="nickname"
+        id="main-nickname"
+    >
         قمر البيت 🌙
     </div>
 
-    <div class="typewriter-text" id="main-text"></div>
+    <div
+        class="typewriter-text"
+        id="main-text"
+    ></div>
 
-    <!-- العدادات -->
+    <!-- =====================
+         بطاقة الميلاد
+    ====================== -->
 
-    <div class="counters-grid info-box animate-1">
+    <div
+        class="info-box birth-card animate-1"
+    >
 
-        <div class="counter-card">
-            <div class="counter-title">
-                🎂 عمر نيلسي
-            </div>
-
-            <div
-                class="counter-value"
-                id="age-counter"
-            >
-                يتم الحساب...
-            </div>
+        <div class="glowing-crown">
+            👑
         </div>
 
-        <div class="counter-card">
-            <div class="counter-title">
-                ❤️ دقات قلبها
+        <div class="birth-name">
+            الأميرة نيلسي
+        </div>
+
+        <p>
+            وصلت أجمل أميرة إلى مملكتنا
+            وبدأت معاها أجمل حكاية ❤️
+        </p>
+
+        <div class="birth-details">
+
+            <div class="birth-detail">
+                <span>📅 تاريخ الميلاد</span>
+                <strong>03 سبتمبر 2026</strong>
             </div>
 
-            <div
-                class="counter-value"
-                id="heartbeat-counter"
-            >
-                يتم الحساب...
+            <div class="birth-detail">
+                <span>👑 اللقب</span>
+                <strong>أميرة المملكة</strong>
             </div>
+
+            <div class="birth-detail">
+                <span>🌸 أول يوم</span>
+                <strong>03 • 09 • 2026</strong>
+            </div>
+
+            <div class="birth-detail">
+                <span>❤️ الحالة</span>
+                <strong>محبوبة جدًا</strong>
+            </div>
+
         </div>
 
     </div>
 
-    <!-- معنى الاسم -->
+    <!-- =====================
+         العمر
+    ====================== -->
 
-    <div class="info-box animate-2">
+    <div
+        class="info-box animate-2"
+    >
 
-        <h3>✨ معنى اسم نيلسي</h3>
+        <h3>
+            🎂 عمر نيلسي
+        </h3>
+
+        <div
+            class="age-live"
+            id="age-live"
+        >
+
+            <div class="age-unit">
+                <div
+                    class="age-number"
+                    id="age-days"
+                >
+                    0
+                </div>
+
+                <div class="age-label">
+                    يوم
+                </div>
+            </div>
+
+            <div class="age-unit">
+                <div
+                    class="age-number"
+                    id="age-hours"
+                >
+                    0
+                </div>
+
+                <div class="age-label">
+                    ساعة
+                </div>
+            </div>
+
+            <div class="age-unit">
+                <div
+                    class="age-number"
+                    id="age-minutes"
+                >
+                    0
+                </div>
+
+                <div class="age-label">
+                    دقيقة
+                </div>
+            </div>
+
+            <div class="age-unit">
+                <div
+                    class="age-number"
+                    id="age-seconds"
+                >
+                    0
+                </div>
+
+                <div class="age-label">
+                    ثانية
+                </div>
+            </div>
+
+        </div>
+
+        <div
+            class="counters-grid"
+            style="margin-top:15px;"
+        >
+
+            <div class="counter-card">
+
+                <div class="counter-title">
+                    ❤️ دقات قلبها التقريبية
+                </div>
+
+                <div
+                    class="counter-value"
+                    id="heartbeat-counter"
+                >
+                    0
+                </div>
+
+            </div>
+
+            <div class="counter-card">
+
+                <div class="counter-title">
+                    ⏱️ ثواني عاشتهم
+                </div>
+
+                <div
+                    class="counter-value"
+                    id="total-seconds"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =====================
+         معنى الاسم
+    ====================== -->
+
+    <div
+        class="info-box animate-3"
+    >
+
+        <h3>
+            ✨ معنى اسم نيلسي
+        </h3>
 
         <p>
             اسم يحمل معاني
             <strong>"الضوء والنور"</strong>،
-            تماماً كالنور الذي ملأ حياتنا منذ لحظة وصول أميرتنا الصغيرة.
+            تماماً كالنور الذي ملأ حياتنا
+            منذ لحظة وصول أميرتنا الصغيرة.
             🌸👑
         </p>
 
     </div>
 
-    <!-- الخط الزمني -->
+    <!-- =====================
+         حكاية نيلسي
+    ====================== -->
 
-    <div class="info-box animate-3">
+    <div
+        class="info-box animate-4"
+    >
 
-        <h3>📜 حكاية نيلسي</h3>
+        <h3>
+            📜 حكاية نيلسي
+        </h3>
 
         <div class="timeline">
 
             <div class="timeline-item">
-                <div class="timeline-icon">👑</div>
-                <strong>03 سبتمبر 2026</strong>
+
+                <div class="timeline-icon">
+                    👑
+                </div>
+
+                <strong>
+                    03 سبتمبر 2026
+                </strong>
+
                 <br>
-                اليوم الذي بدأت فيه أجمل حكاية.
+
+                اليوم الذي بدأت فيه
+                أجمل حكاية.
+
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-icon">🍼</div>
+
+                <div class="timeline-icon">
+                    🍼
+                </div>
+
                 أول ضحكة
+
                 <br>
-                <small>قريباً إن شاء الله ❤️</small>
+
+                <small>
+                    قريباً إن شاء الله ❤️
+                </small>
+
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-icon">🦷</div>
+
+                <div class="timeline-icon">
+                    🦷
+                </div>
+
                 أول سِنة صغنونة
+
                 <br>
-                <small>والبيت كله هيحتفل 😂❤️</small>
+
+                <small>
+                    والبيت كله هيحتفل 😂❤️
+                </small>
+
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-icon">👣</div>
+
+                <div class="timeline-icon">
+                    👣
+                </div>
+
                 أول خطوة
+
                 <br>
-                <small>وأول خطوة نحو أحلام كبيرة.</small>
+
+                <small>
+                    وأول خطوة نحو أحلام كبيرة.
+                </small>
+
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-icon">🎓</div>
+
+                <div class="timeline-icon">
+                    🎓
+                </div>
+
                 يوم تحقيق الأحلام
+
                 <br>
-                <small>لسه الحكاية في أول صفحة.</small>
+
+                <small>
+                    لسه الحكاية في أول صفحة.
+                </small>
+
             </div>
 
         </div>
 
     </div>
 
-    <!-- الألقاب -->
+    <!-- =====================
+         الألقاب
+    ====================== -->
 
-    <div class="info-box animate-4" style="text-align:center;">
+    <div
+        class="info-box animate-5"
+        style="text-align:center;"
+    >
 
-        <h3>👑 ألقاب الأميرة</h3>
+        <h3>
+            👑 ألقاب الأميرة
+        </h3>
 
         <div
-            id="nickname"
+            id="nickname-change"
             class="nickname"
         >
             قمر البيت 🌙
@@ -895,13 +1790,25 @@ body.dark .timeline-item{
 
     </div>
 
-    <!-- الببرونة -->
+    <!-- =====================
+         الببرونة
+    ====================== -->
 
-    <div class="info-box animate-5">
+    <div
+        class="info-box animate-6"
+    >
 
-        <h3>🍼 ببرونة نيلسي</h3>
+        <h3>
+            🍼 ببرونة نيلسي
+        </h3>
 
-        <p style="font-size:.9rem;color:#888;text-align:center;">
+        <p
+            style="
+            font-size:.9rem;
+            color:#888;
+            text-align:center;
+            "
+        >
             دوس عليها وشوف المفاجأة 😂❤️
         </p>
 
@@ -982,14 +1889,21 @@ body.dark .timeline-item{
 
     </div>
 
-    <!-- الحب -->
+    <!-- =====================
+         الحب
+    ====================== -->
 
-    <div class="info-box animate-6 love-section">
+    <div
+        class="info-box animate-7 love-section"
+    >
 
-        <h3>❤️ كمية الحب لنيلسي</h3>
+        <h3>
+            ❤️ كمية الحب لنيلسي
+        </h3>
 
         <p>
-            دوس على الزر وكل ضغطة تعتبر حضن وحب لنيلسي ❤️
+            دوس على الزر وكل ضغطة
+            تعتبر حضن وحب لنيلسي ❤️
         </p>
 
         <button
@@ -1006,13 +1920,32 @@ body.dark .timeline-item{
             0 ❤️
         </div>
 
+        <div
+            class="music-visualizer"
+            id="visualizer"
+        >
+
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+
+        </div>
+
     </div>
 
-    <!-- الدعاء -->
+    <!-- =====================
+         الدعاء
+    ====================== -->
 
-    <div class="info-box animate-7 dua">
+    <div
+        class="info-box animate-8 dua"
+    >
 
-        <h3>🕊️ دعاء لنيلسي</h3>
+        <h3>
+            🕊️ دعاء لنيلسي
+        </h3>
 
         <div class="dua-text">
 
@@ -1030,11 +1963,18 @@ body.dark .timeline-item{
 
     </div>
 
-    <!-- المفاجأة -->
+    <!-- =====================
+         المفاجأة
+    ====================== -->
 
-    <div class="info-box" style="text-align:center;">
+    <div
+        class="info-box animate-9"
+        style="text-align:center;"
+    >
 
-        <h3>🎁 مفاجأة لنيلسي</h3>
+        <h3>
+            🎁 مفاجأة لنيلسي
+        </h3>
 
         <button
             class="surprise-btn"
@@ -1047,182 +1987,618 @@ body.dark .timeline-item{
             class="surprise-message"
             id="surprise-message"
         >
+
             👑✨
+
+            <br>
+
             يا نيلسي...
+
+            <br>
+
+            إنتي مش مجرد بنت صغيرة
+            دخلت البيت...
+
+            <br>
+
+            إنتي دخلتي ومعاكي
+            فرحة جديدة،
+            وضحكة جديدة،
+            وحكاية جديدة.
+
+            ❤️
+
             <br><br>
-            إنتِ لسه صغيرة أوي عشان تعرفي قد إيه
-            وجودك فرّح قلوبنا.
-            <br><br>
-            بس لما تكبري وتقرئي الكلام ده،
-            اعرفي إن يوم ميلادك كان من أجمل أيام حياتنا. ❤️
-            <br><br>
-            ربنا يحفظك يا أميرة البيت. 🌸👑
+
+            ربنا يحفظك
+            ويخلي أيامك كلها
+            أجمل من اليوم اللي جيتي فيه.
+
+            👑🌸❤️
+
         </div>
 
     </div>
 
-    <!-- الرسالة السرية -->
+    <!-- =====================
+         صناديق المفاجآت
+    ====================== -->
 
-    <div class="info-box secret-box">
+    <div
+        class="info-box animate-10"
+        style="text-align:center;"
+    >
 
-        <h3>🔐 رسالة سرية</h3>
+        <h3>
+            🎁 3 مفاجآت سرية
+        </h3>
+
+        <div class="gift-grid">
+
+            <button
+                class="gift-card"
+                onclick="openGift(1)"
+            >
+
+                <span class="gift-icon">
+                    🎁
+                </span>
+
+                رسالة
+
+            </button>
+
+            <button
+                class="gift-card"
+                onclick="openGift(2)"
+            >
+
+                <span class="gift-icon">
+                    💗
+                </span>
+
+                حب
+
+            </button>
+
+            <button
+                class="gift-card"
+                onclick="openGift(3)"
+            >
+
+                <span class="gift-icon">
+                    👑
+                </span>
+
+                سر
+
+            </button>
+
+        </div>
+
+        <div
+            id="gift-result"
+            class="surprise-message"
+        ></div>
+
+    </div>
+
+    <!-- =====================
+         رسائل العيلة
+    ====================== -->
+
+    <div
+        class="info-box"
+        style="text-align:center;"
+    >
+
+        <h3>
+            💌 رسائل من العيلة
+        </h3>
 
         <p>
-            في رسالة مستخبية لنيلسي...
+            كل اسم مخبي وراه كلمة لنيلسي ❤️
+        </p>
+
+        <div class="family-grid">
+
+            <div
+                class="family-card"
+                onclick="familyMessage(this, 'بابا')"
+            >
+
+                <div class="family-icon">
+                    👨
+                </div>
+
+                <strong>
+                    بابا
+                </strong>
+
+                <div class="family-message">
+                    يا أجمل بنت في الدنيا،
+                    ربنا يحفظك ويخليكي لينا
+                    ويفرح قلبي بيكي كل يوم. ❤️
+                </div>
+
+            </div>
+
+            <div
+                class="family-card"
+                onclick="familyMessage(this, 'ماما')"
+            >
+
+                <div class="family-icon">
+                    👩
+                </div>
+
+                <strong>
+                    ماما
+                </strong>
+
+                <div class="family-message">
+                    يا قطعة من قلبي،
+                    ربنا يحفظك ويكبرك
+                    في أحسن حال يا حبيبتي. 🤍
+                </div>
+
+            </div>
+
+            <div
+                class="family-card"
+                onclick="familyMessage(this, 'جدو')"
+            >
+
+                <div class="family-icon">
+                    👴
+                </div>
+
+                <strong>
+                    جدو
+                </strong>
+
+                <div class="family-message">
+                    يا أميرة جدو،
+                    البيت نور بيكي
+                    يا أجمل حفيدة. 👑
+                </div>
+
+            </div>
+
+            <div
+                class="family-card"
+                onclick="familyMessage(this, 'تيتا')"
+            >
+
+                <div class="family-icon">
+                    👵
+                </div>
+
+                <strong>
+                    تيتا
+                </strong>
+
+                <div class="family-message">
+                    ربنا يخليكي لينا
+                    يا حتة السكر
+                    ويبارك في عمرك. 🌸
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =====================
+         إلى نيلسي عندما تكبر
+    ====================== -->
+
+    <div
+        class="info-box"
+    >
+
+        <h3>
+            📜 إلى نيلسي عندما تكبرين
+        </h3>
+
+        <div class="future-letter">
+
+            يا نيلسي...
+
             <br>
-            بس لازم تعرفي كلمة السر 😉
+
+            لو بتقري الكلام ده
+            بعد سنين من اليوم،
+
+            <br>
+
+            افتكري إن يوم 03 سبتمبر 2026
+            كان يوم مختلف تماماً.
+
+            <br>
+
+            يومها بدأت حكايتك...
+
+            <br>
+
+            ولسه وإنتي صغيرة،
+            كان في ناس بتحبك
+            قبل ما تعرفي حتى يعني إيه حب.
+
+            <br><br>
+
+            كبرتي،
+            وتغيرت حاجات كتير...
+
+            <br>
+
+            لكن الحاجة الوحيدة
+            اللي عمرها ما هتتغير:
+
+            <br>
+
+            إنك هتفضلي
+            أميرة المملكة. 👑
+
+            <br><br>
+
+            ربنا يكتبلك
+            أجمل من كل اللي تتمنيه.
+
+            🤍
+
+        </div>
+
+    </div>
+
+    <!-- =====================
+         الإنجازات
+    ====================== -->
+
+    <div
+        class="info-box"
+    >
+
+        <h3>
+            🏆 محطات من حياة نيلسي
+        </h3>
+
+        <div class="achievements">
+
+            <div class="achievement">
+
+                <div class="achievement-icon">
+                    👑
+                </div>
+
+                <div class="achievement-title">
+                    يوم الميلاد
+                </div>
+
+                <small>
+                    تم فتحها ❤️
+                </small>
+
+            </div>
+
+            <div class="achievement locked">
+
+                <div class="achievement-icon">
+                    😂
+                </div>
+
+                <div class="achievement-title">
+                    أول ضحكة
+                </div>
+
+                <small>
+                    قريباً...
+                </small>
+
+            </div>
+
+            <div class="achievement locked">
+
+                <div class="achievement-icon">
+                    🗣️
+                </div>
+
+                <div class="achievement-title">
+                    أول كلمة
+                </div>
+
+                <small>
+                    قريباً...
+                </small>
+
+            </div>
+
+            <div class="achievement locked">
+
+                <div class="achievement-icon">
+                    👣
+                </div>
+
+                <div class="achievement-title">
+                    أول خطوة
+                </div>
+
+                <small>
+                    قريباً...
+                </small>
+
+            </div>
+
+            <div class="achievement locked">
+
+                <div class="achievement-icon">
+                    🎒
+                </div>
+
+                <div class="achievement-title">
+                    أول يوم مدرسة
+                </div>
+
+                <small>
+                    لسه بدري ❤️
+                </small>
+
+            </div>
+
+            <div class="achievement locked">
+
+                <div class="achievement-icon">
+                    🎓
+                </div>
+
+                <div class="achievement-title">
+                    يوم التخرج
+                </div>
+
+                <small>
+                    الحكاية طويلة 👑
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =====================
+         الرسالة السرية
+    ====================== -->
+
+    <div
+        class="info-box secret-box"
+    >
+
+        <h3>
+            🔐 الرسالة السرية
+        </h3>
+
+        <p>
+            في كلمة سر مخبية لنيلسي 👀
         </p>
 
         <input
             type="password"
             id="secret-input"
             class="secret-input"
-            placeholder="اكتبي كلمة السر"
+            placeholder="اكتبي كلمة السر..."
         >
 
         <button
             class="secret-btn"
-            onclick="unlockSecret()"
+            onclick="checkSecret()"
         >
-            🔓 افتحي الرسالة
+            افتحي السر 🔐
         </button>
 
         <div
-            class="secret-result"
             id="secret-result"
+            class="secret-result"
         >
-            🌸 كلمة السر صح! 🌸
-            <br><br>
-            نيلسي...
+
+            👑❤️
+
             <br>
-            ربنا يجعل أيامك كلها نور وفرحة،
-            ويكتب لك في كل خطوة خير،
-            ويحفظ قلبك من كل سوء. 🤍
-            <br><br>
-            👑 إنتِ أميرة من يوم ما جيتي الدنيا.
+
+            السر إن نيلسي من يوم ما وصلت
+            بقت أغلى حاجة في المملكة.
+
+            <br>
+
+            ومفيش كلمة في الدنيا
+            توصف قد إيه هي محبوبة.
+
+            🌸
+
         </div>
 
     </div>
 
-    <!-- الموسيقى -->
+    <!-- =====================
+         نهاية المملكة
+    ====================== -->
 
-    <div style="text-align:center;margin-top:25px;">
+    <div
+        class="info-box"
+        style="text-align:center;"
+    >
 
-        <div
-            class="music-visualizer"
-            id="music-bars"
+        <div class="glowing-crown">
+            👑
+        </div>
+
+        <h2
+            style="
+            color:var(--dark-pink);
+            font-family:'Amiri',serif;
+            "
         >
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
+            نهاية الحكاية؟
+        </h2>
 
-        <small>
-            🎵 موسيقى مملكة نيلسي
-        </small>
+        <p
+            style="
+            font-size:1.1rem;
+            font-weight:bold;
+            "
+        >
+
+            لا...
+
+            <br>
+
+            دي لسه أول صفحة
+            في حكاية الأميرة نيلسي. ❤️
+
+            <br><br>
+
+            🌸 👑 🍼 ❤️ ✨
+
+        </p>
+
+        <button
+            class="play-btn"
+            onclick="celebrateAgain()"
+        >
+            احتفل بنيلسي 🎉
+        </button>
 
     </div>
-
-    <!-- واتساب -->
-
-    <a
-        href="https://wa.me/201145640722?text=ألف%20مبروك%20للأب%20الغالي%20إسلام%20بقدوم%20الأميرة%20نيلسي!%20🌸%20تتربى%20في%20عزك%20ودلالك،%20وربنا%20يحفظها%20ويجعلها%20من%20الذرية%20الصالحة%20يا%20رب%20👑"
-        class="whatsapp-btn"
-        target="_blank"
-    >
-        💬 بارك للأب إسلام عبر واتساب
-    </a>
-
-    <p
-        style="
-        margin-top:25px;
-        color:var(--dark-pink);
-        font-weight:bold;
-        "
-    >
-        🌸 انتهت الحكاية... لكن حكاية نيلسي لسه بتبدأ 🌸
-    </p>
 
 </div>
 
-<!-- الأصوات -->
-
-<audio
-    id="bg-music"
-    src="05.Elsobooa.mp3"
-    loop
-></audio>
-
-<audio
-    id="laugh-sound"
-    src="https://actions.google.com/sounds/v1/human_voices/baby_laugh.ogg"
-></audio>
 
 <script>
 
-/* =========================
-   تاريخ الميلاد
-========================= */
+/* =====================================================
+   إعدادات المملكة
+===================================================== */
 
-const birthDate = new Date("2026-09-03T00:00:00");
+const birthDate =
+new Date("2026-09-03T00:00:00");
 
-/* =========================
-   الرسالة الأولى
-========================= */
+let loveCount =
+parseInt(
+    localStorage.getItem("nelsyLove") || "0"
+);
+
+let musicStarted = false;
+
+let audioContext = null;
+
+let musicTimer = null;
+
+let melodyIndex = 0;
+
+
+/* =====================================================
+   الكتابة الافتتاحية
+===================================================== */
 
 const startMessage =
-"بما إنك وصلت لهنا..|فأنت شخص غالي عندنا 🤍|أهلاً بك في مملكة الأميرة نيلسي 👑|هنا بدأت أجمل حكاية في 2026 🌸";
+"في يومٍ جميل من أيام سبتمبر... 🌸\n" +
+"وُلدت أميرة صغيرة 👑\n" +
+"وجاءت معها فرحة لا تشبه أي فرحة...\n" +
+"ومن يومها بدأت أجمل حكاية في المملكة. ❤️";
 
-let startCharIndex = 0;
+let startIndex = 0;
 
-function typeStartScreen(){
+function typeStartText(){
 
-    const el =
-        document.getElementById("start-text");
+    const element =
+    document.getElementById("start-text");
 
-    if(startCharIndex < startMessage.length){
+    if(startIndex < startMessage.length){
 
-        let char =
-            startMessage.charAt(startCharIndex);
+        const char =
+        startMessage.charAt(startIndex);
 
-        if(char === "|"){
-            el.innerHTML += "<br><br>";
+        if(char === "\n"){
+            element.innerHTML += "<br>";
         }else{
-            el.innerHTML += char;
+            element.innerHTML += char;
         }
 
-        startCharIndex++;
+        startIndex++;
 
         setTimeout(
-            typeStartScreen,
+            typeStartText,
             55
         );
 
     }else{
 
-        el.classList.add("done");
+        element.classList.add("done");
 
         document.getElementById(
             "enter-btn"
         ).style.display = "inline-block";
+
     }
 }
 
 setTimeout(
-    typeStartScreen,
-    500
+    typeStartText,
+    700
 );
 
-/* =========================
-   دخول المملكة
-========================= */
+
+/* =====================================================
+   الرسالة الرئيسية
+===================================================== */
 
 const mainMessage =
-"﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾|الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.|اللهم اجعلها قرة عين لنا واحفظها وبارك فيها.";
+"نيلسي... 🌸\n" +
+"من أول لحظة جيتي فيها الدنيا،\n" +
+"إنتي بقيتي جزء من أجمل حكاية.\n" +
+"ربنا يحفظك ويبارك في عمرك،\n" +
+"ويخلي كل أيامك فرحة ونور وحب. 👑❤️";
 
-let mainCharIndex = 0;
+function typeMainText(){
+
+    const element =
+    document.getElementById("main-text");
+
+    let index = 0;
+
+    element.innerHTML = "";
+
+    function write(){
+
+        if(index < mainMessage.length){
+
+            const char =
+            mainMessage.charAt(index);
+
+            if(char === "\n"){
+                element.innerHTML += "<br>";
+            }else{
+                element.innerHTML += char;
+            }
+
+            index++;
+
+            setTimeout(
+                write,
+                45
+            );
+
+        }
+
+    }
+
+    write();
+}
+
+
+/* =====================================================
+   الدخول للمملكة
+===================================================== */
 
 function startExperience(){
 
@@ -1234,248 +2610,384 @@ function startExperience(){
         "main-content"
     ).style.display = "block";
 
-    fireConfetti();
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
-    const music =
-        document.getElementById("bg-music");
+    createConfetti(80);
 
-    music.volume = .35;
+    createFloatingItems();
 
-    music.play().then(()=>{
+    typeMainText();
 
-        document.getElementById(
-            "music-btn"
-        ).innerHTML = "🔊";
+    startAgeCounter();
 
-    }).catch(()=>{});
+    updateLove();
 
-    updateCounters();
+    startNicknameChanger();
 
-    setInterval(
-        updateCounters,
-        1000
+    startAutomaticMusic();
+
+    showToast(
+        "أهلاً بيكم في مملكة نيلسي 👑❤️"
     );
 
     setTimeout(
-        typeMainText,
-        500
+        createConfetti,
+        900,
+        50
     );
-
-    startNickname();
-
 }
 
-/* =========================
-   الكتابة
-========================= */
 
-function typeMainText(){
+/* =====================================================
+   الموسيقى التلقائية
+===================================================== */
 
-    const el =
-        document.getElementById("main-text");
+/*
+   المتصفح قد يمنع الصوت قبل تفاعل المستخدم.
+   لذلك نحاول تشغيل موسيقى بسيطة تلقائياً،
+   ونكرر المحاولة عند أول تفاعل.
+*/
 
-    if(mainCharIndex < mainMessage.length){
+function startAutomaticMusic(){
 
-        let char =
-            mainMessage.charAt(mainCharIndex);
+    if(musicStarted){
+        return;
+    }
 
-        if(char === "|"){
-            el.innerHTML += "<br><br>";
-        }else{
-            el.innerHTML += char;
+    try{
+
+        audioContext =
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+        if(
+            audioContext.state ===
+            "suspended"
+        ){
+            audioContext.resume();
         }
 
-        mainCharIndex++;
+        musicStarted = true;
 
-        setTimeout(
-            typeMainText,
-            45
+        playSoftMelody();
+
+    }catch(error){
+
+        console.log(
+            "Audio autoplay blocked"
         );
 
-    }else{
-
-        el.style.borderRight = "none";
     }
 }
 
-/* =========================
-   عداد العمر
-========================= */
+function playSoftMelody(){
 
-function updateCounters(){
-
-    const now = new Date();
-
-    let diff = now - birthDate;
-
-    if(diff < 0){
-        diff = 0;
+    if(!audioContext){
+        return;
     }
 
-    const second =
-        Math.floor(diff / 1000);
+    const notes = [
+        261.63,
+        329.63,
+        392.00,
+        329.63,
+        293.66,
+        349.23,
+        440.00,
+        349.23
+    ];
+
+    const frequency =
+    notes[melodyIndex];
+
+    melodyIndex =
+    (melodyIndex + 1)
+    % notes.length;
+
+    const oscillator =
+    audioContext.createOscillator();
+
+    const gain =
+    audioContext.createGain();
+
+    oscillator.type =
+    "sine";
+
+    oscillator.frequency.value =
+    frequency;
+
+    gain.gain.setValueAtTime(
+        0,
+        audioContext.currentTime
+    );
+
+    gain.gain.linearRampToValueAtTime(
+        .035,
+        audioContext.currentTime + .1
+    );
+
+    gain.gain.linearRampToValueAtTime(
+        0,
+        audioContext.currentTime + 1.2
+    );
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioContext.destination
+    );
+
+    oscillator.start();
+
+    oscillator.stop(
+        audioContext.currentTime + 1.3
+    );
+
+    musicTimer =
+    setTimeout(
+        playSoftMelody,
+        1250
+    );
+}
+
+
+/* =====================================================
+   تشغيل الصوت مع أول تفاعل
+===================================================== */
+
+function unlockAudio(){
+
+    if(
+        audioContext &&
+        audioContext.state ===
+        "suspended"
+    ){
+
+        audioContext.resume();
+    }
+
+    if(!musicStarted){
+        startAutomaticMusic();
+    }
+
+}
+
+document.addEventListener(
+    "touchstart",
+    unlockAudio,
+    {once:true}
+);
+
+document.addEventListener(
+    "click",
+    unlockAudio,
+    {once:true}
+);
+
+
+/* =====================================================
+   عداد العمر
+===================================================== */
+
+function startAgeCounter(){
+
+    updateAge();
+
+    setInterval(
+        updateAge,
+        1000
+    );
+}
+
+function updateAge(){
+
+    const now =
+    new Date();
+
+    let difference =
+    now - birthDate;
+
+    if(difference < 0){
+        difference = 0;
+    }
+
+    const totalSeconds =
+    Math.floor(
+        difference / 1000
+    );
 
     const days =
-        Math.floor(second / 86400);
+    Math.floor(
+        totalSeconds / 86400
+    );
 
     const hours =
-        Math.floor(
-            (second % 86400) / 3600
-        );
+    Math.floor(
+        (totalSeconds % 86400)
+        / 3600
+    );
 
     const minutes =
-        Math.floor(
-            (second % 3600) / 60
-        );
+    Math.floor(
+        (totalSeconds % 3600)
+        / 60
+    );
 
     const seconds =
-        second % 60;
+    totalSeconds % 60;
 
     document.getElementById(
-        "age-counter"
-    ).innerHTML =
-        `${days} يوم<br>
-        <span style="font-size:.85rem">
-        ${hours} س • ${minutes} د • ${seconds} ث
-        </span>`;
+        "age-days"
+    ).textContent =
+    days;
 
-    /* متوسط 140 نبضة في الدقيقة */
+    document.getElementById(
+        "age-hours"
+    ).textContent =
+    hours;
 
-    const totalHeartbeats =
-        Math.floor(
-            (diff / 60000) * 140
-        );
+    document.getElementById(
+        "age-minutes"
+    ).textContent =
+    minutes;
+
+    document.getElementById(
+        "age-seconds"
+    ).textContent =
+    seconds;
+
+    document.getElementById(
+        "total-seconds"
+    ).textContent =
+    totalSeconds.toLocaleString("ar-EG");
+
+    /*
+      متوسط تقريبي للتصميم فقط:
+      120 نبضة في الدقيقة
+    */
+
+    const heartbeats =
+    Math.floor(
+        totalSeconds * 2
+    );
 
     document.getElementById(
         "heartbeat-counter"
-    ).innerHTML =
-        totalHeartbeats.toLocaleString("ar-EG");
+    ).textContent =
+    heartbeats.toLocaleString("ar-EG");
 
 }
 
-/* =========================
+
+/* =====================================================
    الألقاب
-========================= */
+===================================================== */
 
 const nicknames = [
+
     "قمر البيت 🌙",
-    "أميرة العيلة 👑",
-    "نور الدنيا ✨",
-    "حبيبة القلوب ❤️",
-    "الكتكوتة الصغيرة 🐣",
+    "أميرة بابا 👑",
+    "حتة من القلب ❤️",
+    "سكر العيلة 🍬",
     "فرحة البيت 🌸",
-    "سكر زيادة 🍭",
-    "نجمة العيلة ⭐"
+    "آخر العنقود 🍼",
+    "نور المملكة ✨",
+    "دلوعة الكل 🥰",
+    "أجمل أميرة 👑",
+    "روح البيت 🤍"
+
 ];
 
 let nicknameIndex = 0;
 
-function startNickname(){
+function startNicknameChanger(){
 
-    setInterval(()=>{
+    setInterval(
 
-        nicknameIndex++;
+        function(){
 
-        if(nicknameIndex >= nicknames.length){
-            nicknameIndex = 0;
-        }
+            nicknameIndex =
+            (nicknameIndex + 1)
+            % nicknames.length;
 
-        const el =
+            const text =
+            nicknames[nicknameIndex];
+
+            const one =
             document.getElementById(
+                "main-nickname"
+            );
+
+            const two =
+            document.getElementById(
+                "nickname-change"
+            );
+
+            one.classList.remove(
                 "nickname"
             );
 
-        el.style.animation = "none";
+            two.classList.remove(
+                "nickname"
+            );
 
-        void el.offsetWidth;
+            void one.offsetWidth;
+            void two.offsetWidth;
 
-        el.style.animation =
-            "nameChange .8s";
+            one.classList.add(
+                "nickname"
+            );
 
-        el.innerText =
-            nicknames[nicknameIndex];
+            two.classList.add(
+                "nickname"
+            );
 
-    },3000);
+            one.textContent =
+            text;
+
+            two.textContent =
+            text;
+
+        },
+
+        3000
+    );
 }
 
-/* =========================
-   الكونفيتي
-========================= */
 
-function fireConfetti(){
-
-    const wrapper =
-        document.getElementById(
-            "confetti-wrapper"
-        );
-
-    const emojis = [
-        "🌸",
-        "🎉",
-        "✨",
-        "🤍",
-        "🎀",
-        "👑",
-        "💗",
-        "⭐",
-        "🎈"
-    ];
-
-    for(let i=0;i<90;i++){
-
-        const conf =
-            document.createElement("div");
-
-        conf.className = "confetti";
-
-        conf.innerText =
-            emojis[
-                Math.floor(
-                    Math.random()*emojis.length
-                )
-            ];
-
-        conf.style.left =
-            Math.random()*100+"vw";
-
-        conf.style.animationDuration =
-            (2+Math.random()*4)+"s";
-
-        conf.style.animationDelay =
-            Math.random()*1.5+"s";
-
-        wrapper.appendChild(conf);
-    }
-
-    setTimeout(()=>{
-        wrapper.innerHTML = "";
-    },7000);
-}
-
-/* =========================
+/* =====================================================
    الببرونة
-========================= */
+===================================================== */
+
+const bottleMessages = [
+
+    "نيلسي بتقول: أنا جعانة 😂🍼",
+
+    "حد يجيب اللبن للأميرة بسرعة 👑😂",
+
+    "ممنوع حد يقرب من الببرونة دي 😂❤️",
+
+    "الأميرة طلبت وجبتها الملكية 🍼👑",
+
+    "نيلسي قالت كفاية لعب وعايزة لبن 😂",
+
+    "يا جماعة الأميرة بتنده عليكم 😂❤️"
+
+];
+
+let bottleIndex = 0;
 
 function playToySound(){
 
-    const sound =
-        document.getElementById(
-            "laugh-sound"
-        );
-
     const bottle =
-        document.getElementById(
-            "bottle-toy"
-        );
-
-    const message =
-        document.getElementById(
-            "toy-message"
-        );
-
-    sound.currentTime = 0;
-
-    sound.play().catch(()=>{});
+    document.getElementById(
+        "bottle-toy"
+    );
 
     bottle.classList.remove(
         "shake-animation"
@@ -1487,200 +2999,526 @@ function playToySound(){
         "shake-animation"
     );
 
-    const messages = [
-        "نيلسي بتضحك 😂❤️",
-        "ياااااه! كده نيلسي فرحت 🥹",
-        "حد يلحق الكتكوتة 😂🍼",
-        "أحلى ضحكة في الدنيا ❤️",
-        "نيلسي قالتلك: بحبكم 👑❤️"
-    ];
+    const message =
+    document.getElementById(
+        "toy-message"
+    );
 
-    message.innerText =
-        messages[
-            Math.floor(
-                Math.random()*messages.length
-            )
-        ];
+    message.textContent =
+    bottleMessages[bottleIndex];
+
+    bottleIndex =
+    (bottleIndex + 1)
+    % bottleMessages.length;
 
     createHearts(
-        window.innerWidth/2,
-        window.innerHeight/2
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+    softBeep(
+        520,
+        .12
     );
 }
 
-/* =========================
-   الحب
-========================= */
 
-let loveCount = 0;
+/* =====================================================
+   الحب
+===================================================== */
+
+function updateLove(){
+
+    document.getElementById(
+        "love-count"
+    ).textContent =
+    loveCount.toLocaleString("ar-EG")
+    + " ❤️";
+}
 
 function sendLove(){
 
     loveCount++;
 
-    document.getElementById(
-        "love-count"
-    ).innerText =
-        loveCount.toLocaleString("ar-EG")
-        + " ❤️";
-
-    createHearts(
-        window.innerWidth/2,
-        window.innerHeight*.7
+    localStorage.setItem(
+        "nelsyLove",
+        loveCount
     );
 
+    updateLove();
+
+    const button =
+    document.querySelector(
+        ".love-button"
+    );
+
+    button.style.transform =
+    "scale(.92)";
+
+    setTimeout(
+        function(){
+
+            button.style.transform =
+            "scale(1)";
+
+        },
+        120
+    );
+
+    const rect =
+    button.getBoundingClientRect();
+
+    createHearts(
+        rect.left +
+        rect.width / 2,
+
+        rect.top +
+        rect.height / 2
+    );
+
+    if(
+        loveCount === 10 ||
+        loveCount === 50 ||
+        loveCount === 100
+    ){
+
+        createConfetti(35);
+
+        showToast(
+            "نيلسي خدت "
+            + loveCount
+            + " حضن ❤️"
+        );
+
+    }
+
+    softBeep(
+        660,
+        .1
+    );
 }
 
-/* =========================
-   القلوب
-========================= */
 
-function createHearts(x,y){
+/* =====================================================
+   القلوب
+===================================================== */
+
+function createHearts(
+    x,
+    y
+){
 
     const hearts = [
         "❤️",
         "💗",
         "💕",
         "💖",
-        "🌸"
+        "💓"
     ];
 
-    for(let i=0;i<8;i++){
+    for(
+        let i = 0;
+        i < 7;
+        i++
+    ){
 
         const heart =
-            document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
         heart.className =
-            "flying-heart";
+        "flying-heart";
 
-        heart.innerText =
-            hearts[
-                Math.floor(
-                    Math.random()*hearts.length
-                )
-            ];
+        heart.textContent =
+        hearts[
+            Math.floor(
+                Math.random()
+                * hearts.length
+            )
+        ];
 
         heart.style.left =
-            x+"px";
+        x + "px";
 
         heart.style.top =
-            y+"px";
+        y + "px";
 
         heart.style.setProperty(
             "--x",
-            ((Math.random()-.5)*180)+"px"
+            (
+                Math.random()
+                * 160 - 80
+            ) + "px"
         );
 
         document.body.appendChild(
             heart
         );
 
-        setTimeout(()=>{
-            heart.remove();
-        },1600);
+        setTimeout(
+            function(){
+                heart.remove();
+            },
+            1600
+        );
     }
 }
 
-/* =========================
-   المفاجأة
-========================= */
+
+/* =====================================================
+   الكونفيتي
+===================================================== */
+
+function createConfetti(
+    amount = 50
+){
+
+    const wrapper =
+    document.getElementById(
+        "confetti-wrapper"
+    );
+
+    const symbols = [
+        "🌸",
+        "💗",
+        "✨",
+        "👑",
+        "💕",
+        "🌷"
+    ];
+
+    for(
+        let i = 0;
+        i < amount;
+        i++
+    ){
+
+        const item =
+        document.createElement(
+            "div"
+        );
+
+        item.className =
+        "confetti";
+
+        item.textContent =
+        symbols[
+            Math.floor(
+                Math.random()
+                * symbols.length
+            )
+        ];
+
+        item.style.left =
+        Math.random() * 100
+        + "%";
+
+        item.style.animationDuration =
+        (
+            2 +
+            Math.random() * 4
+        )
+        + "s";
+
+        item.style.animationDelay =
+        (
+            Math.random() * 1
+        )
+        + "s";
+
+        wrapper.appendChild(
+            item
+        );
+
+        setTimeout(
+            function(){
+                item.remove();
+            },
+            6500
+        );
+    }
+}
+
+
+/* =====================================================
+   الخلفية المتحركة
+===================================================== */
+
+function createFloatingItems(){
+
+    const container =
+    document.getElementById(
+        "floating-container"
+    );
+
+    const symbols = [
+        "🌸",
+        "🌷",
+        "💗",
+        "✨",
+        "🦋",
+        "💕",
+        "⭐",
+        "👑"
+    ];
+
+    for(
+        let i = 0;
+        i < 25;
+        i++
+    ){
+
+        const item =
+        document.createElement(
+            "div"
+        );
+
+        item.className =
+        "float-item";
+
+        item.textContent =
+        symbols[
+            Math.floor(
+                Math.random()
+                * symbols.length
+            )
+        ];
+
+        item.style.left =
+        Math.random() * 100
+        + "%";
+
+        item.style.fontSize =
+        (
+            15 +
+            Math.random() * 25
+        )
+        + "px";
+
+        item.style.animationDuration =
+        (
+            8 +
+            Math.random() * 12
+        )
+        + "s";
+
+        item.style.animationDelay =
+        (
+            Math.random() * 10
+        )
+        + "s";
+
+        container.appendChild(
+            item
+        );
+    }
+}
+
+
+/* =====================================================
+   المفاجأة الأساسية
+===================================================== */
 
 function openSurprise(){
 
-    const box =
-        document.getElementById(
-            "surprise-message"
-        );
+    const message =
+    document.getElementById(
+        "surprise-message"
+    );
 
-    box.style.display = "block";
+    if(
+        message.style.display ===
+        "block"
+    ){
 
-    fireConfetti();
+        message.style.display =
+        "none";
 
-    createHearts(
-        window.innerWidth/2,
-        window.innerHeight/2
+        return;
+    }
+
+    message.style.display =
+    "block";
+
+    createConfetti(60);
+
+    softBeep(
+        740,
+        .15
+    );
+
+    setTimeout(
+        function(){
+
+            createHearts(
+                window.innerWidth / 2,
+                window.innerHeight / 2
+            );
+
+        },
+        300
     );
 }
 
-/* =========================
-   الرسالة السرية
-========================= */
 
-function unlockSecret(){
+/* =====================================================
+   المفاجآت الثلاث
+===================================================== */
 
-    const input =
-        document.getElementById(
-            "secret-input"
-        );
+function openGift(
+    number
+){
 
     const result =
-        document.getElementById(
-            "secret-result"
+    document.getElementById(
+        "gift-result"
+    );
+
+    const messages = {
+
+        1:
+        "💌 رسالة: يا نيلسي، كل سنة تكبري فيها تكون سنة جديدة من الفرح والحب والضحك. ❤️",
+
+        2:
+        "💗 حب: لو كل ضغطة قلب كانت حضن، فإنتي دلوقتي خدتي حضن من المملكة كلها. 🥹❤️",
+
+        3:
+        "👑 السر: إنتي مش الأميرة عشان عندك تاج... إنتي الأميرة لأنك ملكتي قلوبنا. 👑❤️"
+
+    };
+
+    result.textContent =
+    messages[number];
+
+    result.style.display =
+    "block";
+
+    createHearts(
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+    softBeep(
+        580 + number * 100,
+        .15
+    );
+}
+
+
+/* =====================================================
+   رسائل العيلة
+===================================================== */
+
+function familyMessage(
+    card,
+    name
+){
+
+    const message =
+    card.querySelector(
+        ".family-message"
+    );
+
+    const visible =
+    message.style.display ===
+    "block";
+
+    document
+    .querySelectorAll(
+        ".family-message"
+    )
+    .forEach(
+        function(item){
+            item.style.display =
+            "none";
+        }
+    );
+
+    if(!visible){
+
+        message.style.display =
+        "block";
+
+        showToast(
+            "رسالة من " + name + " ❤️"
         );
 
+    }
+}
+
+
+/* =====================================================
+   كلمة السر
+===================================================== */
+
+function checkSecret(){
+
+    const input =
+    document.getElementById(
+        "secret-input"
+    );
+
+    const result =
+    document.getElementById(
+        "secret-result"
+    );
+
+    const value =
+    input.value
+    .trim()
+    .toLowerCase();
+
     /*
-       كلمة السر:
-       نيلسي
+      كلمات السر المقبولة
     */
 
+    const passwords = [
+        "nelsy",
+        "نيلسي",
+        "nilsie",
+        "nelcy",
+        "03-09-2026"
+    ];
+
     if(
-        input.value.trim() === "نيلسي" ||
-        input.value.trim().toLowerCase() === "nilsy"
+        passwords.includes(value)
     ){
 
         result.style.display =
-            "block";
+        "block";
 
-        fireConfetti();
+        createConfetti(70);
+
+        createHearts(
+            window.innerWidth / 2,
+            window.innerHeight / 2
+        );
+
+        showToast(
+            "تم فتح السر 👑❤️"
+        );
 
     }else{
 
-        alert(
-            "كلمة السر مش صح 😄❤️"
+        result.style.display =
+        "none";
+
+        showToast(
+            "الكلمة مش صح 😏🔐"
+        );
+
+        softBeep(
+            220,
+            .15
         );
     }
 }
 
-/* =========================
-   الموسيقى
-========================= */
 
-let musicPlaying = false;
-
-function toggleMusic(){
-
-    const music =
-        document.getElementById(
-            "bg-music"
-        );
-
-    const btn =
-        document.getElementById(
-            "music-btn"
-        );
-
-    if(music.paused){
-
-        music.play().then(()=>{
-
-            musicPlaying = true;
-            btn.innerHTML = "🔊";
-
-        }).catch(()=>{});
-
-    }else{
-
-        music.pause();
-
-        musicPlaying = false;
-
-        btn.innerHTML = "🔇";
-    }
-}
-
-/* =========================
+/* =====================================================
    الوضع الليلي
-========================= */
+===================================================== */
 
 function toggleTheme(){
 
@@ -1688,78 +3526,232 @@ function toggleTheme(){
         "dark"
     );
 
-    const btn =
-        document.getElementById(
-            "theme-btn"
+    const dark =
+    document.body.classList.contains(
+        "dark"
+    );
+
+    localStorage.setItem(
+        "nelsyDark",
+        dark
+        ? "1"
+        : "0"
+    );
+
+    document.getElementById(
+        "theme-btn"
+    ).textContent =
+    dark
+    ? "☀️"
+    : "🌙";
+}
+
+
+/* =====================================================
+   تحميل الوضع الليلي
+===================================================== */
+
+if(
+    localStorage.getItem(
+        "nelsyDark"
+    ) === "1"
+){
+
+    document.body.classList.add(
+        "dark"
+    );
+
+    document.getElementById(
+        "theme-btn"
+    ).textContent =
+    "☀️";
+}
+
+
+/* =====================================================
+   احتفال مرة أخرى
+===================================================== */
+
+function celebrateAgain(){
+
+    createConfetti(120);
+
+    createHearts(
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+    showToast(
+        "تحيا الأميرة نيلسي 👑🎉❤️"
+    );
+
+    softBeep(
+        880,
+        .2
+    );
+
+    setTimeout(
+        function(){
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        },
+        300
+    );
+}
+
+
+/* =====================================================
+   Toast
+===================================================== */
+
+function showToast(
+    text
+){
+
+    const toast =
+    document.getElementById(
+        "toast"
+    );
+
+    toast.textContent =
+    text;
+
+    toast.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+    window.toastTimer =
+    setTimeout(
+        function(){
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        2500
+    );
+}
+
+
+/* =====================================================
+   أصوات بسيطة للتفاعلات
+===================================================== */
+
+function softBeep(
+    frequency = 600,
+    duration = .1
+){
+
+    try{
+
+        if(!audioContext){
+
+            audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+        }
+
+        if(
+            audioContext.state ===
+            "suspended"
+        ){
+
+            audioContext.resume();
+        }
+
+        const oscillator =
+        audioContext.createOscillator();
+
+        const gain =
+        audioContext.createGain();
+
+        oscillator.type =
+        "sine";
+
+        oscillator.frequency.value =
+        frequency;
+
+        gain.gain.setValueAtTime(
+            .0001,
+            audioContext.currentTime
         );
 
-    if(
-        document.body.classList.contains(
-            "dark"
-        )
-    ){
+        gain.gain.exponentialRampToValueAtTime(
+            .04,
+            audioContext.currentTime + .02
+        );
 
-        btn.innerHTML = "☀️";
+        gain.gain.exponentialRampToValueAtTime(
+            .0001,
+            audioContext.currentTime + duration
+        );
 
-    }else{
+        oscillator.connect(gain);
 
-        btn.innerHTML = "🌙";
+        gain.connect(
+            audioContext.destination
+        );
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioContext.currentTime
+            + duration
+            + .03
+        );
+
+    }catch(error){
+
+        console.log(
+            "Sound unavailable"
+        );
+
     }
 }
 
-/* =========================
-   الخلفية
-========================= */
 
-function createBackgroundElements(){
+/* =====================================================
+   أول محاولة للموسيقى
+===================================================== */
 
-    const container =
-        document.getElementById(
-            "floating-container"
+window.addEventListener(
+    "load",
+    function(){
+
+        /*
+          محاولة تلقائية.
+          لو المتصفح منع الصوت،
+          أول تفاعل سيقوم بتفعيله.
+        */
+
+        setTimeout(
+            startAutomaticMusic,
+            500
         );
 
-    const items = [
-        "🌸",
-        "✨",
-        "🎀",
-        "🍼",
-        "💗",
-        "⭐",
-        "👑"
-    ];
-
-    for(let i=0;i<25;i++){
-
-        const el =
-            document.createElement("div");
-
-        el.className =
-            "float-item";
-
-        el.innerText =
-            items[
-                Math.floor(
-                    Math.random()*items.length
-                )
-            ];
-
-        el.style.left =
-            Math.random()*100+"vw";
-
-        el.style.animationDuration =
-            (8+Math.random()*10)+"s";
-
-        el.style.animationDelay =
-            Math.random()*10+"s";
-
-        el.style.fontSize =
-            (15+Math.random()*20)+"px";
-
-        container.appendChild(el);
     }
-}
+);
 
-createBackgroundElements();
+
+/* =====================================================
+   تحديث العدادات
+===================================================== */
+
+updateAge();
+
+updateLove();
 
 </script>
 
