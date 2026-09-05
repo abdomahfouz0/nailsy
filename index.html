@@ -1,372 +1,1767 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مملكة الأميرة نيلسي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #fdf2f4;
-            --primary-pink: #e68a9b;
-            --dark-pink: #c76b7c;
-            --maroon: #800020;
-            --text-color: #5a4a4d;
-        }
-        body {
-            margin: 0; padding: 0;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf2f4 100%);
-            font-family: 'Cairo', sans-serif;
-            color: var(--text-color);
-            overflow-x: hidden;
-            display: flex; flex-direction: column; align-items: center;
-            min-height: 100vh;
-        }
-        
-        .floating-elements {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
-        }
-        .float-item { position: absolute; opacity: 0.5; animation: floatUp linear infinite; }
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
-        }
-        
-        /* الحاوية الزجاجية */
-        .container {
-            z-index: 1; max-width: 600px; width: 90%;
-            padding: 40px 20px; text-align: center;
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 40px; box-shadow: 0 15px 35px rgba(230, 138, 155, 0.25);
-            margin: 50px 0; border: 3px dashed var(--primary-pink);
-            backdrop-filter: blur(8px); position: relative;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مملكة الأميرة نيلسي 👑</title>
 
-        /* عنوان الشاشة الرئيسية */
-        .crown-icon { font-size: 4rem; animation: floatCrown 3s ease-in-out infinite; display: inline-block; }
-        @keyframes floatCrown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        
-        .main-title {
-            color: var(--dark-pink); font-family: 'Amiri', serif;
-            font-size: 3.2rem; margin-top: 10px; margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(230,138,155,0.4);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
 
-        /* مؤثرات الكتابة */
-        .start-typewriter {
-            font-size: 1.6rem; line-height: 2; font-weight: 700;
-            color: var(--dark-pink); min-height: 150px; text-align: center;
-        }
-        .start-typewriter::after { content: '|'; animation: blink 0.7s infinite; }
-        .start-typewriter.done::after { display: none; }
+<style>
+:root{
+    --bg:#fdf2f4;
+    --card:rgba(255,255,255,.88);
+    --pink:#e68a9b;
+    --dark-pink:#c76b7c;
+    --maroon:#800020;
+    --text:#5a4a4d;
+    --shadow:rgba(230,138,155,.25);
+}
 
-        .typewriter-text {
-            font-size: 1.2rem; line-height: 1.8; font-weight: 700;
-            color: var(--text-color); min-height: 130px; text-align: right;
-            display: inline-block; padding: 15px; background: rgba(255, 255, 255, 0.5);
-            border-radius: 15px; border-right: 4px solid var(--primary-pink);
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+*{
+    box-sizing:border-box;
+}
 
-        /* الصناديق */
-        .info-box {
-            background: linear-gradient(135deg, #ffffff, #fdf2f4);
-            padding: 20px; border-radius: 25px;
-            box-shadow: 0 8px 20px rgba(230, 138, 155, 0.15);
-            border-bottom: 4px solid var(--primary-pink);
-            margin-top: 25px; text-align: right; opacity: 0;
-        }
-        .info-box h3 { color: var(--dark-pink); margin-top: 0; margin-bottom: 15px; border-bottom: 2px dashed var(--primary-pink); padding-bottom: 8px; display: inline-block; font-size: 1.3rem; }
-        .info-box p { margin: 0; font-size: 1.1rem; line-height: 1.8; }
+html{
+    scroll-behavior:smooth;
+}
 
-        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-1 { animation: slideUpFade 0.8s ease forwards 0.5s; }
-        .animate-2 { animation: slideUpFade 0.8s ease forwards 1s; }
-        .animate-3 { animation: slideUpFade 0.8s ease forwards 1.5s; }
-        .animate-4 { animation: slideUpFade 0.8s ease forwards 2s; }
-        .animate-5 { animation: slideUpFade 0.8s ease forwards 2.5s; }
+body{
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 0%,#fff 0%,var(--bg) 70%);
+    font-family:'Cairo',sans-serif;
+    color:var(--text);
+    overflow-x:hidden;
+    transition:.5s;
+}
 
-        /* العدادات */
-        .counters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .counter-value { font-size: 1.5rem; font-weight: 900; color: var(--primary-pink); margin-top: 10px; }
+/* =========================
+   الوضع الليلي
+========================= */
 
-        /* الببرونة التفاعلية */
-        .interactive-toy { text-align: center; padding: 10px 0; }
-        .bottle-btn { background: none; border: none; cursor: pointer; transition: transform 0.2s; outline: none; }
-        .bottle-btn svg { filter: drop-shadow(0px 8px 5px rgba(0,0,0,0.15)); }
-        .bottle-btn:hover { transform: scale(1.1); }
-        .shake-animation { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
-        @keyframes shake {
-            10%, 90% { transform: translate3d(-2px, 0, 0) rotate(-5deg); }
-            20%, 80% { transform: translate3d(4px, 0, 0) rotate(5deg); }
-            30%, 50%, 70% { transform: translate3d(-6px, 0, 0) rotate(-10deg); }
-            40%, 60% { transform: translate3d(6px, 0, 0) rotate(10deg); }
-        }
+body.dark{
+    --bg:#170f18;
+    --card:rgba(39,25,38,.92);
+    --pink:#e99aaa;
+    --dark-pink:#ffb4c2;
+    --maroon:#ff8fa5;
+    --text:#f7e9ed;
+    --shadow:rgba(255,120,150,.15);
 
-        /* قائمة المحطات (Milestones) */
-        .milestones-list { list-style: none; padding: 0; margin: 0; }
-        .milestones-list li {
-            background: #fff; padding: 12px 15px; border-radius: 15px;
-            margin-bottom: 10px; font-weight: bold; color: var(--text-color);
-            display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            border-right: 3px solid #ddd;
-        }
-        .milestones-list li .icon { font-size: 1.5rem; margin-left: 15px; }
+    background:
+        radial-gradient(circle at 50% 0%,#3a2033 0%,#170f18 70%);
+}
 
-        /* مؤشر الموسيقى */
-        .music-visualizer {
-            display: flex; justify-content: center; align-items: flex-end;
-            height: 30px; gap: 5px; margin-top: 20px;
-        }
-        .bar { width: 6px; background-color: var(--primary-pink); border-radius: 3px; animation: bounceBar 0.5s infinite alternate; }
-        .bar:nth-child(2) { animation-delay: 0.2s; background-color: var(--dark-pink); }
-        .bar:nth-child(3) { animation-delay: 0.4s; }
-        .bar:nth-child(4) { animation-delay: 0.1s; background-color: var(--dark-pink); }
-        .bar:nth-child(5) { animation-delay: 0.3s; }
-        @keyframes bounceBar { from { height: 10px; } to { height: 30px; } }
+/* النجوم */
+body.dark::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+        radial-gradient(#fff 1px,transparent 1px),
+        radial-gradient(#fff 1px,transparent 1px);
+    background-size:70px 70px,110px 110px;
+    background-position:10px 20px,40px 60px;
+    opacity:.35;
+    z-index:0;
+}
 
-        /* الأزرار */
-        .play-btn {
-            background: linear-gradient(45deg, var(--primary-pink), var(--dark-pink));
-            color: white; border: none; padding: 15px 40px; font-size: 1.4rem;
-            border-radius: 50px; cursor: pointer; font-family: 'Cairo', sans-serif;
-            font-weight: bold; box-shadow: 0 8px 25px rgba(230, 138, 155, 0.5);
-            animation: bounceBtn 2s infinite; margin-top: 20px;
-        }
-        .play-btn:hover { background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink)); transform: scale(1.05); animation: none; }
-        @keyframes bounceBtn { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+/* =========================
+   عناصر الخلفية
+========================= */
 
-        .action-btns-container { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; align-items: center; }
-        .whatsapp-btn, .share-btn {
-            display: flex; justify-content: center; align-items: center; gap: 10px;
-            color: white; text-decoration: none; padding: 15px 25px; font-size: 1.2rem;
-            border-radius: 50px; font-weight: bold; width: 85%; transition: all 0.3s ease;
-            border: none; cursor: pointer; font-family: 'Cairo', sans-serif;
-        }
-        .whatsapp-btn {
-            background: linear-gradient(45deg, #25D366, #1da851);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-        }
-        .share-btn {
-            background: linear-gradient(45deg, #a56c8f, #800020);
-            box-shadow: 0 8px 25px rgba(128, 0, 32, 0.4);
-        }
-        .whatsapp-btn:hover, .share-btn:hover { transform: scale(1.03) translateY(-3px); }
+#floating-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
 
-        #main-content { display: none; }
+.float-item{
+    position:absolute;
+    bottom:-50px;
+    opacity:.5;
+    animation:floatUp linear infinite;
+}
 
-        /* الكونفيتي (الانفجار) */
-        .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
-        .confetti { position: absolute; font-size: 20px; animation: fall 3s linear forwards; }
-        @keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
-    </style>
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    15%{
+        opacity:.7;
+    }
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   الحاويات
+========================= */
+
+.container{
+    position:relative;
+    z-index:5;
+    width:92%;
+    max-width:620px;
+    margin:35px auto;
+    padding:35px 20px;
+    text-align:center;
+    background:var(--card);
+    border:2px dashed var(--pink);
+    border-radius:38px;
+    box-shadow:0 20px 50px var(--shadow);
+    backdrop-filter:blur(12px);
+}
+
+#main-content{
+    display:none;
+}
+
+/* =========================
+   شاشة البداية
+========================= */
+
+.start-crown{
+    font-size:75px;
+    display:inline-block;
+    animation:crownFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes crownFloat{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-15px) rotate(3deg)}
+}
+
+.kingdom-title{
+    font-family:'Amiri',serif;
+    color:var(--dark-pink);
+    font-size:clamp(2.3rem,9vw,4rem);
+    margin:10px 0;
+    text-shadow:0 5px 20px var(--shadow);
+}
+
+.kingdom-date{
+    color:var(--maroon);
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.start-typewriter{
+    min-height:150px;
+    font-size:1.35rem;
+    line-height:2.2;
+    font-weight:bold;
+    color:var(--dark-pink);
+}
+
+.start-typewriter::after{
+    content:"|";
+    animation:blink .7s infinite;
+}
+
+.start-typewriter.done::after{
+    display:none;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+/* =========================
+   الأزرار
+========================= */
+
+.play-btn{
+    border:0;
+    color:white;
+    background:linear-gradient(45deg,var(--pink),var(--dark-pink));
+    padding:16px 40px;
+    border-radius:50px;
+    font-family:'Cairo';
+    font-size:1.3rem;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 30px var(--shadow);
+    animation:bounceBtn 2s infinite;
+}
+
+.play-btn:hover{
+    transform:scale(1.06);
+    animation:none;
+}
+
+@keyframes bounceBtn{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+/* =========================
+   العنوان
+========================= */
+
+.crown-icon{
+    font-size:65px;
+    animation:crownFloat 3s infinite;
+    display:inline-block;
+}
+
+.main-title{
+    font-family:'Amiri',serif;
+    color:var(--dark-pink);
+    font-size:3.4rem;
+    margin:5px 0 15px;
+}
+
+/* =========================
+   النص الرئيسي
+========================= */
+
+.typewriter-text{
+    font-size:1.15rem;
+    line-height:2.1;
+    font-weight:bold;
+    padding:20px;
+    border-right:5px solid var(--pink);
+    border-radius:18px;
+    background:rgba(255,255,255,.4);
+    min-height:150px;
+    text-align:right;
+}
+
+/* =========================
+   الصناديق
+========================= */
+
+.info-box{
+    margin-top:25px;
+    padding:22px;
+    border-radius:27px;
+    background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(253,242,244,.9));
+    border-bottom:4px solid var(--pink);
+    box-shadow:0 10px 25px var(--shadow);
+    text-align:right;
+    opacity:0;
+}
+
+body.dark .info-box{
+    background:linear-gradient(135deg,#342231,#241723);
+}
+
+.info-box h3{
+    color:var(--dark-pink);
+    margin:0 0 15px;
+    padding-bottom:8px;
+    border-bottom:2px dashed var(--pink);
+    display:inline-block;
+}
+
+.info-box p{
+    line-height:2;
+    margin:0;
+}
+
+/* =========================
+   ظهور العناصر
+========================= */
+
+.animate-1{
+    animation:slideUp .8s forwards .3s;
+}
+
+.animate-2{
+    animation:slideUp .8s forwards .6s;
+}
+
+.animate-3{
+    animation:slideUp .8s forwards .9s;
+}
+
+.animate-4{
+    animation:slideUp .8s forwards 1.2s;
+}
+
+.animate-5{
+    animation:slideUp .8s forwards 1.5s;
+}
+
+.animate-6{
+    animation:slideUp .8s forwards 1.8s;
+}
+
+.animate-7{
+    animation:slideUp .8s forwards 2.1s;
+}
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   العدادات
+========================= */
+
+.counters-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.counter-card{
+    background:rgba(255,255,255,.55);
+    padding:15px 5px;
+    border-radius:20px;
+}
+
+body.dark .counter-card{
+    background:rgba(255,255,255,.05);
+}
+
+.counter-title{
+    color:var(--dark-pink);
+    font-weight:bold;
+    font-size:.9rem;
+}
+
+.counter-value{
+    color:var(--pink);
+    font-size:1.3rem;
+    font-weight:900;
+    margin-top:8px;
+}
+
+/* =========================
+   الخط الزمني
+========================= */
+
+.timeline{
+    position:relative;
+    padding-right:20px;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    right:8px;
+    top:0;
+    bottom:0;
+    width:3px;
+    background:var(--pink);
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:20px;
+    padding:15px 20px;
+    background:rgba(255,255,255,.65);
+    border-radius:18px;
+    margin-right:15px;
+}
+
+body.dark .timeline-item{
+    background:rgba(255,255,255,.05);
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    right:-26px;
+    top:20px;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:var(--pink);
+    border:3px solid var(--bg);
+}
+
+.timeline-icon{
+    font-size:1.6rem;
+}
+
+/* =========================
+   الألقاب
+========================= */
+
+.nickname{
+    color:var(--dark-pink);
+    font-size:1.7rem;
+    font-weight:900;
+    min-height:55px;
+    animation:nameChange .8s;
+}
+
+@keyframes nameChange{
+    from{opacity:0;transform:scale(.8)}
+    to{opacity:1;transform:scale(1)}
+}
+
+/* =========================
+   الببرونة
+========================= */
+
+.interactive-toy{
+    text-align:center;
+}
+
+.bottle-btn{
+    background:none;
+    border:0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.bottle-btn:hover{
+    transform:scale(1.1);
+}
+
+.bottle-btn svg{
+    filter:drop-shadow(0 10px 7px rgba(0,0,0,.2));
+}
+
+.shake-animation{
+    animation:shake .5s;
+}
+
+@keyframes shake{
+    20%{transform:rotate(-10deg)}
+    40%{transform:rotate(10deg)}
+    60%{transform:rotate(-8deg)}
+    80%{transform:rotate(8deg)}
+}
+
+/* =========================
+   زر الحب
+========================= */
+
+.love-section{
+    text-align:center;
+}
+
+.love-button{
+    border:0;
+    background:linear-gradient(45deg,#ff6f91,#c2185b);
+    color:white;
+    border-radius:50px;
+    padding:15px 30px;
+    font-family:'Cairo';
+    font-weight:bold;
+    font-size:1.2rem;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(194,24,91,.3);
+}
+
+.love-count{
+    color:var(--dark-pink);
+    font-size:2rem;
+    font-weight:900;
+    margin-top:10px;
+}
+
+/* =========================
+   الدعاء
+========================= */
+
+.dua{
+    text-align:center!important;
+}
+
+.dua-text{
+    font-family:'Amiri',serif;
+    font-size:1.45rem;
+    line-height:2.2;
+    color:var(--maroon);
+}
+
+/* =========================
+   المفاجأة
+========================= */
+
+.surprise-btn{
+    width:100%;
+    padding:16px;
+    border:0;
+    border-radius:20px;
+    background:linear-gradient(45deg,#800020,#b94d70);
+    color:white;
+    font-family:'Cairo';
+    font-size:1.15rem;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.surprise-message{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(230,138,155,.12);
+    color:var(--dark-pink);
+    font-weight:bold;
+    line-height:2;
+    animation:pop .6s;
+}
+
+@keyframes pop{
+    from{transform:scale(.5);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+/* =========================
+   الرسالة السرية
+========================= */
+
+.secret-box{
+    text-align:center;
+}
+
+.secret-input{
+    width:100%;
+    padding:14px;
+    border:2px solid var(--pink);
+    border-radius:15px;
+    outline:none;
+    font-family:'Cairo';
+    text-align:center;
+    margin:10px 0;
+}
+
+.secret-btn{
+    border:0;
+    padding:12px 25px;
+    border-radius:30px;
+    background:var(--pink);
+    color:white;
+    font-family:'Cairo';
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.secret-result{
+    display:none;
+    margin-top:15px;
+    line-height:2;
+    color:var(--dark-pink);
+    font-weight:bold;
+}
+
+/* =========================
+   الموسيقى
+========================= */
+
+.music-control{
+    position:fixed;
+    left:15px;
+    top:15px;
+    z-index:1000;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:2px solid var(--pink);
+    background:var(--card);
+    cursor:pointer;
+    font-size:22px;
+    box-shadow:0 5px 15px var(--shadow);
+}
+
+.music-visualizer{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:5px;
+    height:30px;
+    margin-top:15px;
+}
+
+.bar{
+    width:6px;
+    height:10px;
+    background:var(--pink);
+    border-radius:5px;
+    animation:bounceBar .5s infinite alternate;
+}
+
+.bar:nth-child(2){animation-delay:.1s}
+.bar:nth-child(3){animation-delay:.2s}
+.bar:nth-child(4){animation-delay:.3s}
+.bar:nth-child(5){animation-delay:.4s}
+
+@keyframes bounceBar{
+    to{height:30px}
+}
+
+/* =========================
+   واتساب
+========================= */
+
+.whatsapp-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    width:90%;
+    margin:25px auto 0;
+    padding:15px;
+    border-radius:50px;
+    background:linear-gradient(45deg,#25D366,#1da851);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 8px 25px rgba(37,211,102,.3);
+}
+
+/* =========================
+   الوضع الليلي
+========================= */
+
+.theme-btn{
+    position:fixed;
+    right:15px;
+    top:15px;
+    z-index:1000;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:2px solid var(--pink);
+    background:var(--card);
+    cursor:pointer;
+    font-size:22px;
+}
+
+/* =========================
+   الكونفيتي
+========================= */
+
+#confetti-wrapper{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    overflow:hidden;
+}
+
+.confetti{
+    position:absolute;
+    top:-50px;
+    font-size:22px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   القلوب
+========================= */
+
+.flying-heart{
+    position:fixed;
+    pointer-events:none;
+    z-index:9998;
+    font-size:25px;
+    animation:heartFly 1.5s ease-out forwards;
+}
+
+@keyframes heartFly{
+    from{
+        transform:translateY(0) scale(.5);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-180px) translateX(var(--x)) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* =========================
+   الموبايل
+========================= */
+
+@media(max-width:480px){
+
+    .container{
+        width:94%;
+        padding:28px 15px;
+        margin:25px auto;
+        border-radius:30px;
+    }
+
+    .main-title{
+        font-size:2.8rem;
+    }
+
+    .start-typewriter{
+        font-size:1.15rem;
+    }
+
+    .typewriter-text{
+        font-size:1rem;
+    }
+
+    .counter-value{
+        font-size:1.05rem;
+    }
+
+    .dua-text{
+        font-size:1.25rem;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="floating-elements" id="floating-container"></div>
-    <div id="confetti-wrapper" class="confetti-container"></div>
+<!-- الخلفية -->
+<div id="floating-container"></div>
 
-    <!-- شاشة البداية -->
-    <div class="container" id="start-screen">
-        <div id="start-text" class="start-typewriter"></div>
-        <button id="enter-btn" class="play-btn" onclick="startExperience()" style="display:none;">دوس هنا 🎶</button>
+<!-- الكونفيتي -->
+<div id="confetti-wrapper"></div>
+
+<!-- أزرار ثابتة -->
+<button class="theme-btn" onclick="toggleTheme()" id="theme-btn">🌙</button>
+<button class="music-control" onclick="toggleMusic()" id="music-btn">🔇</button>
+
+<!-- =========================
+     شاشة البداية
+========================= -->
+
+<div class="container" id="start-screen">
+
+    <div class="start-crown">👑</div>
+
+    <h1 class="kingdom-title">
+        مملكة الأميرة نيلسي
+    </h1>
+
+    <div class="kingdom-date">
+        🌸 03 • 09 • 2026 🌸
     </div>
 
-    <!-- المحتوى الرئيسي -->
-    <div class="container" id="main-content">
-        
-        <div class="crown-icon">👑</div>
-        <h1 class="main-title">نيلسي 🌸</h1>
-        
-        <div class="typewriter-text" id="main-text"></div>
+    <div id="start-text" class="start-typewriter"></div>
 
-        <div class="counters-grid info-box animate-1">
-            <div style="border-left: 2px dashed #eee; padding-left: 5px;">
-                <div style="color: var(--dark-pink); font-weight: bold;">نورتي الدنيا بقالك 🎀</div>
-                <div class="counter-value" id="age-counter">يتم الحساب...</div>
+    <button
+        id="enter-btn"
+        class="play-btn"
+        onclick="startExperience()"
+        style="display:none;"
+    >
+        ادخل المملكة 👑✨
+    </button>
+
+</div>
+
+<!-- =========================
+     المحتوى الرئيسي
+========================= -->
+
+<div class="container" id="main-content">
+
+    <div class="crown-icon">👑</div>
+
+    <h1 class="main-title">
+        نيلسي 🌸
+    </h1>
+
+    <div class="nickname" id="nickname">
+        قمر البيت 🌙
+    </div>
+
+    <div class="typewriter-text" id="main-text"></div>
+
+    <!-- العدادات -->
+
+    <div class="counters-grid info-box animate-1">
+
+        <div class="counter-card">
+            <div class="counter-title">
+                🎂 عمر نيلسي
             </div>
-            <div>
-                <div style="color: var(--dark-pink); font-weight: bold;">❤️ دقات قلبها</div>
-                <div class="counter-value" id="heartbeat-counter">يتم الحساب...</div>
-            </div>
-        </div>
 
-        <div class="info-box animate-2">
-            <h3>✨ معنى اسم نيلسي</h3>
-            <p>اسم يحمل معاني <strong>"الضوء والنور"</strong>، تماماً كالنور الذي يملأ المكان بالبهجة، هكذا أنارت أميرتنا الصغيرة عالمنا.</p>
-        </div>
-
-        <div class="info-box animate-3">
-            <h3>📅 محطات نيلسي القادمة</h3>
-            <ul class="milestones-list">
-                <li><span class="icon">🍼</span> أول ضحكة بصوت (قريباً إن شاء الله)</li>
-                <li><span class="icon">🦷</span> ظهور أول سِنة صغنونة</li>
-                <li><span class="icon">👣</span> أول خطوة نحو تحقيق الأحلام</li>
-            </ul>
-        </div>
-
-        <div class="info-box animate-4" style="text-align: center;">
-            <h3>🍼 ببرونة نيلسي (جرب تضغط)</h3>
-            <p style="font-size: 0.9rem; color: #777;">صوت ضحكة تفرح القلب</p>
-            <div class="interactive-toy">
-                <button class="bottle-btn" id="bottle-toy" onclick="playToySound()">
-                    <svg width="70" height="110" viewBox="0 0 100 150">
-                        <path d="M 40 30 Q 50 -10 60 30" fill="#f4c2c2" />
-                        <rect x="30" y="30" width="40" height="20" rx="5" fill="#e68a9b" />
-                        <path d="M 30 50 L 25 140 Q 25 150 50 150 Q 75 150 75 140 L 70 50 Z" fill="var(--maroon)" />
-                        <line x1="30" y1="70" x2="40" y2="70" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="28" y1="100" x2="38" y2="100" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="27" y1="130" x2="37" y2="130" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                </button>
+            <div
+                class="counter-value"
+                id="age-counter"
+            >
+                يتم الحساب...
             </div>
         </div>
 
-        <div class="animate-5 action-btns-container">
-            <!-- مؤشر تشغيل الصوت -->
-            <div class="music-visualizer" id="music-bars" style="display: none;">
-                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="counter-card">
+            <div class="counter-title">
+                ❤️ دقات قلبها
             </div>
 
-            <!-- زر واتساب للأب إسلام -->
-            <a href="https://wa.me/201145640722?text=ألف%20مبروك%20للأب%20الغالي%20إسلام%20بقدوم%20الأميرة%20نيلسي!%20%F0%9F%8C%B8%20تتربى%20في%20عزك%20ودلالك،%20وربنا%20يحفظها%20ويجعلها%20من%20الذرية%20الصالحة%20يا%20رب%20%F0%9F%91%91" class="whatsapp-btn" target="_blank">
-                💬 بارك للأب "إسلام" عبر واتساب
-            </a>
-            
-            <!-- زر المشاركة -->
-            <button class="share-btn" onclick="sharePage()">
-                🔗 شارك صفحة نيلسي مع العائلة
+            <div
+                class="counter-value"
+                id="heartbeat-counter"
+            >
+                يتم الحساب...
+            </div>
+        </div>
+
+    </div>
+
+    <!-- معنى الاسم -->
+
+    <div class="info-box animate-2">
+
+        <h3>✨ معنى اسم نيلسي</h3>
+
+        <p>
+            اسم يحمل معاني
+            <strong>"الضوء والنور"</strong>،
+            تماماً كالنور الذي ملأ حياتنا منذ لحظة وصول أميرتنا الصغيرة.
+            🌸👑
+        </p>
+
+    </div>
+
+    <!-- الخط الزمني -->
+
+    <div class="info-box animate-3">
+
+        <h3>📜 حكاية نيلسي</h3>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-icon">👑</div>
+                <strong>03 سبتمبر 2026</strong>
+                <br>
+                اليوم الذي بدأت فيه أجمل حكاية.
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">🍼</div>
+                أول ضحكة
+                <br>
+                <small>قريباً إن شاء الله ❤️</small>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">🦷</div>
+                أول سِنة صغنونة
+                <br>
+                <small>والبيت كله هيحتفل 😂❤️</small>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">👣</div>
+                أول خطوة
+                <br>
+                <small>وأول خطوة نحو أحلام كبيرة.</small>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">🎓</div>
+                يوم تحقيق الأحلام
+                <br>
+                <small>لسه الحكاية في أول صفحة.</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- الألقاب -->
+
+    <div class="info-box animate-4" style="text-align:center;">
+
+        <h3>👑 ألقاب الأميرة</h3>
+
+        <div
+            id="nickname"
+            class="nickname"
+        >
+            قمر البيت 🌙
+        </div>
+
+    </div>
+
+    <!-- الببرونة -->
+
+    <div class="info-box animate-5">
+
+        <h3>🍼 ببرونة نيلسي</h3>
+
+        <p style="font-size:.9rem;color:#888;text-align:center;">
+            دوس عليها وشوف المفاجأة 😂❤️
+        </p>
+
+        <div class="interactive-toy">
+
+            <button
+                class="bottle-btn"
+                id="bottle-toy"
+                onclick="playToySound()"
+            >
+
+                <svg
+                    width="90"
+                    height="130"
+                    viewBox="0 0 100 150"
+                >
+
+                    <path
+                        d="M40 30 Q50 -10 60 30"
+                        fill="#f4c2c2"
+                    />
+
+                    <rect
+                        x="30"
+                        y="30"
+                        width="40"
+                        height="20"
+                        rx="5"
+                        fill="#e68a9b"
+                    />
+
+                    <path
+                        d="M30 50 L25 140 Q25 150 50 150 Q75 150 75 140 L70 50 Z"
+                        fill="#800020"
+                    />
+
+                    <line
+                        x1="30"
+                        y1="70"
+                        x2="40"
+                        y2="70"
+                        stroke="#fff"
+                        stroke-width="3"
+                    />
+
+                    <line
+                        x1="28"
+                        y1="100"
+                        x2="38"
+                        y2="100"
+                        stroke="#fff"
+                        stroke-width="3"
+                    />
+
+                    <line
+                        x1="27"
+                        y1="130"
+                        x2="37"
+                        y2="130"
+                        stroke="#fff"
+                        stroke-width="3"
+                    />
+
+                </svg>
+
             </button>
+
         </div>
 
-        <audio id="bg-music" src="05.Elsobooa.mp3" loop></audio>
-        <audio id="laugh-sound" src="https://actions.google.com/sounds/v1/human_voices/baby_laugh.ogg"></audio>
+        <div
+            id="toy-message"
+            style="
+            color:var(--dark-pink);
+            font-weight:bold;
+            margin-top:10px;
+            "
+        ></div>
+
     </div>
 
-    <script>
-        // 1. الكتابة في شاشة البداية
-        const startMessage = "بما إنك وصلت لهنا..|فأنت شخص غالي عندنا 🤍|أهلاً بك في مملكة الأميرة نيلسي 👑";
-        let startCharIndex = 0;
-        
-        function typeStartScreen() {
-            const el = document.getElementById("start-text");
-            if (startCharIndex < startMessage.length) {
-                let char = startMessage.charAt(startCharIndex);
-                if (char === '|') el.innerHTML += "<br><br>";
-                else el.innerHTML += char;
-                startCharIndex++;
-                setTimeout(typeStartScreen, 60);
-            } else {
-                el.classList.add("done");
-                document.getElementById('enter-btn').style.display = 'inline-block';
-            }
+    <!-- الحب -->
+
+    <div class="info-box animate-6 love-section">
+
+        <h3>❤️ كمية الحب لنيلسي</h3>
+
+        <p>
+            دوس على الزر وكل ضغطة تعتبر حضن وحب لنيلسي ❤️
+        </p>
+
+        <button
+            class="love-button"
+            onclick="sendLove()"
+        >
+            بحبك يا نيلسي ❤️
+        </button>
+
+        <div
+            class="love-count"
+            id="love-count"
+        >
+            0 ❤️
+        </div>
+
+    </div>
+
+    <!-- الدعاء -->
+
+    <div class="info-box animate-7 dua">
+
+        <h3>🕊️ دعاء لنيلسي</h3>
+
+        <div class="dua-text">
+
+            اللهم أنبتها نباتاً حسناً،
+            واحفظها بعينك التي لا تنام،
+            وبارك في عمرها وصحتها،
+            واجعلها قرة عين لوالديها،
+            واجعلها من الصالحات،
+            ومن أهل القرآن،
+            وارزقها مستقبلاً جميلاً،
+            وقلباً طيباً،
+            وحياةً مليئة بالخير والبركة. 🤍
+
+        </div>
+
+    </div>
+
+    <!-- المفاجأة -->
+
+    <div class="info-box" style="text-align:center;">
+
+        <h3>🎁 مفاجأة لنيلسي</h3>
+
+        <button
+            class="surprise-btn"
+            onclick="openSurprise()"
+        >
+            ممنوع الضغط إلا لنيلسي 🎁
+        </button>
+
+        <div
+            class="surprise-message"
+            id="surprise-message"
+        >
+            👑✨
+            يا نيلسي...
+            <br><br>
+            إنتِ لسه صغيرة أوي عشان تعرفي قد إيه
+            وجودك فرّح قلوبنا.
+            <br><br>
+            بس لما تكبري وتقرئي الكلام ده،
+            اعرفي إن يوم ميلادك كان من أجمل أيام حياتنا. ❤️
+            <br><br>
+            ربنا يحفظك يا أميرة البيت. 🌸👑
+        </div>
+
+    </div>
+
+    <!-- الرسالة السرية -->
+
+    <div class="info-box secret-box">
+
+        <h3>🔐 رسالة سرية</h3>
+
+        <p>
+            في رسالة مستخبية لنيلسي...
+            <br>
+            بس لازم تعرفي كلمة السر 😉
+        </p>
+
+        <input
+            type="password"
+            id="secret-input"
+            class="secret-input"
+            placeholder="اكتبي كلمة السر"
+        >
+
+        <button
+            class="secret-btn"
+            onclick="unlockSecret()"
+        >
+            🔓 افتحي الرسالة
+        </button>
+
+        <div
+            class="secret-result"
+            id="secret-result"
+        >
+            🌸 كلمة السر صح! 🌸
+            <br><br>
+            نيلسي...
+            <br>
+            ربنا يجعل أيامك كلها نور وفرحة،
+            ويكتب لك في كل خطوة خير،
+            ويحفظ قلبك من كل سوء. 🤍
+            <br><br>
+            👑 إنتِ أميرة من يوم ما جيتي الدنيا.
+        </div>
+
+    </div>
+
+    <!-- الموسيقى -->
+
+    <div style="text-align:center;margin-top:25px;">
+
+        <div
+            class="music-visualizer"
+            id="music-bars"
+        >
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <small>
+            🎵 موسيقى مملكة نيلسي
+        </small>
+
+    </div>
+
+    <!-- واتساب -->
+
+    <a
+        href="https://wa.me/201145640722?text=ألف%20مبروك%20للأب%20الغالي%20إسلام%20بقدوم%20الأميرة%20نيلسي!%20🌸%20تتربى%20في%20عزك%20ودلالك،%20وربنا%20يحفظها%20ويجعلها%20من%20الذرية%20الصالحة%20يا%20رب%20👑"
+        class="whatsapp-btn"
+        target="_blank"
+    >
+        💬 بارك للأب إسلام عبر واتساب
+    </a>
+
+    <p
+        style="
+        margin-top:25px;
+        color:var(--dark-pink);
+        font-weight:bold;
+        "
+    >
+        🌸 انتهت الحكاية... لكن حكاية نيلسي لسه بتبدأ 🌸
+    </p>
+
+</div>
+
+<!-- الأصوات -->
+
+<audio
+    id="bg-music"
+    src="05.Elsobooa.mp3"
+    loop
+></audio>
+
+<audio
+    id="laugh-sound"
+    src="https://actions.google.com/sounds/v1/human_voices/baby_laugh.ogg"
+></audio>
+
+<script>
+
+/* =========================
+   تاريخ الميلاد
+========================= */
+
+const birthDate = new Date("2026-09-03T00:00:00");
+
+/* =========================
+   الرسالة الأولى
+========================= */
+
+const startMessage =
+"بما إنك وصلت لهنا..|فأنت شخص غالي عندنا 🤍|أهلاً بك في مملكة الأميرة نيلسي 👑|هنا بدأت أجمل حكاية في 2026 🌸";
+
+let startCharIndex = 0;
+
+function typeStartScreen(){
+
+    const el =
+        document.getElementById("start-text");
+
+    if(startCharIndex < startMessage.length){
+
+        let char =
+            startMessage.charAt(startCharIndex);
+
+        if(char === "|"){
+            el.innerHTML += "<br><br>";
+        }else{
+            el.innerHTML += char;
         }
-        window.onload = () => setTimeout(typeStartScreen, 500);
 
-        // 2. إطلاق الكونفيتي (الانفجار الاحتفالي)
-        function fireConfetti() {
-            const wrapper = document.getElementById('confetti-wrapper');
-            const emojis = ['🌸', '🎉', '✨', '🤍', '🎀'];
-            for(let i = 0; i < 50; i++) {
-                let conf = document.createElement('div');
-                conf.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                conf.className = 'confetti';
-                conf.style.left = Math.random() * 100 + 'vw';
-                conf.style.top = -20 + 'px';
-                conf.style.animationDuration = (2 + Math.random() * 3) + 's';
-                wrapper.appendChild(conf);
-            }
-            setTimeout(() => { wrapper.innerHTML = ''; }, 5000); // تنظيف بعد الانتهاء
+        startCharIndex++;
+
+        setTimeout(
+            typeStartScreen,
+            55
+        );
+
+    }else{
+
+        el.classList.add("done");
+
+        document.getElementById(
+            "enter-btn"
+        ).style.display = "inline-block";
+    }
+}
+
+setTimeout(
+    typeStartScreen,
+    500
+);
+
+/* =========================
+   دخول المملكة
+========================= */
+
+const mainMessage =
+"﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾|الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.|اللهم اجعلها قرة عين لنا واحفظها وبارك فيها.";
+
+let mainCharIndex = 0;
+
+function startExperience(){
+
+    document.getElementById(
+        "start-screen"
+    ).style.display = "none";
+
+    document.getElementById(
+        "main-content"
+    ).style.display = "block";
+
+    fireConfetti();
+
+    const music =
+        document.getElementById("bg-music");
+
+    music.volume = .35;
+
+    music.play().then(()=>{
+
+        document.getElementById(
+            "music-btn"
+        ).innerHTML = "🔊";
+
+    }).catch(()=>{});
+
+    updateCounters();
+
+    setInterval(
+        updateCounters,
+        1000
+    );
+
+    setTimeout(
+        typeMainText,
+        500
+    );
+
+    startNickname();
+
+}
+
+/* =========================
+   الكتابة
+========================= */
+
+function typeMainText(){
+
+    const el =
+        document.getElementById("main-text");
+
+    if(mainCharIndex < mainMessage.length){
+
+        let char =
+            mainMessage.charAt(mainCharIndex);
+
+        if(char === "|"){
+            el.innerHTML += "<br><br>";
+        }else{
+            el.innerHTML += char;
         }
 
-        // 3. الانتقال للمحتوى الأساسي
-        const birthDate = new Date("2026-09-03T00:00:00");
-        const mainMessage = "﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾|الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.|اللهم اجعلها قرة عين لنا واحفظها وبارك فيها.";
-        let mainCharIndex = 0;
+        mainCharIndex++;
 
-        function startExperience() {
-            document.getElementById('start-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            document.getElementById('music-bars').style.display = 'flex'; // إظهار مؤشر الصوت
-            
-            fireConfetti(); // إطلاق الاحتفال
-            
-            document.getElementById('bg-music').play().catch(e => console.log("الصوت يعمل بعد التفاعل"));
-            
-            updateCounters();
-            setInterval(updateCounters, 1000);
-            setTimeout(typeMainText, 800); 
+        setTimeout(
+            typeMainText,
+            45
+        );
+
+    }else{
+
+        el.style.borderRight = "none";
+    }
+}
+
+/* =========================
+   عداد العمر
+========================= */
+
+function updateCounters(){
+
+    const now = new Date();
+
+    let diff = now - birthDate;
+
+    if(diff < 0){
+        diff = 0;
+    }
+
+    const second =
+        Math.floor(diff / 1000);
+
+    const days =
+        Math.floor(second / 86400);
+
+    const hours =
+        Math.floor(
+            (second % 86400) / 3600
+        );
+
+    const minutes =
+        Math.floor(
+            (second % 3600) / 60
+        );
+
+    const seconds =
+        second % 60;
+
+    document.getElementById(
+        "age-counter"
+    ).innerHTML =
+        `${days} يوم<br>
+        <span style="font-size:.85rem">
+        ${hours} س • ${minutes} د • ${seconds} ث
+        </span>`;
+
+    /* متوسط 140 نبضة في الدقيقة */
+
+    const totalHeartbeats =
+        Math.floor(
+            (diff / 60000) * 140
+        );
+
+    document.getElementById(
+        "heartbeat-counter"
+    ).innerHTML =
+        totalHeartbeats.toLocaleString("ar-EG");
+
+}
+
+/* =========================
+   الألقاب
+========================= */
+
+const nicknames = [
+    "قمر البيت 🌙",
+    "أميرة العيلة 👑",
+    "نور الدنيا ✨",
+    "حبيبة القلوب ❤️",
+    "الكتكوتة الصغيرة 🐣",
+    "فرحة البيت 🌸",
+    "سكر زيادة 🍭",
+    "نجمة العيلة ⭐"
+];
+
+let nicknameIndex = 0;
+
+function startNickname(){
+
+    setInterval(()=>{
+
+        nicknameIndex++;
+
+        if(nicknameIndex >= nicknames.length){
+            nicknameIndex = 0;
         }
 
-        function typeMainText() {
-            const el = document.getElementById("main-text");
-            if (mainCharIndex < mainMessage.length) {
-                let char = mainMessage.charAt(mainCharIndex);
-                if (char === '|') el.innerHTML += "<br><br>";
-                else el.innerHTML += char;
-                mainCharIndex++;
-                setTimeout(typeMainText, 50); 
-            } else {
-                el.style.borderRight = "none";
-            }
-        }
+        const el =
+            document.getElementById(
+                "nickname"
+            );
 
-        // 4. العدادات
-        function updateCounters() {
-            const diffMs = new Date() - birthDate;
-            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diffMs / 1000 / 60) % 60);
-            
-            document.getElementById('age-counter').innerHTML = 
-                `${days} يوم<br><span style="font-size: 1rem; color: #777;">${hours} س و ${minutes} د</span>`;
+        el.style.animation = "none";
 
-            const totalHeartbeats = Math.floor((diffMs / (1000 * 60)) * 140);
-            document.getElementById('heartbeat-counter').innerHTML = totalHeartbeats.toLocaleString('ar-EG');
-        }
+        void el.offsetWidth;
 
-        // 5. تفاعل الببرونة
-        function playToySound() {
-            const sound = document.getElementById('laugh-sound');
-            const bottleBtn = document.getElementById('bottle-toy');
-            sound.currentTime = 0; sound.play();
-            bottleBtn.classList.remove('shake-animation');
-            void bottleBtn.offsetWidth; 
-            bottleBtn.classList.add('shake-animation');
-        }
+        el.style.animation =
+            "nameChange .8s";
 
-        // 6. وظيفة المشاركة (Share API)
-        function sharePage() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'مملكة الأميرة نيلسي',
-                    text: 'يسعدنا مشاركتكم فرحتنا بقدوم أميرتنا نيلسي 🌸',
-                    url: window.location.href
-                }).catch(err => console.log('خطأ في المشاركة', err));
-            } else {
-                // إذا كان المتصفح لا يدعم المشاركة المباشرة ينسخ الرابط
-                navigator.clipboard.writeText(window.location.href);
-                alert("تم نسخ رابط الصفحة! يمكنك الآن لصقه وإرساله للعائلة.");
-            }
-        }
+        el.innerText =
+            nicknames[nicknameIndex];
 
-        // 7. الخلفية
-        function createBackgroundElements() {
-            const container = document.getElementById('floating-container');
-            const items = ['🌸', '✨', '🎀', '🍼'];
-            for(let i = 0; i < 20; i++) {
-                let el = document.createElement('div');
-                el.innerHTML = items[Math.floor(Math.random() * items.length)];
-                el.className = 'float-item';
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.animationDelay = Math.random() * 5 + 's';
-                el.style.animationDuration = 7 + Math.random() * 8 + 's';
-                el.style.fontSize = (15 + Math.random() * 15) + 'px';
-                container.appendChild(el);
-            }
-        }
-        createBackgroundElements();
-    </script>
+    },3000);
+}
+
+/* =========================
+   الكونفيتي
+========================= */
+
+function fireConfetti(){
+
+    const wrapper =
+        document.getElementById(
+            "confetti-wrapper"
+        );
+
+    const emojis = [
+        "🌸",
+        "🎉",
+        "✨",
+        "🤍",
+        "🎀",
+        "👑",
+        "💗",
+        "⭐",
+        "🎈"
+    ];
+
+    for(let i=0;i<90;i++){
+
+        const conf =
+            document.createElement("div");
+
+        conf.className = "confetti";
+
+        conf.innerText =
+            emojis[
+                Math.floor(
+                    Math.random()*emojis.length
+                )
+            ];
+
+        conf.style.left =
+            Math.random()*100+"vw";
+
+        conf.style.animationDuration =
+            (2+Math.random()*4)+"s";
+
+        conf.style.animationDelay =
+            Math.random()*1.5+"s";
+
+        wrapper.appendChild(conf);
+    }
+
+    setTimeout(()=>{
+        wrapper.innerHTML = "";
+    },7000);
+}
+
+/* =========================
+   الببرونة
+========================= */
+
+function playToySound(){
+
+    const sound =
+        document.getElementById(
+            "laugh-sound"
+        );
+
+    const bottle =
+        document.getElementById(
+            "bottle-toy"
+        );
+
+    const message =
+        document.getElementById(
+            "toy-message"
+        );
+
+    sound.currentTime = 0;
+
+    sound.play().catch(()=>{});
+
+    bottle.classList.remove(
+        "shake-animation"
+    );
+
+    void bottle.offsetWidth;
+
+    bottle.classList.add(
+        "shake-animation"
+    );
+
+    const messages = [
+        "نيلسي بتضحك 😂❤️",
+        "ياااااه! كده نيلسي فرحت 🥹",
+        "حد يلحق الكتكوتة 😂🍼",
+        "أحلى ضحكة في الدنيا ❤️",
+        "نيلسي قالتلك: بحبكم 👑❤️"
+    ];
+
+    message.innerText =
+        messages[
+            Math.floor(
+                Math.random()*messages.length
+            )
+        ];
+
+    createHearts(
+        window.innerWidth/2,
+        window.innerHeight/2
+    );
+}
+
+/* =========================
+   الحب
+========================= */
+
+let loveCount = 0;
+
+function sendLove(){
+
+    loveCount++;
+
+    document.getElementById(
+        "love-count"
+    ).innerText =
+        loveCount.toLocaleString("ar-EG")
+        + " ❤️";
+
+    createHearts(
+        window.innerWidth/2,
+        window.innerHeight*.7
+    );
+
+}
+
+/* =========================
+   القلوب
+========================= */
+
+function createHearts(x,y){
+
+    const hearts = [
+        "❤️",
+        "💗",
+        "💕",
+        "💖",
+        "🌸"
+    ];
+
+    for(let i=0;i<8;i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "flying-heart";
+
+        heart.innerText =
+            hearts[
+                Math.floor(
+                    Math.random()*hearts.length
+                )
+            ];
+
+        heart.style.left =
+            x+"px";
+
+        heart.style.top =
+            y+"px";
+
+        heart.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*180)+"px"
+        );
+
+        document.body.appendChild(
+            heart
+        );
+
+        setTimeout(()=>{
+            heart.remove();
+        },1600);
+    }
+}
+
+/* =========================
+   المفاجأة
+========================= */
+
+function openSurprise(){
+
+    const box =
+        document.getElementById(
+            "surprise-message"
+        );
+
+    box.style.display = "block";
+
+    fireConfetti();
+
+    createHearts(
+        window.innerWidth/2,
+        window.innerHeight/2
+    );
+}
+
+/* =========================
+   الرسالة السرية
+========================= */
+
+function unlockSecret(){
+
+    const input =
+        document.getElementById(
+            "secret-input"
+        );
+
+    const result =
+        document.getElementById(
+            "secret-result"
+        );
+
+    /*
+       كلمة السر:
+       نيلسي
+    */
+
+    if(
+        input.value.trim() === "نيلسي" ||
+        input.value.trim().toLowerCase() === "nilsy"
+    ){
+
+        result.style.display =
+            "block";
+
+        fireConfetti();
+
+    }else{
+
+        alert(
+            "كلمة السر مش صح 😄❤️"
+        );
+    }
+}
+
+/* =========================
+   الموسيقى
+========================= */
+
+let musicPlaying = false;
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById(
+            "bg-music"
+        );
+
+    const btn =
+        document.getElementById(
+            "music-btn"
+        );
+
+    if(music.paused){
+
+        music.play().then(()=>{
+
+            musicPlaying = true;
+            btn.innerHTML = "🔊";
+
+        }).catch(()=>{});
+
+    }else{
+
+        music.pause();
+
+        musicPlaying = false;
+
+        btn.innerHTML = "🔇";
+    }
+}
+
+/* =========================
+   الوضع الليلي
+========================= */
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+    const btn =
+        document.getElementById(
+            "theme-btn"
+        );
+
+    if(
+        document.body.classList.contains(
+            "dark"
+        )
+    ){
+
+        btn.innerHTML = "☀️";
+
+    }else{
+
+        btn.innerHTML = "🌙";
+    }
+}
+
+/* =========================
+   الخلفية
+========================= */
+
+function createBackgroundElements(){
+
+    const container =
+        document.getElementById(
+            "floating-container"
+        );
+
+    const items = [
+        "🌸",
+        "✨",
+        "🎀",
+        "🍼",
+        "💗",
+        "⭐",
+        "👑"
+    ];
+
+    for(let i=0;i<25;i++){
+
+        const el =
+            document.createElement("div");
+
+        el.className =
+            "float-item";
+
+        el.innerText =
+            items[
+                Math.floor(
+                    Math.random()*items.length
+                )
+            ];
+
+        el.style.left =
+            Math.random()*100+"vw";
+
+        el.style.animationDuration =
+            (8+Math.random()*10)+"s";
+
+        el.style.animationDelay =
+            Math.random()*10+"s";
+
+        el.style.fontSize =
+            (15+Math.random()*20)+"px";
+
+        container.appendChild(el);
+    }
+}
+
+createBackgroundElements();
+
+</script>
+
 </body>
 </html>
