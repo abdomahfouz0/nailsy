@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مملكة الأميرة نيلسي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #fdf2f4;
             --primary-pink: #e68a9b;
             --dark-pink: #c76b7c;
             --text-color: #5a4a4d;
-            --glow-pink: #ff85a2;
         }
         body {
             margin: 0;
@@ -27,7 +26,7 @@
             min-height: 100vh;
         }
         
-        /* مؤثرات القلوب والأزهار المتطايرة */
+        /* مؤثرات القلوب والأزهار الخلفية */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -39,8 +38,7 @@
         }
         .float-item {
             position: absolute;
-            font-size: 24px;
-            opacity: 0.6;
+            opacity: 0.5;
             animation: floatUp linear infinite;
         }
         @keyframes floatUp {
@@ -48,105 +46,160 @@
             100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
         
+        /* الحاوية الرئيسية (Glassmorphism) */
         .container {
             z-index: 1;
             max-width: 650px;
-            padding: 40px 30px;
+            width: 90%;
+            padding: 40px 25px;
             text-align: center;
             background: rgba(255, 255, 255, 0.85);
             border-radius: 40px;
             box-shadow: 0 15px 35px rgba(230, 138, 155, 0.25);
-            margin: 50px 15px;
+            margin: 40px 0;
             border: 3px dashed var(--primary-pink);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
-        /* عنوان مملكة الأميرة مع تأثير الإشعاع */
         .princess-title {
             font-family: 'Amiri', serif;
             color: var(--dark-pink);
-            font-size: 3.2rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
             line-height: 1.3;
+            margin-bottom: 20px;
             animation: pinkGlow 2s ease-in-out infinite alternate;
         }
 
         @keyframes pinkGlow {
-            from {
-                text-shadow: 0 0 10px #fff, 0 0 20px var(--primary-pink), 0 0 30px var(--primary-pink);
-            }
-            to {
-                text-shadow: 0 0 20px #fff, 0 0 30px var(--dark-pink), 0 0 40px var(--dark-pink);
-            }
+            from { text-shadow: 0 0 10px #fff, 0 0 20px var(--primary-pink); }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px var(--dark-pink); }
         }
 
-        h1 {
-            font-family: 'Amiri', serif;
-            color: var(--dark-pink);
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .welcome-msg {
+        /* رسالة الكتابة التلقائية (حرف حرف) */
+        .typewriter-text {
             font-size: 1.3rem;
             line-height: 1.9;
-            margin-bottom: 30px;
+            font-weight: 700;
             color: var(--text-color);
-            font-weight: bold;
+            min-height: 130px; /* لمنع اهتزاز الصفحة أثناء الكتابة */
+            text-align: right;
+            display: inline-block;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
         }
+        .typewriter-text::after {
+            content: '|';
+            color: var(--primary-pink);
+            animation: blink 0.7s infinite;
+        }
+        .typewriter-text.done::after { display: none; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+        /* الصناديق المعلوماتية وتأثير الدخول */
+        .info-box {
+            background: linear-gradient(135deg, #ffffff, #fdf2f4);
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 8px 20px rgba(230, 138, 155, 0.15);
+            border-bottom: 4px solid var(--primary-pink);
+            margin-top: 25px;
+            text-align: right;
+            opacity: 0; /* مخفي مبدئياً للأنميشن */
+        }
+        .info-box h3 {
+            color: var(--dark-pink);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--primary-pink);
+            padding-bottom: 8px;
+            display: inline-block;
+            font-size: 1.4rem;
+        }
+        .info-box p { margin: 0; font-size: 1.1rem; line-height: 1.8; }
+
+        /* الأنميشن للصناديق */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-1 { animation: slideUpFade 0.8s ease forwards 0.5s; }
+        .animate-2 { animation: slideUpFade 0.8s ease forwards 1s; }
+        .animate-3 { animation: slideUpFade 0.8s ease forwards 1.5s; }
+        .animate-4 { animation: slideUpFade 0.8s ease forwards 2s; }
+        .animate-5 { animation: slideUpFade 0.8s ease forwards 2.5s; }
+
+        /* شبكة العدادات */
         .counters-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 15px;
         }
-
-        .counter-box {
-            background: linear-gradient(135deg, #ffffff, #fdf2f4);
-            padding: 25px 20px;
-            border-radius: 25px;
-            box-shadow: 0 8px 20px rgba(230, 138, 155, 0.2);
-            border-bottom: 5px solid var(--primary-pink);
-            transition: transform 0.3s ease;
-        }
-
-        .counter-box:hover {
-            transform: translateY(-5px);
-        }
-
-        .counter-title {
-            font-weight: bold;
-            color: var(--dark-pink);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
         .counter-value {
-            font-size: 1.9rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 900;
             color: var(--primary-pink);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            margin-top: 10px;
         }
 
-        .heart-icon {
-            color: #ff4d6d;
+        /* لعبة البالونات */
+        .game-area {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="2" fill="%23e68a9b" opacity="0.2"/></svg>');
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+            border: 2px solid rgba(230, 138, 155, 0.4);
+        }
+        .balloon {
+            position: absolute;
+            width: 45px;
+            height: 55px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            bottom: -60px;
+            cursor: pointer;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            user-select: none;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: #bbb;
+        }
+
+        /* زر واتساب */
+        .whatsapp-btn {
             display: inline-block;
-            animation: pulse 0.8s infinite;
-            font-size: 2.2rem;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-
-        .audio-section {
+            background: linear-gradient(45deg, #25D366, #1da851);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            font-weight: bold;
             margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            width: 85%;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
         }
 
+        /* زر البداية */
         .play-btn {
             background: linear-gradient(45deg, var(--primary-pink), var(--dark-pink));
             color: white;
@@ -157,129 +210,179 @@
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             font-weight: bold;
-            transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(230, 138, 155, 0.5);
             animation: bounceBtn 2s infinite;
         }
-
         @keyframes bounceBtn {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
         }
 
-        .play-btn:hover {
-            background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink));
-            box-shadow: 0 10px 30px rgba(230, 138, 155, 0.7);
-            animation: none;
-            transform: scale(1.05);
-        }
-
-        #main-content {
-            display: none;
-        }
+        #main-content { display: none; }
     </style>
 </head>
 <body>
 
+    <!-- الخلفية المتحركة -->
     <div class="floating-elements" id="floating-container"></div>
 
+    <!-- شاشة البداية -->
     <div class="container" id="start-screen">
-        <h1 class="princess-title">👑<br>أهلاً بكم في مملكة<br>الأميرة نيلسي</h1>
-        <p class="welcome-msg" style="color: var(--primary-pink);">استعدوا للدخول إلى عالم أميرتنا الصغيرة 🌸</p>
-        <button class="play-btn" onclick="startExperience()">اضغط هنا لبدء الاحتفال 🎶</button>
+        <h1 class="princess-title">👑<br>مملكة الأميرة<br>نيلسي</h1>
+        <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 30px;">جاهزين للاحتفال؟ 🎀</p>
+        <button class="play-btn" onclick="startExperience()">اضغط هنا للدخول 🎶</button>
     </div>
 
+    <!-- المحتوى الرئيسي -->
     <div class="container" id="main-content">
-        <h1>نيلسي 🌸 Nailsy</h1>
         
-        <div class="welcome-msg">
-            ﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾<br><br>
-            الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.<br>
-            الحمد لله الذي جعل لنا من زينة الحياة نصيباً، رزقني الله وأكرمني بأميرتي الصغيرة.<br>
-            اللهم اجعلها قرة عين لنا واحفظها وبارك فيها<br>
-            واجعلها صغيرة سارة وكبيرة بارة.
-        </div>
+        <h1 style="color: var(--dark-pink); font-family: 'Amiri', serif; font-size: 3rem; margin-top: 0;">نيلسي 🌸 Nailsy</h1>
+        
+        <!-- الرسالة الترحيبية التلقائية -->
+        <div class="typewriter-text" id="typewriter-text"></div>
 
-        <div class="counters-grid">
-            <div class="counter-box">
-                <div class="counter-title">نورتي الدنيا بقالك 🎀</div>
+        <!-- الصناديق بتأثير الدخول المتتالي -->
+        <div class="counters-grid info-box animate-1">
+            <div style="border-left: 2px dashed #eee; padding-left: 10px;">
+                <div style="color: var(--dark-pink); font-weight: bold;">نورتي الدنيا بقالك 🎀</div>
                 <div class="counter-value" id="age-counter">يتم الحساب...</div>
             </div>
-            
-            <div class="counter-box">
-                <div class="counter-title">
-                    <span class="heart-icon">❤️</span> دقات قلبها
-                </div>
+            <div>
+                <div style="color: var(--dark-pink); font-weight: bold;">❤️ دقات قلبها</div>
                 <div class="counter-value" id="heartbeat-counter">يتم الحساب...</div>
-                <div style="font-size: 0.85rem; color: #888; margin-top: 8px;">*رقم تقديري لقلبها الصغير</div>
             </div>
         </div>
 
-        <div class="audio-section">
-            <audio id="bg-music" src="05.Elsobooa.mp3" loop></audio>
+        <div class="info-box animate-2">
+            <h3>✨ معنى اسم نيلسي</h3>
+            <p>اسم أجنبي رقيق يعبر عن <strong>"الضوء"</strong> أو <strong>"الصلاح"</strong>، ويشير إلى النور المنتشر الذي يملأ المكان بالبهجة والتفاؤل، تماماً كما أنارت نيلسي عالمنا بقدومها الميمون.</p>
         </div>
+
+        <div class="info-box animate-3">
+            <h3>🤲 دعاء لأميرتنا</h3>
+            <p>اللهم أنبتها نباتاً حسناً، واجعلها قرة عين لوالديها واحفظها، وبارك لهم فيها واجعلها من أهل الصلاح والتقوى، صغيرة سارة وكبيرة بارة.</p>
+        </div>
+
+        <div class="info-box animate-4" style="text-align: center;">
+            <h3>🎈 شاركنا الفرحة (فرقع البالونات)</h3>
+            <p style="font-size: 1rem; color: #777;">اضغط على البالونات لفرقعتها! النتيجة: <span id="score-board" style="color: var(--dark-pink); font-weight: 900; font-size: 1.4rem;">0</span></p>
+            <div class="game-area" id="game-area"></div>
+        </div>
+
+        <div class="animate-5">
+            <!-- رسالة واتساب مجهزة خصيصاً ومرتبطة برقمك -->
+            <a href="https://wa.me/201145640722?text=ألف%20مبروك%20للأب%20الغالي%20عبد%20الله%20بقدوم%20الأميرة%20نيلسي!%20%F0%9F%8C%B8%20تتربى%20في%20عزك%20ودلالك،%20وربنا%20يحفظها%20ويجعلها%20من%20الذرية%20الصالحة%20يا%20رب%20%F0%9F%91%91" class="whatsapp-btn" target="_blank">
+                💬 أرسل تهنئة للأب عبر واتساب
+            </a>
+        </div>
+
+        <!-- مشغل الصوت -->
+        <audio id="bg-music" src="05.Elsobooa.mp3" loop></audio>
     </div>
 
     <script>
-        // تاريخ ميلاد نيلسي (3 سبتمبر 2026)
         const birthDate = new Date("2026-09-03T00:00:00");
-        const averageHeartRatePerMinute = 140; // متوسط نبضات حديثي الولادة
+        const heartRate = 140;
+
+        // نص الرسالة الترحيبية
+        const welcomeMessage = "﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾|الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.|الحمد لله الذي جعل لنا من زينة الحياة نصيباً، رزقني الله وأكرمني بأميرتي الصغيرة.|اللهم اجعلها قرة عين لنا واحفظها وبارك فيها.";
+        let charIndex = 0;
 
         function startExperience() {
-            // إخفاء شاشة البداية وإظهار المحتوى بتأثير سلس
             document.getElementById('start-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             
-            // تشغيل الأغنية
-            const audio = document.getElementById('bg-music');
-            audio.play().catch(error => {
-                console.log("الرجاء التفاعل مع الصفحة لتشغيل الصوت");
-            });
+            document.getElementById('bg-music').play().catch(e => console.log("الصوت يحتاج تفاعل"));
             
-            // بدء العدادات
             updateCounters();
             setInterval(updateCounters, 1000);
+            
+            setTimeout(typeWriterEffect, 600); // بدء الكتابة بعد ظهور الشاشة بقليل
+            startBalloonGame(); // تشغيل اللعبة
         }
 
-        function updateCounters() {
-            const now = new Date();
-            const diffInMilliseconds = now - birthDate;
-            
-            // حساب العمر
-            const days = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diffInMilliseconds / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diffInMilliseconds / 1000 / 60) % 60);
-            const seconds = Math.floor((diffInMilliseconds / 1000) % 60);
-            
-            document.getElementById('age-counter').innerHTML = 
-                `${days} يوم<br><span style="font-size: 1.3rem;">${hours} ساعة و ${minutes} دقيقة</span>`;
-
-            // حساب عدد دقات القلب التقديرية
-            const diffInMinutes = diffInMilliseconds / (1000 * 60);
-            const totalHeartbeats = Math.floor(diffInMinutes * averageHeartRatePerMinute);
-            
-            document.getElementById('heartbeat-counter').innerHTML = 
-                totalHeartbeats.toLocaleString('ar-EG');
-        }
-
-        // إنشاء القلوب والأزهار المتطايرة
-        function createFloatingElements() {
-            const container = document.getElementById('floating-container');
-            const items = ['🌸', '💖', '🎀', '✨']; // عناصر متنوعة
-            
-            for(let i = 0; i < 25; i++) {
-                let element = document.createElement('div');
-                element.innerHTML = items[Math.floor(Math.random() * items.length)];
-                element.className = 'float-item';
-                element.style.left = Math.random() * 100 + 'vw';
-                element.style.animationDelay = Math.random() * 5 + 's';
-                element.style.animationDuration = 6 + Math.random() * 7 + 's';
-                element.style.fontSize = (15 + Math.random() * 20) + 'px'; // أحجام مختلفة
-                container.appendChild(element);
+        // دالة الكتابة (حرف حرف)
+        function typeWriterEffect() {
+            const el = document.getElementById("typewriter-text");
+            if (charIndex < welcomeMessage.length) {
+                let char = welcomeMessage.charAt(charIndex);
+                if (char === '|') {
+                    el.innerHTML += "<br><br>"; // فاصل أسطر عند وجود علامة |
+                } else {
+                    el.innerHTML += char;
+                }
+                charIndex++;
+                setTimeout(typeWriterEffect, 45); // سرعة الكتابة
+            } else {
+                el.classList.add("done"); // إخفاء مؤشر الكتابة عند الانتهاء
             }
         }
-        createFloatingElements();
+
+        // تحديث العدادات
+        function updateCounters() {
+            const diffMs = new Date() - birthDate;
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diffMs / 1000 / 60) % 60);
+            
+            document.getElementById('age-counter').innerHTML = 
+                `${days} يوم<br><span style="font-size: 1rem; color: #777;">${hours} س و ${minutes} د</span>`;
+
+            const totalHeartbeats = Math.floor((diffMs / (1000 * 60)) * heartRate);
+            document.getElementById('heartbeat-counter').innerHTML = totalHeartbeats.toLocaleString('ar-EG');
+        }
+
+        // لعبة فرقعة البالونات
+        let score = 0;
+        function startBalloonGame() {
+            const area = document.getElementById('game-area');
+            const colors = ['#e68a9b', '#ffb3c1', '#c76b7c', '#ffccd5', '#a56c8f'];
+            
+            setInterval(() => {
+                if(area.children.length < 8) { // عدد البالونات المسموح به في نفس الوقت
+                    let balloon = document.createElement('div');
+                    balloon.className = 'balloon';
+                    balloon.style.left = (10 + Math.random() * 75) + '%'; // مكان ظهور عشوائي
+                    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    balloon.style.animation = `floatUp ${3 + Math.random() * 3}s linear forwards`;
+                    
+                    // عند الضغط على البالون
+                    balloon.onclick = function() {
+                        score++;
+                        document.getElementById('score-board').innerText = score;
+                        this.style.backgroundColor = 'transparent';
+                        this.style.boxShadow = 'none';
+                        this.innerHTML = '✨'; // تأثير الانفجار اللطيف
+                        setTimeout(() => this.remove(), 150);
+                    };
+                    
+                    area.appendChild(balloon);
+                    
+                    // مسح البالون إذا خرج من الشاشة
+                    setTimeout(() => {
+                        if(balloon.parentNode) balloon.remove();
+                    }, 5000);
+                }
+            }, 900); // إطلاق بالون كل أقل من ثانية
+        }
+
+        // إنشاء زينة الخلفية
+        function createBackgroundElements() {
+            const container = document.getElementById('floating-container');
+            const items = ['🌸', '✨', '🎀', '🤍'];
+            for(let i = 0; i < 20; i++) {
+                let el = document.createElement('div');
+                el.innerHTML = items[Math.floor(Math.random() * items.length)];
+                el.className = 'float-item';
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDelay = Math.random() * 5 + 's';
+                el.style.animationDuration = 7 + Math.random() * 8 + 's';
+                el.style.fontSize = (15 + Math.random() * 15) + 'px';
+                container.appendChild(el);
+            }
+        }
+        createBackgroundElements();
     </script>
 </body>
 </html>
