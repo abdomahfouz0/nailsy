@@ -10,241 +10,179 @@
             --bg-color: #fdf2f4;
             --primary-pink: #e68a9b;
             --dark-pink: #c76b7c;
+            --maroon: #800020;
             --text-color: #5a4a4d;
         }
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: var(--bg-color);
             background-image: radial-gradient(circle at 50% 50%, #ffffff 0%, #fdf2f4 100%);
             font-family: 'Cairo', sans-serif;
             color: var(--text-color);
             overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
             min-height: 100vh;
         }
         
-        /* مؤثرات القلوب والأزهار الخلفية */
         .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
         }
-        .float-item {
-            position: absolute;
-            opacity: 0.5;
-            animation: floatUp linear infinite;
-        }
+        .float-item { position: absolute; opacity: 0.5; animation: floatUp linear infinite; }
         @keyframes floatUp {
             0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
         
-        /* الحاوية الرئيسية (Glassmorphism) */
+        /* الحاوية الزجاجية */
         .container {
-            z-index: 1;
-            max-width: 650px;
-            width: 90%;
-            padding: 40px 25px;
-            text-align: center;
+            z-index: 1; max-width: 600px; width: 90%;
+            padding: 40px 20px; text-align: center;
             background: rgba(255, 255, 255, 0.85);
-            border-radius: 40px;
-            box-shadow: 0 15px 35px rgba(230, 138, 155, 0.25);
-            margin: 40px 0;
-            border: 3px dashed var(--primary-pink);
-            backdrop-filter: blur(8px);
+            border-radius: 40px; box-shadow: 0 15px 35px rgba(230, 138, 155, 0.25);
+            margin: 50px 0; border: 3px dashed var(--primary-pink);
+            backdrop-filter: blur(8px); position: relative;
         }
 
-        .princess-title {
-            font-family: 'Amiri', serif;
-            color: var(--dark-pink);
-            font-size: 3.5rem;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            animation: pinkGlow 2s ease-in-out infinite alternate;
+        /* عنوان الشاشة الرئيسية */
+        .crown-icon { font-size: 4rem; animation: floatCrown 3s ease-in-out infinite; display: inline-block; }
+        @keyframes floatCrown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        .main-title {
+            color: var(--dark-pink); font-family: 'Amiri', serif;
+            font-size: 3.2rem; margin-top: 10px; margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(230,138,155,0.4);
         }
 
-        @keyframes pinkGlow {
-            from { text-shadow: 0 0 10px #fff, 0 0 20px var(--primary-pink); }
-            to { text-shadow: 0 0 20px #fff, 0 0 30px var(--dark-pink); }
+        /* مؤثرات الكتابة */
+        .start-typewriter {
+            font-size: 1.6rem; line-height: 2; font-weight: 700;
+            color: var(--dark-pink); min-height: 150px; text-align: center;
         }
+        .start-typewriter::after { content: '|'; animation: blink 0.7s infinite; }
+        .start-typewriter.done::after { display: none; }
 
-        /* رسالة الكتابة التلقائية (حرف حرف) */
         .typewriter-text {
-            font-size: 1.3rem;
-            line-height: 1.9;
-            font-weight: 700;
-            color: var(--text-color);
-            min-height: 130px; /* لمنع اهتزاز الصفحة أثناء الكتابة */
-            text-align: right;
-            display: inline-block;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 15px;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+            font-size: 1.2rem; line-height: 1.8; font-weight: 700;
+            color: var(--text-color); min-height: 130px; text-align: right;
+            display: inline-block; padding: 15px; background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px; border-right: 4px solid var(--primary-pink);
         }
-        .typewriter-text::after {
-            content: '|';
-            color: var(--primary-pink);
-            animation: blink 0.7s infinite;
-        }
-        .typewriter-text.done::after { display: none; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* الصناديق المعلوماتية وتأثير الدخول */
+        /* الصناديق */
         .info-box {
             background: linear-gradient(135deg, #ffffff, #fdf2f4);
-            padding: 20px;
-            border-radius: 25px;
+            padding: 20px; border-radius: 25px;
             box-shadow: 0 8px 20px rgba(230, 138, 155, 0.15);
             border-bottom: 4px solid var(--primary-pink);
-            margin-top: 25px;
-            text-align: right;
-            opacity: 0; /* مخفي مبدئياً للأنميشن */
+            margin-top: 25px; text-align: right; opacity: 0;
         }
-        .info-box h3 {
-            color: var(--dark-pink);
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 2px dashed var(--primary-pink);
-            padding-bottom: 8px;
-            display: inline-block;
-            font-size: 1.4rem;
-        }
+        .info-box h3 { color: var(--dark-pink); margin-top: 0; margin-bottom: 15px; border-bottom: 2px dashed var(--primary-pink); padding-bottom: 8px; display: inline-block; font-size: 1.3rem; }
         .info-box p { margin: 0; font-size: 1.1rem; line-height: 1.8; }
 
-        /* الأنميشن للصناديق */
-        @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .animate-1 { animation: slideUpFade 0.8s ease forwards 0.5s; }
         .animate-2 { animation: slideUpFade 0.8s ease forwards 1s; }
         .animate-3 { animation: slideUpFade 0.8s ease forwards 1.5s; }
         .animate-4 { animation: slideUpFade 0.8s ease forwards 2s; }
         .animate-5 { animation: slideUpFade 0.8s ease forwards 2.5s; }
 
-        /* شبكة العدادات */
-        .counters-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        .counter-value {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--primary-pink);
-            margin-top: 10px;
+        /* العدادات */
+        .counters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .counter-value { font-size: 1.5rem; font-weight: 900; color: var(--primary-pink); margin-top: 10px; }
+
+        /* الببرونة التفاعلية */
+        .interactive-toy { text-align: center; padding: 10px 0; }
+        .bottle-btn { background: none; border: none; cursor: pointer; transition: transform 0.2s; outline: none; }
+        .bottle-btn svg { filter: drop-shadow(0px 8px 5px rgba(0,0,0,0.15)); }
+        .bottle-btn:hover { transform: scale(1.1); }
+        .shake-animation { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0) rotate(-5deg); }
+            20%, 80% { transform: translate3d(4px, 0, 0) rotate(5deg); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0) rotate(-10deg); }
+            40%, 60% { transform: translate3d(6px, 0, 0) rotate(10deg); }
         }
 
-        /* لعبة البالونات */
-        .game-area {
-            position: relative;
-            width: 100%;
-            height: 220px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="2" fill="%23e68a9b" opacity="0.2"/></svg>');
-            background-color: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-top: 15px;
-            border: 2px solid rgba(230, 138, 155, 0.4);
+        /* قائمة المحطات (Milestones) */
+        .milestones-list { list-style: none; padding: 0; margin: 0; }
+        .milestones-list li {
+            background: #fff; padding: 12px 15px; border-radius: 15px;
+            margin-bottom: 10px; font-weight: bold; color: var(--text-color);
+            display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border-right: 3px solid #ddd;
         }
-        .balloon {
-            position: absolute;
-            width: 45px;
-            height: 55px;
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            bottom: -60px;
-            cursor: pointer;
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.15);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            user-select: none;
-        }
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            width: 2px;
-            height: 20px;
-            background: #bbb;
-        }
+        .milestones-list li .icon { font-size: 1.5rem; margin-left: 15px; }
 
-        /* زر واتساب */
-        .whatsapp-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #25D366, #1da851);
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            font-size: 1.3rem;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 30px;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            width: 85%;
+        /* مؤشر الموسيقى */
+        .music-visualizer {
+            display: flex; justify-content: center; align-items: flex-end;
+            height: 30px; gap: 5px; margin-top: 20px;
         }
-        .whatsapp-btn:hover {
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
-        }
+        .bar { width: 6px; background-color: var(--primary-pink); border-radius: 3px; animation: bounceBar 0.5s infinite alternate; }
+        .bar:nth-child(2) { animation-delay: 0.2s; background-color: var(--dark-pink); }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+        .bar:nth-child(4) { animation-delay: 0.1s; background-color: var(--dark-pink); }
+        .bar:nth-child(5) { animation-delay: 0.3s; }
+        @keyframes bounceBar { from { height: 10px; } to { height: 30px; } }
 
-        /* زر البداية */
+        /* الأزرار */
         .play-btn {
             background: linear-gradient(45deg, var(--primary-pink), var(--dark-pink));
-            color: white;
-            border: none;
-            padding: 18px 45px;
-            font-size: 1.4rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-weight: bold;
-            box-shadow: 0 8px 25px rgba(230, 138, 155, 0.5);
-            animation: bounceBtn 2s infinite;
+            color: white; border: none; padding: 15px 40px; font-size: 1.4rem;
+            border-radius: 50px; cursor: pointer; font-family: 'Cairo', sans-serif;
+            font-weight: bold; box-shadow: 0 8px 25px rgba(230, 138, 155, 0.5);
+            animation: bounceBtn 2s infinite; margin-top: 20px;
         }
-        @keyframes bounceBtn {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+        .play-btn:hover { background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink)); transform: scale(1.05); animation: none; }
+        @keyframes bounceBtn { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+
+        .action-btns-container { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; align-items: center; }
+        .whatsapp-btn, .share-btn {
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            color: white; text-decoration: none; padding: 15px 25px; font-size: 1.2rem;
+            border-radius: 50px; font-weight: bold; width: 85%; transition: all 0.3s ease;
+            border: none; cursor: pointer; font-family: 'Cairo', sans-serif;
         }
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25D366, #1da851);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        .share-btn {
+            background: linear-gradient(45deg, #a56c8f, #800020);
+            box-shadow: 0 8px 25px rgba(128, 0, 32, 0.4);
+        }
+        .whatsapp-btn:hover, .share-btn:hover { transform: scale(1.03) translateY(-3px); }
 
         #main-content { display: none; }
+
+        /* الكونفيتي (الانفجار) */
+        .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+        .confetti { position: absolute; font-size: 20px; animation: fall 3s linear forwards; }
+        @keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <!-- الخلفية المتحركة -->
     <div class="floating-elements" id="floating-container"></div>
+    <div id="confetti-wrapper" class="confetti-container"></div>
 
     <!-- شاشة البداية -->
     <div class="container" id="start-screen">
-        <h1 class="princess-title">👑<br>مملكة الأميرة<br>نيلسي</h1>
-        <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 30px;">جاهزين للاحتفال؟ 🎀</p>
-        <button class="play-btn" onclick="startExperience()">اضغط هنا للدخول 🎶</button>
+        <div id="start-text" class="start-typewriter"></div>
+        <button id="enter-btn" class="play-btn" onclick="startExperience()" style="display:none;">دوس هنا 🎶</button>
     </div>
 
     <!-- المحتوى الرئيسي -->
     <div class="container" id="main-content">
         
-        <h1 style="color: var(--dark-pink); font-family: 'Amiri', serif; font-size: 3rem; margin-top: 0;">نيلسي 🌸 Nailsy</h1>
+        <div class="crown-icon">👑</div>
+        <h1 class="main-title">نيلسي 🌸</h1>
         
-        <!-- الرسالة الترحيبية التلقائية -->
-        <div class="typewriter-text" id="typewriter-text"></div>
+        <div class="typewriter-text" id="main-text"></div>
 
-        <!-- الصناديق بتأثير الدخول المتتالي -->
         <div class="counters-grid info-box animate-1">
-            <div style="border-left: 2px dashed #eee; padding-left: 10px;">
+            <div style="border-left: 2px dashed #eee; padding-left: 5px;">
                 <div style="color: var(--dark-pink); font-weight: bold;">نورتي الدنيا بقالك 🎀</div>
                 <div class="counter-value" id="age-counter">يتم الحساب...</div>
             </div>
@@ -256,70 +194,125 @@
 
         <div class="info-box animate-2">
             <h3>✨ معنى اسم نيلسي</h3>
-            <p>اسم أجنبي رقيق يعبر عن <strong>"الضوء"</strong> أو <strong>"الصلاح"</strong>، ويشير إلى النور المنتشر الذي يملأ المكان بالبهجة والتفاؤل، تماماً كما أنارت نيلسي عالمنا بقدومها الميمون.</p>
+            <p>اسم يحمل معاني <strong>"الضوء والنور"</strong>، تماماً كالنور الذي يملأ المكان بالبهجة، هكذا أنارت أميرتنا الصغيرة عالمنا.</p>
         </div>
 
         <div class="info-box animate-3">
-            <h3>🤲 دعاء لأميرتنا</h3>
-            <p>اللهم أنبتها نباتاً حسناً، واجعلها قرة عين لوالديها واحفظها، وبارك لهم فيها واجعلها من أهل الصلاح والتقوى، صغيرة سارة وكبيرة بارة.</p>
+            <h3>📅 محطات نيلسي القادمة</h3>
+            <ul class="milestones-list">
+                <li><span class="icon">🍼</span> أول ضحكة بصوت (قريباً إن شاء الله)</li>
+                <li><span class="icon">🦷</span> ظهور أول سِنة صغنونة</li>
+                <li><span class="icon">👣</span> أول خطوة نحو تحقيق الأحلام</li>
+            </ul>
         </div>
 
         <div class="info-box animate-4" style="text-align: center;">
-            <h3>🎈 شاركنا الفرحة (فرقع البالونات)</h3>
-            <p style="font-size: 1rem; color: #777;">اضغط على البالونات لفرقعتها! النتيجة: <span id="score-board" style="color: var(--dark-pink); font-weight: 900; font-size: 1.4rem;">0</span></p>
-            <div class="game-area" id="game-area"></div>
+            <h3>🍼 ببرونة نيلسي (جرب تضغط)</h3>
+            <p style="font-size: 0.9rem; color: #777;">صوت ضحكة تفرح القلب</p>
+            <div class="interactive-toy">
+                <button class="bottle-btn" id="bottle-toy" onclick="playToySound()">
+                    <svg width="70" height="110" viewBox="0 0 100 150">
+                        <path d="M 40 30 Q 50 -10 60 30" fill="#f4c2c2" />
+                        <rect x="30" y="30" width="40" height="20" rx="5" fill="#e68a9b" />
+                        <path d="M 30 50 L 25 140 Q 25 150 50 150 Q 75 150 75 140 L 70 50 Z" fill="var(--maroon)" />
+                        <line x1="30" y1="70" x2="40" y2="70" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="28" y1="100" x2="38" y2="100" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="27" y1="130" x2="37" y2="130" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        <div class="animate-5">
-            <!-- رسالة واتساب مجهزة خصيصاً ومرتبطة برقمك -->
-            <a href="https://wa.me/201145640722?text=ألف%20مبروك%20للأب%20الغالي%20عبد%20الله%20بقدوم%20الأميرة%20نيلسي!%20%F0%9F%8C%B8%20تتربى%20في%20عزك%20ودلالك،%20وربنا%20يحفظها%20ويجعلها%20من%20الذرية%20الصالحة%20يا%20رب%20%F0%9F%91%91" class="whatsapp-btn" target="_blank">
-                💬 أرسل تهنئة للأب عبر واتساب
+        <div class="animate-5 action-btns-container">
+            <!-- مؤشر تشغيل الصوت -->
+            <div class="music-visualizer" id="music-bars" style="display: none;">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+
+            <!-- زر واتساب للأب إسلام -->
+            <a href="https://wa.me/201145640722?text=ألف%20مبروك%20للأب%20الغالي%20إسلام%20بقدوم%20الأميرة%20نيلسي!%20%F0%9F%8C%B8%20تتربى%20في%20عزك%20ودلالك،%20وربنا%20يحفظها%20ويجعلها%20من%20الذرية%20الصالحة%20يا%20رب%20%F0%9F%91%91" class="whatsapp-btn" target="_blank">
+                💬 بارك للأب "إسلام" عبر واتساب
             </a>
+            
+            <!-- زر المشاركة -->
+            <button class="share-btn" onclick="sharePage()">
+                🔗 شارك صفحة نيلسي مع العائلة
+            </button>
         </div>
 
-        <!-- مشغل الصوت -->
         <audio id="bg-music" src="05.Elsobooa.mp3" loop></audio>
+        <audio id="laugh-sound" src="https://actions.google.com/sounds/v1/human_voices/baby_laugh.ogg"></audio>
     </div>
 
     <script>
-        const birthDate = new Date("2026-09-03T00:00:00");
-        const heartRate = 140;
+        // 1. الكتابة في شاشة البداية
+        const startMessage = "بما إنك وصلت لهنا..|فأنت شخص غالي عندنا 🤍|أهلاً بك في مملكة الأميرة نيلسي 👑";
+        let startCharIndex = 0;
+        
+        function typeStartScreen() {
+            const el = document.getElementById("start-text");
+            if (startCharIndex < startMessage.length) {
+                let char = startMessage.charAt(startCharIndex);
+                if (char === '|') el.innerHTML += "<br><br>";
+                else el.innerHTML += char;
+                startCharIndex++;
+                setTimeout(typeStartScreen, 60);
+            } else {
+                el.classList.add("done");
+                document.getElementById('enter-btn').style.display = 'inline-block';
+            }
+        }
+        window.onload = () => setTimeout(typeStartScreen, 500);
 
-        // نص الرسالة الترحيبية
-        const welcomeMessage = "﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾|الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.|الحمد لله الذي جعل لنا من زينة الحياة نصيباً، رزقني الله وأكرمني بأميرتي الصغيرة.|اللهم اجعلها قرة عين لنا واحفظها وبارك فيها.";
-        let charIndex = 0;
+        // 2. إطلاق الكونفيتي (الانفجار الاحتفالي)
+        function fireConfetti() {
+            const wrapper = document.getElementById('confetti-wrapper');
+            const emojis = ['🌸', '🎉', '✨', '🤍', '🎀'];
+            for(let i = 0; i < 50; i++) {
+                let conf = document.createElement('div');
+                conf.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                conf.className = 'confetti';
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.top = -20 + 'px';
+                conf.style.animationDuration = (2 + Math.random() * 3) + 's';
+                wrapper.appendChild(conf);
+            }
+            setTimeout(() => { wrapper.innerHTML = ''; }, 5000); // تنظيف بعد الانتهاء
+        }
+
+        // 3. الانتقال للمحتوى الأساسي
+        const birthDate = new Date("2026-09-03T00:00:00");
+        const mainMessage = "﴿ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ ﴾|الحمد لله الذي أغاث الفؤاد بقدومها حتى أرتوى ثم فاض.|اللهم اجعلها قرة عين لنا واحفظها وبارك فيها.";
+        let mainCharIndex = 0;
 
         function startExperience() {
             document.getElementById('start-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
+            document.getElementById('music-bars').style.display = 'flex'; // إظهار مؤشر الصوت
             
-            document.getElementById('bg-music').play().catch(e => console.log("الصوت يحتاج تفاعل"));
+            fireConfetti(); // إطلاق الاحتفال
+            
+            document.getElementById('bg-music').play().catch(e => console.log("الصوت يعمل بعد التفاعل"));
             
             updateCounters();
             setInterval(updateCounters, 1000);
-            
-            setTimeout(typeWriterEffect, 600); // بدء الكتابة بعد ظهور الشاشة بقليل
-            startBalloonGame(); // تشغيل اللعبة
+            setTimeout(typeMainText, 800); 
         }
 
-        // دالة الكتابة (حرف حرف)
-        function typeWriterEffect() {
-            const el = document.getElementById("typewriter-text");
-            if (charIndex < welcomeMessage.length) {
-                let char = welcomeMessage.charAt(charIndex);
-                if (char === '|') {
-                    el.innerHTML += "<br><br>"; // فاصل أسطر عند وجود علامة |
-                } else {
-                    el.innerHTML += char;
-                }
-                charIndex++;
-                setTimeout(typeWriterEffect, 45); // سرعة الكتابة
+        function typeMainText() {
+            const el = document.getElementById("main-text");
+            if (mainCharIndex < mainMessage.length) {
+                let char = mainMessage.charAt(mainCharIndex);
+                if (char === '|') el.innerHTML += "<br><br>";
+                else el.innerHTML += char;
+                mainCharIndex++;
+                setTimeout(typeMainText, 50); 
             } else {
-                el.classList.add("done"); // إخفاء مؤشر الكتابة عند الانتهاء
+                el.style.borderRight = "none";
             }
         }
 
-        // تحديث العدادات
+        // 4. العدادات
         function updateCounters() {
             const diffMs = new Date() - birthDate;
             const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -329,48 +322,39 @@
             document.getElementById('age-counter').innerHTML = 
                 `${days} يوم<br><span style="font-size: 1rem; color: #777;">${hours} س و ${minutes} د</span>`;
 
-            const totalHeartbeats = Math.floor((diffMs / (1000 * 60)) * heartRate);
+            const totalHeartbeats = Math.floor((diffMs / (1000 * 60)) * 140);
             document.getElementById('heartbeat-counter').innerHTML = totalHeartbeats.toLocaleString('ar-EG');
         }
 
-        // لعبة فرقعة البالونات
-        let score = 0;
-        function startBalloonGame() {
-            const area = document.getElementById('game-area');
-            const colors = ['#e68a9b', '#ffb3c1', '#c76b7c', '#ffccd5', '#a56c8f'];
-            
-            setInterval(() => {
-                if(area.children.length < 8) { // عدد البالونات المسموح به في نفس الوقت
-                    let balloon = document.createElement('div');
-                    balloon.className = 'balloon';
-                    balloon.style.left = (10 + Math.random() * 75) + '%'; // مكان ظهور عشوائي
-                    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    balloon.style.animation = `floatUp ${3 + Math.random() * 3}s linear forwards`;
-                    
-                    // عند الضغط على البالون
-                    balloon.onclick = function() {
-                        score++;
-                        document.getElementById('score-board').innerText = score;
-                        this.style.backgroundColor = 'transparent';
-                        this.style.boxShadow = 'none';
-                        this.innerHTML = '✨'; // تأثير الانفجار اللطيف
-                        setTimeout(() => this.remove(), 150);
-                    };
-                    
-                    area.appendChild(balloon);
-                    
-                    // مسح البالون إذا خرج من الشاشة
-                    setTimeout(() => {
-                        if(balloon.parentNode) balloon.remove();
-                    }, 5000);
-                }
-            }, 900); // إطلاق بالون كل أقل من ثانية
+        // 5. تفاعل الببرونة
+        function playToySound() {
+            const sound = document.getElementById('laugh-sound');
+            const bottleBtn = document.getElementById('bottle-toy');
+            sound.currentTime = 0; sound.play();
+            bottleBtn.classList.remove('shake-animation');
+            void bottleBtn.offsetWidth; 
+            bottleBtn.classList.add('shake-animation');
         }
 
-        // إنشاء زينة الخلفية
+        // 6. وظيفة المشاركة (Share API)
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'مملكة الأميرة نيلسي',
+                    text: 'يسعدنا مشاركتكم فرحتنا بقدوم أميرتنا نيلسي 🌸',
+                    url: window.location.href
+                }).catch(err => console.log('خطأ في المشاركة', err));
+            } else {
+                // إذا كان المتصفح لا يدعم المشاركة المباشرة ينسخ الرابط
+                navigator.clipboard.writeText(window.location.href);
+                alert("تم نسخ رابط الصفحة! يمكنك الآن لصقه وإرساله للعائلة.");
+            }
+        }
+
+        // 7. الخلفية
         function createBackgroundElements() {
             const container = document.getElementById('floating-container');
-            const items = ['🌸', '✨', '🎀', '🤍'];
+            const items = ['🌸', '✨', '🎀', '🍼'];
             for(let i = 0; i < 20; i++) {
                 let el = document.createElement('div');
                 el.innerHTML = items[Math.floor(Math.random() * items.length)];
